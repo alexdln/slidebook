@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 export interface AdminAuthProps {
   onAuthenticated: () => void
@@ -10,9 +10,7 @@ export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
   const [key, setKey] = useState("")
   const [error, setError] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
+  const authenticate = useCallback(async () => {
     try {
       const response = await fetch("/api/auth", {
         method: "POST",
@@ -31,14 +29,20 @@ export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
     } catch {
       setError("Authentication failed")
     }
+  }, [key, onAuthenticated]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    authenticate();
   }
 
   useEffect(() => {
     const savedPassword = sessionStorage.getItem('password');
     if (savedPassword) {
       setKey(savedPassword);
+      authenticate();
     }
-  }, []);
+  }, [authenticate]);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">

@@ -29,8 +29,13 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
         if (nameOrSlide !== "admin") {
             router.push(`/${slideNumber}`)
         }
+
+        const password = sessionStorage.getItem('password');
+        if (password) {
+            socket?.emit("changeSlide", slideNumber, password, socket.id);
+        }
         setCurrentSlide(slideNumber)
-    }, [router, nameOrSlide, totalSlides, setCurrentSlide])
+    }, [router, nameOrSlide, totalSlides, setCurrentSlide, socket])
 
     // Set up keyboard navigation
     useKeyboardNavigation({
@@ -44,8 +49,8 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
         if (!socket) return
 
         // Listen for slide changes from the admin
-        socket.on("slideChange", (slideNumber: number) => {
-            if (slideNumber !== currentSlide) {
+        socket.on("slideChange", (slideNumber: number, socketId: string) => {
+            if (slideNumber !== currentSlide && socket.id !== socketId) {
                 navigateToSlide(slideNumber)
             }
         })
@@ -61,6 +66,7 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
 
         return () => {
             socket.off("slideChange")
+            socket.off("currentSlide")
         }
     }, [socket, currentSlide, navigateToSlide])
 

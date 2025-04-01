@@ -38,11 +38,11 @@ app.prepare().then(() => {
     })
 
     // Admin changes slide
-    socket.on("changeSlide", (slideNumber, password) => {
+    socket.on("changeSlide", (slideNumber, password, socketId) => {
       if (password === process.env.ADMIN_PASSWORD) {
         currentSlide = slideNumber
         // Broadcast to all clients
-        io.emit("slideChange", slideNumber)
+        io.emit("slideChange", slideNumber, socketId)
       }
     })
 
