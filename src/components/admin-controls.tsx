@@ -4,19 +4,16 @@ import { useCallback, useEffect } from "react"
 
 import { useSetSlider, useSlider } from "@/providers/slider/hooks"
 import { useSocket } from "@/providers/socket/hooks"
+import { SLIDE_HEIGHT, SLIDE_WIDTH } from "@/lib/settings"
 
 import { SlideContent } from "./slide-content"
 import { SlideProgress } from "./slide-progress"
+import { AutoZoomContainer } from "./auto-zoom-container"
 
 export const AdminControls = () => {
   const { currentSlide, totalSlides } = useSlider()
   const { setCurrentSlide } = useSetSlider()
   const socket = useSocket()
-
-  const changeSlide = (slideNumber: number) => {
-    setCurrentSlide(slideNumber)
-    socket?.emit("changeSlide", slideNumber, sessionStorage.getItem('password'));
-  }
 
   const actualizeSlide = useCallback(() => {
     socket?.emit("actualizeSlide", sessionStorage.getItem('password'));
@@ -25,18 +22,26 @@ export const AdminControls = () => {
   useEffect(actualizeSlide, [actualizeSlide])
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6 rounded-lg shadow-md" style={{ width: SLIDE_WIDTH, height: SLIDE_HEIGHT }}>
       <div className="mb-6 border border-gray-200 rounded-lg">
-        <div className="bg-gray-100 rounded-md overflow-hidden grid gap-2 grid-cols-2 items-center justify-center">
-          <SlideContent slideNumber={currentSlide} />
+        <div className="bg-gray-100 rounded-md overflow-hidden grid gap-2 grid-cols-2 justify-center h-[360px]">
+          <div className="flex items-center justify-center h-full">
+            <AutoZoomContainer>
+              <SlideContent slideNumber={currentSlide} />
+            </AutoZoomContainer>
+          </div>
           {currentSlide < totalSlides && (
-            <SlideContent slideNumber={currentSlide + 1} />
+            <div className="flex items-center justify-center h-full">
+              <AutoZoomContainer>
+                <SlideContent slideNumber={currentSlide + 1} />
+              </AutoZoomContainer>
+            </div>
           )}
         </div>
       </div>
 
       <div className="mb-4">
-        <SlideProgress current={currentSlide} total={totalSlides} />
+        <SlideProgress />
         <div className="mt-2 text-center">
           <span className="text-sm text-gray-500">
             Slide {currentSlide} of {totalSlides}
@@ -46,14 +51,14 @@ export const AdminControls = () => {
 
       <div className="flex justify-between gap-2">
         <button
-          onClick={() => changeSlide(1)}
+          onClick={() => setCurrentSlide(1)}
           disabled={currentSlide === 1}
           className="cursor-pointer w-20 bg-gray-200 py-2 px-4 rounded-md enabled:hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           «
         </button>
         <button
-          onClick={() => changeSlide(currentSlide - 1)}
+          onClick={() => setCurrentSlide(currentSlide - 1)}
           disabled={currentSlide === 1}
           className="cursor-pointer w-20 bg-gray-200 py-2 px-4 rounded-md enabled:hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -63,17 +68,17 @@ export const AdminControls = () => {
           onClick={actualizeSlide}
           className="cursor-pointer flex-1 bg-gray-200 py-2 px-4 rounded-md enabled:hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Actualize for all
+          Start from here
         </button>
         <button
-          onClick={() => changeSlide(currentSlide + 1)}
+          onClick={() => setCurrentSlide(currentSlide + 1)}
           disabled={currentSlide === totalSlides}
           className="cursor-pointer w-20 bg-blue-600 text-white py-2 px-4 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           ›
         </button>
         <button
-          onClick={() => changeSlide(totalSlides)}
+          onClick={() => setCurrentSlide(totalSlides)}
           disabled={currentSlide === totalSlides}
           className="cursor-pointer w-20 bg-blue-600 text-white py-2 px-4 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -85,7 +90,7 @@ export const AdminControls = () => {
         {Array.from({ length: totalSlides }, (_, i) => i + 1).map((num) => (
           <button
             key={num}
-            onClick={() => changeSlide(num)}
+            onClick={() => setCurrentSlide(num)}
             className={`cursor-pointer p-2 rounded-md ${currentSlide === num ? "bg-blue-600 text-white" : "bg-gray-100 hover:bg-gray-200"}`}
           >
             {num}

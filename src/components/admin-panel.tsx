@@ -7,15 +7,20 @@ import { useSlider } from "@/providers/slider/hooks"
 
 import { AdminControls } from "./admin-controls"
 import { AdminAuth } from "./admin-auth"
+import { useCallback } from "react"
 
 export const AdminPanel = () => {
     const { isAuthenticated } = useAuthentication()
     const { setIsAuthenticated } = useSetAuthentication()
     const { currentSlide } = useSlider()
 
+    const onAuthenticated = useCallback(() => {
+        setIsAuthenticated(true)
+    }, [setIsAuthenticated])
+
     return (
         <>
-            {!isAuthenticated ? <AdminAuth onAuthenticated={() => setIsAuthenticated(true)} /> : <AdminControls />}
+            {!isAuthenticated ? <AdminAuth onAuthenticated={onAuthenticated} /> : <AdminControls />}
 
             <Link
                 href={`/${currentSlide}`}

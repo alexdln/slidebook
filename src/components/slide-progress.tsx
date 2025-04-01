@@ -1,10 +1,10 @@
-export interface SlideProgressProps {
-  current: number
-  total: number
-}
+'use client'
 
-export const SlideProgress: React.FC<SlideProgressProps> = ({ current, total }) => {
-  const percentage = (current / total) * 100
+import { useSlider } from "@/providers/slider/hooks";
+
+export const SlideProgress: React.FC = () => {
+  const { currentSlide, totalSlides } = useSlider();
+  const percentage = (currentSlide / totalSlides) * 100
 
   return (
     <div className="w-full bg-gray-200 rounded-full h-2.5">

@@ -14,11 +14,11 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // if (disabled) return
-      e.preventDefault()
 
       switch (e.key) {
         case "ArrowLeft":
         case "ArrowUp":
+          e.preventDefault()
           if (currentSlide > 1) {
             onPrevious()
           }
@@ -26,17 +26,20 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
         case "ArrowRight":
         case "ArrowDown":
         case " ": // Space key
+          e.preventDefault()
           if (currentSlide < totalSlides) {
             onNext()
           }
           break
         case "Home":
+          e.preventDefault()
           // Navigate to first slide
           if (currentSlide !== 1) {
             window.location.href = "/1"
           }
           break
         case "End":
+          e.preventDefault()
           // Navigate to last slide
           if (currentSlide !== totalSlides) {
             window.location.href = `/${totalSlides}`

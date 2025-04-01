@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
+import { SLIDE_WIDTH, SLIDE_HEIGHT } from "@/lib/settings"
 
 export interface SlideContentProps {
   slideNumber: number
@@ -17,7 +18,7 @@ export const SlideContent: React.FC<SlideContentProps> = ({ slideNumber }) => {
   }, [slideNumber])
 
   return (
-    <div className="w-full max-w-4xl aspect-video bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ width: SLIDE_WIDTH, height: SLIDE_HEIGHT }}>
       <div className="flex items-center justify-center p-8">{content}</div>
     </div>
   )
