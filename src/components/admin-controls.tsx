@@ -7,10 +7,13 @@ import { useSocket } from "@/providers/socket/hooks"
 import { SLIDE_HEIGHT, SLIDE_WIDTH } from "@/lib/settings"
 
 import { SlideContent } from "./slide-content"
-import { SlideProgress } from "./slide-progress"
 import { AutoZoomContainer } from "./auto-zoom-container"
 
-export const AdminControls = () => {
+export type AdminControlsProps = {
+  children: React.ReactNode[];
+}
+
+export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
   const { currentSlide, totalSlides } = useSlider()
   const { setCurrentSlide } = useSetSlider()
   const socket = useSocket()
@@ -27,25 +30,20 @@ export const AdminControls = () => {
         <div className="bg-gray-100 rounded-md overflow-hidden grid gap-2 grid-cols-2 justify-center h-[360px]">
           <div className="flex items-center justify-center h-full">
             <AutoZoomContainer>
-              <SlideContent slideNumber={currentSlide} />
+              <SlideContent>
+                {children[currentSlide - 1]}
+              </SlideContent>
             </AutoZoomContainer>
           </div>
           {currentSlide < totalSlides && (
             <div className="flex items-center justify-center h-full">
               <AutoZoomContainer>
-                <SlideContent slideNumber={currentSlide + 1} />
+                <SlideContent>
+                  {children[currentSlide]}
+                </SlideContent>
               </AutoZoomContainer>
             </div>
           )}
-        </div>
-      </div>
-
-      <div className="mb-4">
-        <SlideProgress />
-        <div className="mt-2 text-center">
-          <span className="text-sm text-gray-500">
-            Slide {currentSlide} of {totalSlides}
-          </span>
         </div>
       </div>
 

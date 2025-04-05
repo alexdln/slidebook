@@ -1,30 +1,15 @@
-import { SlideContent } from "@/components/slide-content"
-import { AdminPanel } from "@/components/admin-panel"
-
-const totalSlides = 20;
+import { RootPage } from "@/components/root-page"
+import { generateStaticParamsFactory } from "@/lib/generate-static-params";
+import { slides } from "@/lib/slides"
 
 const SlidePage: React.FC<{ params: Promise<{ pathname: string[] }> }> = async ({ params }) => {
-  const { pathname } = await params
-  const [nameOrSlide] = pathname || ['1'];
-
-  if (nameOrSlide === "admin") {
-    return (
-      <AdminPanel />
-    )
-  }
-
-  const slideId = Number.parseInt(nameOrSlide as string) || 1
+  const { pathname } = await params;
 
   return (
-    <SlideContent slideNumber={slideId} />
+    <RootPage segments={pathname} slides={slides} />
   )
 }
 
-export const generateStaticParams = async () => {
-  return Array.from({ length: totalSlides }, (_, i) => i + 1).reduce((acc, cur) => {
-    acc.push({ pathname: [cur.toString()] });
-    return acc;
-  }, [{ pathname: ["admin"] }])
-}
+export const generateStaticParams = generateStaticParamsFactory(slides.length);
 
 export default SlidePage;

@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+
 import { SocketProvider } from "@/providers/socket/provider"
 import { SliderProvider } from "@/providers/slider/provider"
 import { AuthenticationProvider } from "@/providers/authentication/provider"
-
-import "./globals.css"
 import { AutoZoomContainer } from "@/components/auto-zoom-container"
 import { SlideProgress } from "@/components/slide-progress"
 import { SlideControls } from "@/components/slide-controls"
+
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
