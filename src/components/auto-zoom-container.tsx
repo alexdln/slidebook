@@ -12,7 +12,7 @@ export interface AutoZoomContainerProps {
 export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, transformOrigin = 'center' }) => {
     const registerResize = useCallback((ref: HTMLDivElement) => {
         const handleResize = () => {
-            ref.style.opacity = '0';
+            ref.style.transform = `scale(0)`;
             const parentWidth = ref.parentElement?.clientWidth;
             const parentHeight = ref.parentElement?.clientHeight;
 
@@ -20,7 +20,6 @@ export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, 
 
             const scale = Math.min((parentWidth - window.innerWidth * 0.02) / SLIDE_WIDTH, (parentHeight - window.innerHeight * 0.02) / SLIDE_HEIGHT);
 
-            ref.style.opacity = '1';
             ref.style.transform = `scale(${scale})`;
         }
 
@@ -33,7 +32,7 @@ export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, 
     }, []);
 
     return (
-        <div className="absolute" ref={registerResize} style={{ width: SLIDE_WIDTH, height: 'fit-content', transformOrigin, opacity: 0 }}>
+        <div className="absolute" ref={registerResize} style={{ width: SLIDE_WIDTH, height: 'fit-content', transformOrigin, transform: 'scale(0)' }}>
             {children}
         </div>
     )

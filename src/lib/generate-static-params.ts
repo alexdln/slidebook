@@ -4,4 +4,3 @@ export const generateStaticParamsFactory = (length: number) => () => {
         return acc;
     }, [{ pathname: ["admin"] }])
 }
-

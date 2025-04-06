@@ -1,6 +1,9 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react"
+import Link from "next/link"
+
+import { useSlider } from "@/providers/slider/hooks"
 
 export interface AdminAuthProps {
   onAuthenticated: () => void
@@ -9,6 +12,7 @@ export interface AdminAuthProps {
 export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
   const [key, setKey] = useState("")
   const [error, setError] = useState("")
+  const { currentSlide } = useSlider()
 
   const authenticate = useCallback(async () => {
     try {
@@ -74,6 +78,12 @@ export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
           Login
         </button>
       </form>
+      <Link
+        href={`/${currentSlide}`}
+        className="mt-4 w-full text-center text-sm text-gray-500 hover:text-gray-700"
+      >
+        Back to Presentation
+      </Link>
     </div>
   )
 }
