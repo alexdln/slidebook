@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -46,4 +46,4 @@ router.push(\`/\${slideNumber}\`);
             </motion.div>
         </div>
     </div>
-)
+);

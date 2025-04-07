@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { useSetSlider, useSlider } from "@/providers/slider/hooks"
+import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import Link from "next/link";
 
 export const SlideControls = () => {
-    const { setCurrentSlide } = useSetSlider()
+    const { setCurrentSlide } = useSetSlider();
     const { currentSlide, totalSlides } = useSlider();
 
     return (
@@ -32,5 +32,5 @@ export const SlideControls = () => {
                 Admin Access
             </Link>
         </div>
-    )
-}
+    );
+};

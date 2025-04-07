@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -40,11 +40,11 @@ export const Slide10 = () => (
                         Use <span className="font-bold">arrow keys</span> to navigate between slides
                     </p>
                     <p className="text-gray-600 mt-2">
-                        Press <span className="font-mono bg-gray-100 px-2 py-1 rounded">Space</span> to advance to the next
-                        slide
+                        Press <span className="font-mono bg-gray-100 px-2 py-1 rounded">Space</span> to advance to the
+                        next slide
                     </p>
                 </div>
             </motion.div>
         </div>
     </div>
-)
+);

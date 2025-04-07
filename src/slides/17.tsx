@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -18,7 +18,11 @@ export const Slide17 = () => (
                     { title: "Code Splitting", desc: "Load only what's needed for each slide", value: 90 },
                     { title: "Lazy Loading", desc: "Defer loading of non-critical resources", value: 85 },
                     { title: "Caching", desc: "Store and reuse previously fetched resources", value: 75 },
-                    { title: "Optimized Animations", desc: "Use hardware acceleration for smooth animations", value: 95 },
+                    {
+                        title: "Optimized Animations",
+                        desc: "Use hardware acceleration for smooth animations",
+                        value: 95,
+                    },
                 ].map((item, index) => (
                     <motion.div
                         key={index}
@@ -47,4 +51,4 @@ export const Slide17 = () => (
             </div>
         </div>
     </div>
-)
+);

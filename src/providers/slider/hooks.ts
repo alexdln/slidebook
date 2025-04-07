@@ -1,18 +1,17 @@
-'use client'
+"use client";
 
-import { useContext } from "react"
+import { useContext } from "react";
 
-import { SetSliderContext, SliderContext } from "./context"
+import { SetSliderContext, SliderContext } from "./context";
 
 export const useSlider = () => {
-    const { currentSlide, totalSlides } = useContext(SliderContext)
+    const { currentSlide, totalSlides } = useContext(SliderContext);
 
-    return { currentSlide, totalSlides }
-}
+    return { currentSlide, totalSlides };
+};
 
 export const useSetSlider = () => {
-    const { setCurrentSlide } = useContext(SetSliderContext)
+    const { setCurrentSlide } = useContext(SetSliderContext);
 
-    return { setCurrentSlide }
-}
-
+    return { setCurrentSlide };
+};
