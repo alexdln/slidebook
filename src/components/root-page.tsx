@@ -1,14 +1,14 @@
-import { SlideContent } from "@/components/slide-content"
-import { AdminPanel } from "@/components/admin-panel"
+import { SlideContent } from "@/components/slide-content";
+import { AdminPanel } from "@/components/admin-panel";
 import { Slide } from "@/lib/slides";
 
 export type RootPageProps = {
     segments: string[];
     slides: Slide[];
-}
+};
 
 export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) => {
-    const [nameOrSlide] = segments || ['1'];
+    const [nameOrSlide] = segments || ["1"];
 
     if (nameOrSlide === "admin") {
         return (
@@ -19,7 +19,7 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
                     </SlideContent>
                 ))}
             </AdminPanel>
-        )
+        );
     }
 
     const slideNumber = Number.parseInt(nameOrSlide as string) || 1;
@@ -29,5 +29,5 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
         <SlideContent>
             <Slide slideNumber={slideNumber} />
         </SlideContent>
-    )
-}
+    );
+};

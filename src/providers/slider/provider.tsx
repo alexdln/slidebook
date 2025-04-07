@@ -1,5 +1,4 @@
-
-'use client'
+"use client";
 
 import { useCallback, useEffect } from "react";
 import { useState } from "react";
@@ -11,31 +10,34 @@ import { useKeyboardNavigation } from "@/hooks/use-keyboard-navigation";
 import { SliderContext, SetSliderContext } from "./context";
 
 export interface SliderProviderProps {
-    children: React.ReactNode
+    children: React.ReactNode;
     totalSlides: number;
 }
 
 export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalSlides }) => {
-    const params = useParams()
+    const params = useParams();
     const nameOrSlide = params.pathname?.[0];
-    const slideNumber = nameOrSlide?.match(/^\d+$/) && Number.parseInt(nameOrSlide as string)
-    const router = useRouter()
-    const socket = useSocket()
+    const slideNumber = nameOrSlide?.match(/^\d+$/) && Number.parseInt(nameOrSlide as string);
+    const router = useRouter();
+    const socket = useSocket();
     const [currentSlide, setCurrentSlide] = useState(slideNumber || 1);
 
-    const navigateToSlide = useCallback((slideNumber: number) => {
-        if (slideNumber < 1 || slideNumber > totalSlides) return
+    const navigateToSlide = useCallback(
+        (slideNumber: number) => {
+            if (slideNumber < 1 || slideNumber > totalSlides) return;
 
-        if (nameOrSlide !== "admin") {
-            router.push(`/${slideNumber}`)
-        }
+            if (nameOrSlide !== "admin") {
+                router.push(`/${slideNumber}`);
+            }
 
-        const password = sessionStorage.getItem('password');
-        if (password) {
-            socket?.emit("changeSlide", slideNumber, password, socket.id);
-        }
-        setCurrentSlide(slideNumber)
-    }, [router, nameOrSlide, totalSlides, setCurrentSlide, socket])
+            const password = sessionStorage.getItem("password");
+            if (password) {
+                socket?.emit("changeSlide", slideNumber, password, socket.id);
+            }
+            setCurrentSlide(slideNumber);
+        },
+        [router, nameOrSlide, totalSlides, setCurrentSlide, socket],
+    );
 
     // Set up keyboard navigation
     useKeyboardNavigation({
@@ -43,42 +45,42 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
         onNext: () => navigateToSlide(currentSlide + 1),
         totalSlides,
         currentSlide,
-    })
+    });
 
     useEffect(() => {
-        if (!socket) return
+        if (!socket) return;
 
         // Listen for slide changes from the admin
         socket.on("slideChange", (slideNumber: number, socketId: string) => {
             if (slideNumber !== currentSlide && socket.id !== socketId) {
-                navigateToSlide(slideNumber)
+                navigateToSlide(slideNumber);
             }
-        })
+        });
         // Listen for slide changes from the admin
         socket.on("currentSlide", (slideNumber: number) => {
             if (slideNumber !== currentSlide) {
-                navigateToSlide(slideNumber)
+                navigateToSlide(slideNumber);
             }
-        })
+        });
 
         // Inform the server about the current slide view
-        socket.emit("viewSlide", currentSlide)
+        socket.emit("viewSlide", currentSlide);
 
         return () => {
-            socket.off("slideChange")
-            socket.off("currentSlide")
-        }
-    }, [socket, currentSlide, navigateToSlide])
+            socket.off("slideChange");
+            socket.off("currentSlide");
+        };
+    }, [socket, currentSlide, navigateToSlide]);
 
     useEffect(() => {
         if (slideNumber) {
-            setCurrentSlide(slideNumber)
+            setCurrentSlide(slideNumber);
         }
-    }, [slideNumber])
+    }, [slideNumber]);
 
     useEffect(() => {
-        socket?.emit("getCurrentSlide")
-    }, [socket])
+        socket?.emit("getCurrentSlide");
+    }, [socket]);
 
     return (
         <SliderContext.Provider value={{ currentSlide, totalSlides }}>
@@ -86,5 +88,5 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
                 {children}
             </SetSliderContext.Provider>
         </SliderContext.Provider>
-    )
-}
+    );
+};

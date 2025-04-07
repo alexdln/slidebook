@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -63,4 +63,4 @@ return Response.json({ success: true });
             </motion.div>
         </div>
     </div>
-)
+);

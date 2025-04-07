@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -34,4 +34,4 @@ export const Slide13 = () => (
             </motion.div>
         </div>
     </div>
-)
+);

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -26,4 +26,4 @@ export const Slide1 = () => (
             A real-time synchronized presentation
         </motion.p>
     </motion.div>
-)
+);

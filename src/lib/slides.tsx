@@ -20,32 +20,32 @@ import { Slide19 } from "@/slides/19";
 import { Slide20 } from "@/slides/20";
 
 export interface SlideContentProps {
-  slideNumber: number;
+    slideNumber: number;
 }
 
 export type Slide = {
-  component: (props: SlideContentProps) => React.ReactNode;
-}
+    component: (props: SlideContentProps) => React.ReactNode;
+};
 
 export const slides: Slide[] = [
-  { component: Slide1 },
-  { component: Slide2 },
-  { component: Slide3 },
-  { component: Slide4 },
-  { component: Slide5 },
-  { component: Slide6 },
-  { component: Slide7 },
-  { component: Slide8 },
-  { component: Slide9 },
-  { component: Slide10 },
-  { component: Slide11 },
-  { component: Slide12 },
-  { component: Slide13 },
-  { component: Slide14 },
-  { component: Slide15 },
-  { component: Slide16 },
-  { component: Slide17 },
-  { component: Slide18 },
-  { component: Slide19 },
-  { component: Slide20 },
-]
+    { component: Slide1 },
+    { component: Slide2 },
+    { component: Slide3 },
+    { component: Slide4 },
+    { component: Slide5 },
+    { component: Slide6 },
+    { component: Slide7 },
+    { component: Slide8 },
+    { component: Slide9 },
+    { component: Slide10 },
+    { component: Slide11 },
+    { component: Slide12 },
+    { component: Slide13 },
+    { component: Slide14 },
+    { component: Slide15 },
+    { component: Slide16 },
+    { component: Slide17 },
+    { component: Slide18 },
+    { component: Slide19 },
+    { component: Slide20 },
+];

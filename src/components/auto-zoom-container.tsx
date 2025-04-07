@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useCallback } from "react";
 
@@ -9,7 +9,7 @@ export interface AutoZoomContainerProps {
     transformOrigin?: string;
 }
 
-export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, transformOrigin = 'center' }) => {
+export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, transformOrigin = "center" }) => {
     const registerResize = useCallback((ref: HTMLDivElement) => {
         const handleResize = () => {
             ref.style.transform = `scale(0)`;
@@ -18,22 +18,29 @@ export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, 
 
             if (!parentWidth || !parentHeight || !SLIDE_WIDTH || !SLIDE_HEIGHT) return;
 
-            const scale = Math.min((parentWidth - window.innerWidth * 0.02) / SLIDE_WIDTH, (parentHeight - window.innerHeight * 0.02) / SLIDE_HEIGHT);
+            const scale = Math.min(
+                (parentWidth - window.innerWidth * 0.02) / SLIDE_WIDTH,
+                (parentHeight - window.innerHeight * 0.02) / SLIDE_HEIGHT,
+            );
 
             ref.style.transform = `scale(${scale})`;
-        }
+        };
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
         handleResize();
 
         return () => {
-            window.removeEventListener('resize', handleResize);
-        }
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     return (
-        <div className="absolute" ref={registerResize} style={{ width: SLIDE_WIDTH, height: 'fit-content', transformOrigin, transform: 'scale(0)' }}>
+        <div
+            className="absolute"
+            ref={registerResize}
+            style={{ width: SLIDE_WIDTH, height: "fit-content", transformOrigin, transform: "scale(0)" }}
+        >
             {children}
         </div>
-    )
-}
+    );
+};
