@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { startTransition, useActionState, useEffect } from "react";
 import Link from "next/link";
 
 import { useSlider } from "@/providers/slider/hooks";
@@ -42,7 +42,9 @@ export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
         if (savedPassword) {
             const formData = new FormData();
             formData.set("password", savedPassword);
-            formAction(formData);
+            startTransition(() => {
+                formAction(formData);
+            });
         }
     }, []);
 
