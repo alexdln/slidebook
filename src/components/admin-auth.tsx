@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useActionState, useEffect } from "react";
 import Link from "next/link";
 
 import { useSlider } from "@/providers/slider/hooks";
@@ -10,66 +10,63 @@ export interface AdminAuthProps {
 }
 
 export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
-    const [key, setKey] = useState("");
-    const [error, setError] = useState("");
     const { currentSlide } = useSlider();
 
-    const authenticate = useCallback(async () => {
-        try {
-            const response = await fetch("/api/auth", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ key }),
-            });
+    const [state, formAction] = useActionState(
+        async (_state: { error: string } | undefined, formData: FormData) => {
+            try {
+                const password = formData.get("password") as string;
+                const response = await fetch("/api/auth", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ password }),
+                });
 
-            if (response.ok) {
-                onAuthenticated();
-                sessionStorage.setItem("password", key);
-            } else {
-                setError("Invalid admin key");
+                if (response.ok) {
+                    onAuthenticated();
+                    sessionStorage.setItem("password", password);
+                } else {
+                    return { error: "Invalid admin password" };
+                }
+            } catch {
+                return { error: "Authentication failed" };
             }
-        } catch {
-            setError("Authentication failed");
-        }
-    }, [key, onAuthenticated]);
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        authenticate();
-    };
+        },
+        { error: "" },
+    );
 
     useEffect(() => {
         const savedPassword = sessionStorage.getItem("password");
         if (savedPassword) {
-            setKey(savedPassword);
-            authenticate();
+            const formData = new FormData();
+            formData.set("password", savedPassword);
+            formAction(formData);
         }
-    }, [authenticate]);
+    }, []);
 
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-4">Admin Authentication</h2>
 
-            <form onSubmit={handleSubmit}>
+            <form action={formAction}>
                 <div className="mb-4">
-                    <label htmlFor="key" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                         Admin Key
                     </label>
                     <input
                         type="password"
                         autoComplete="current-password"
                         id="password"
-                        value={key}
-                        onChange={(e) => setKey(e.target.value)}
+                        name="password"
                         className="w-full p-2 border border-gray-300 rounded-md"
                         placeholder="Enter admin password"
                         required
                     />
                 </div>
 
-                {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
+                {state?.error && <div className="mb-4 text-red-500 text-sm">{state.error}</div>}
 
                 <button
                     type="submit"
@@ -82,7 +79,7 @@ export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
                 href={`/${currentSlide}`}
                 className="mt-4 w-full text-center text-sm text-gray-500 hover:text-gray-700"
             >
-                Back to Presentation
+                Back to Presentation as Viewer
             </Link>
         </div>
     );

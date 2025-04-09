@@ -101,7 +101,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
                 href={`/${currentSlide}`}
                 className="block mt-6 w-full text-center text-sm text-gray-500 hover:text-gray-700"
             >
-                Back to Presentation
+                Back to Presentation as Viewer
             </Link>
         </div>
     );
