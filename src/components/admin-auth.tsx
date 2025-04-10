@@ -1,52 +1,26 @@
 "use client";
 
-import { startTransition, useActionState, useEffect } from "react";
+import { useActionState } from "react";
 import Link from "next/link";
 
 import { useSlider } from "@/providers/slider/hooks";
+import { useAuthorize } from "@/providers/authentication/hooks";
 
-export interface AdminAuthProps {
-    onAuthenticated: () => void;
-}
-
-export const AdminAuth: React.FC<AdminAuthProps> = ({ onAuthenticated }) => {
+export const AdminAuth: React.FC = () => {
     const { currentSlide } = useSlider();
+    const { authorize } = useAuthorize();
 
     const [state, formAction] = useActionState(
         async (_state: { error: string } | undefined, formData: FormData) => {
-            try {
-                const password = formData.get("password") as string;
-                const response = await fetch("/api/auth", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ password }),
-                });
+            const password = formData.get("password") as string;
+            const response = await authorize(password);
 
-                if (response.ok) {
-                    onAuthenticated();
-                    sessionStorage.setItem("password", password);
-                } else {
-                    return { error: "Invalid admin password" };
-                }
-            } catch {
-                return { error: "Authentication failed" };
+            if (response?.error) {
+                return { error: response.error };
             }
         },
         { error: "" },
     );
-
-    useEffect(() => {
-        const savedPassword = sessionStorage.getItem("password");
-        if (savedPassword) {
-            const formData = new FormData();
-            formData.set("password", savedPassword);
-            startTransition(() => {
-                formAction(formData);
-            });
-        }
-    }, []);
 
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">

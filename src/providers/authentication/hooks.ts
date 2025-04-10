@@ -1,11 +1,11 @@
 import { useContext } from "react";
 
-import { AuthenticationContext, SetAuthenticationContext } from "./context";
+import { AuthenticationContext, AuthorizeContext } from "./context";
 
 export const useAuthentication = () => {
     return useContext(AuthenticationContext);
 };
 
-export const useSetAuthentication = () => {
-    return useContext(SetAuthenticationContext);
+export const useAuthorize = () => {
+    return useContext(AuthorizeContext);
 };

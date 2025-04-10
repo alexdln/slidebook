@@ -6,14 +6,14 @@ type AuthenticationContextType = {
     isAuthenticated: boolean;
 };
 
-type SetAuthenticationContextType = {
-    setIsAuthenticated: (isAuthenticated: boolean) => void;
+type AuthorizeContextType = {
+    authorize: (password: string) => Promise<{ error?: string } | void>;
 };
 
 export const AuthenticationContext = createContext<AuthenticationContextType>({
     isAuthenticated: false,
 });
 
-export const SetAuthenticationContext = createContext<SetAuthenticationContextType>({
-    setIsAuthenticated: () => {},
+export const AuthorizeContext = createContext<AuthorizeContextType>({
+    authorize: async () => ({}),
 });
