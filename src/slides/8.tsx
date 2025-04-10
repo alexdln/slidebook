@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export const Slide8 = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
-            className="text-3xl font-bold mb-6"
+            className="text-3xl font-bold mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}

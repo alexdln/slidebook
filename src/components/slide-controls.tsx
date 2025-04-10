@@ -1,11 +1,13 @@
 "use client";
 
+import { useAuthentication } from "@/providers/authentication/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import Link from "next/link";
 
 export const SlideControls = () => {
     const { setCurrentSlide } = useSetSlider();
     const { currentSlide, totalSlides } = useSlider();
+    const { isAuthenticated } = useAuthentication();
 
     return (
         <div className="mt-4 flex justify-between items-center">
@@ -25,11 +27,11 @@ export const SlideControls = () => {
                     Next →
                 </button>
             </div>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-700">
                 Slide {currentSlide} of {totalSlides}
             </span>
             <Link href="/admin" className="text-sm text-gray-500 hover:text-gray-700">
-                Admin Access
+                {isAuthenticated ? "Admin Panel" : "Login as Admin"}
             </Link>
         </div>
     );
