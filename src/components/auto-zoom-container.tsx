@@ -1,15 +1,22 @@
 "use client";
 
 import { useCallback } from "react";
+import { usePathname } from "next/navigation";
 
 import { SLIDE_HEIGHT, SLIDE_WIDTH } from "@/lib/settings";
 
 export interface AutoZoomContainerProps {
     children: React.ReactNode;
     transformOrigin?: string;
+    ignoredPaths?: string[];
 }
 
-export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, transformOrigin = "center" }) => {
+export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({
+    children,
+    ignoredPaths,
+    transformOrigin = "center",
+}) => {
+    const pathname = usePathname();
     const registerResize = useCallback((ref: HTMLDivElement) => {
         const handleResize = () => {
             ref.style.transform = `scale(0)`;
@@ -33,12 +40,20 @@ export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({ children, 
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+    if (ignoredPaths?.includes(pathname)) {
+        return <>{children}</>;
+    }
 
     return (
         <div
-            className="absolute"
             ref={registerResize}
-            style={{ width: SLIDE_WIDTH, height: "fit-content", transformOrigin, transform: "scale(0)" }}
+            style={{
+                position: "absolute",
+                width: SLIDE_WIDTH,
+                height: "fit-content",
+                transformOrigin,
+                transform: "scale(0)",
+            }}
         >
             {children}
         </div>

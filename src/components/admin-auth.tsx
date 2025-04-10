@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { useSlider } from "@/providers/slider/hooks";
 import { useAuthorize } from "@/providers/authentication/hooks";
+import { AutoZoomContainer } from "./auto-zoom-container";
 
 export const AdminAuth: React.FC = () => {
     const { currentSlide } = useSlider();
@@ -23,40 +24,42 @@ export const AdminAuth: React.FC = () => {
     );
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4">Admin Authentication</h2>
+        <AutoZoomContainer>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-2xl font-bold mb-4">Admin Authentication</h2>
 
-            <form action={formAction}>
-                <div className="mb-4">
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                        Admin Key
-                    </label>
-                    <input
-                        type="password"
-                        autoComplete="current-password"
-                        id="password"
-                        name="password"
-                        className="w-full p-2 border border-gray-300 rounded-md"
-                        placeholder="Enter admin password"
-                        required
-                    />
-                </div>
+                <form action={formAction}>
+                    <div className="mb-4">
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                            Admin Key
+                        </label>
+                        <input
+                            type="password"
+                            autoComplete="current-password"
+                            id="password"
+                            name="password"
+                            className="w-full p-2 border border-gray-300 rounded-md"
+                            placeholder="Enter admin password"
+                            required
+                        />
+                    </div>
 
-                {state?.error && <div className="mb-4 text-red-500 text-sm">{state.error}</div>}
+                    {state?.error && <div className="mb-4 text-red-500 text-sm">{state.error}</div>}
 
-                <button
-                    type="submit"
-                    className="cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                    <button
+                        type="submit"
+                        className="cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                    >
+                        Login
+                    </button>
+                </form>
+                <Link
+                    href={`/${currentSlide}`}
+                    className="mt-4 w-full text-center text-sm text-gray-500 hover:text-gray-700"
                 >
-                    Login
-                </button>
-            </form>
-            <Link
-                href={`/${currentSlide}`}
-                className="mt-4 w-full text-center text-sm text-gray-500 hover:text-gray-700"
-            >
-                Back to Presentation as Viewer
-            </Link>
-        </div>
+                    Back to Presentation as Viewer
+                </Link>
+            </div>
+        </AutoZoomContainer>
     );
 };
