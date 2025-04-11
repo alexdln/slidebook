@@ -6,7 +6,8 @@
     "dev": "node server.ts --turbopack",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.ts",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
@@ -33,9 +34,14 @@
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
     "tailwindcss": "4.0.17",
     "typescript": "5.8.2",
     "typescript-eslint": "8.11.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": "eslint"
   },
   "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
 }
