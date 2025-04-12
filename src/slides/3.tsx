@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide3 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -32,4 +32,18 @@ export const Slide3 = () => (
             ))}
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        Key Features
+        <br />
+        <br />
+        <ul>
+            <li>Real-time Sync - All viewers see the same slide</li>
+            <li>Admin Controls - Simple authentication system</li>
+            <li>Animations - Smooth transitions between elements</li>
+            <li>Progress Tracking - Clear indication of presentation progress</li>
+        </ul>
+    </p>
 );

@@ -11,9 +11,10 @@ import { AutoZoomContainer } from "./auto-zoom-container";
 
 export type AdminControlsProps = {
     children: React.ReactNode[];
+    notes: React.ReactNode[];
 };
 
-export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
+export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes }) => {
     const { currentSlide, totalSlides } = useSlider();
     const { setCurrentSlide } = useSetSlider();
     const socket = useSocket();
@@ -44,7 +45,8 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
                     </div>
                 )}
             </div>
-            <div className="relative mt-8">
+            <div className="bg-slate-100 rounded-md px-4 py-2 mt-1 text-sm">{notes[currentSlide - 1]}</div>
+            <div className="relative mt-4">
                 <div className="flex justify-between gap-2 px-2">
                     <button
                         onClick={() => setCurrentSlide(1)}
@@ -101,7 +103,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
                 </div>
                 <Link
                     href={`/${currentSlide}`}
-                    className="block mt-6 mb-3 w-full text-center text-sm text-slate-500 hover:text-slate-700"
+                    className="block my-3 w-full text-center text-sm text-slate-500 hover:text-slate-700"
                 >
                     Back to Main View
                 </Link>

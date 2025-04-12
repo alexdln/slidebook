@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide20 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -49,4 +49,16 @@ export const Slide20 = () => (
             </motion.div>
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        Thank You!
+        <br />
+        <br />
+        <ul>
+            <li>Restart - Restart the presentation</li>
+            <li>Admin Panel - Access the admin panel</li>
+        </ul>
+    </p>
 );

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide4 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -34,4 +34,20 @@ export const Slide4 = () => (
             ))}
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        We use the following technologies to create our presentation tool:
+        <br />
+        <br />
+        <ul>
+            <li>Next.js</li>
+            <li>Socket.io</li>
+            <li>Framer Motion</li>
+            <li>Tailwind CSS</li>
+            <li>TypeScript</li>
+            <li>API Routes</li>
+        </ul>
+    </p>
 );

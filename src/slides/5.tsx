@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide5 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -42,4 +42,17 @@ export const Slide5 = () => (
             </motion.div>
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        We want to create a presentation tool that is easy to use and navigate.
+        <br />
+        <br />
+        <ul>
+            <li>Responsive Design - Optimized for all screen sizes and devices</li>
+            <li>Keyboard Navigation - Use arrow keys to navigate between slides</li>
+            <li>Smooth Transitions - Elegant animations between slides and elements</li>
+        </ul>
+    </p>
 );

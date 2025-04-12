@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide17 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -51,4 +51,18 @@ export const Slide17 = () => (
             </div>
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        Performance Optimization
+        <br />
+        <br />
+        <ul>
+            <li>Code Splitting - Load only what&apos;s needed for each slide</li>
+            <li>Lazy Loading - Defer loading of non-critical resources</li>
+            <li>Caching - Store and reuse previously fetched resources</li>
+            <li>Optimized Animations - Use hardware acceleration for smooth animations</li>
+        </ul>
+    </p>
 );

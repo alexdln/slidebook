@@ -13,7 +13,11 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
 
     if (nameOrSlide === "admin") {
         return (
-            <AdminPanel>
+            <AdminPanel
+                notes={slides.map(({ notes: Notes }, index) => (
+                    <Notes slideNumber={index + 1} key={index} />
+                ))}
+            >
                 {slides.map(({ component: SlideItem }, index) => (
                     <SlideContent key={index}>
                         <SlideItem slideNumber={index + 1} />
