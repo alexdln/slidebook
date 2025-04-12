@@ -16,7 +16,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
                 <main className="flex min-h-screen flex-col items-center justify-between">
                     <div className="w-full h-screen flex flex-col">
                         <div className="flex-1 flex items-center justify-center">
-                            <AutoZoomContainer ignoredPaths={["/admin"]}>{children}</AutoZoomContainer>
+                            <AutoZoomContainer ignoredPaths={["/admin", "/list"]}>{children}</AutoZoomContainer>
                         </div>
                         <div className="p-4 w-full">
                             <SlideProgress />
