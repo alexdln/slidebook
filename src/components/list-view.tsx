@@ -20,7 +20,7 @@ export const ListView: React.FC<ListViewProps> = ({ children }) => (
                         <SlideContent>{child}</SlideContent>
                         <Link
                             href={`/${index + 1}`}
-                            className="absolute block top-0 left-0 w-full h-full hover:bg-blue-600/30 focus:bg-blue-600/30 transition-colors duration-300 rounded-md"
+                            className="absolute block top-0 left-0 w-full h-full bg-slate-300/30 hover:bg-blue-600/30 focus:bg-blue-600/30 transition-colors duration-300 rounded-md"
                         />
                     </AutoZoomContainer>
                 </div>

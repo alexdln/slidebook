@@ -14,9 +14,21 @@
   --cl-slate-800: oklch(0.279 0.041 260.031);
   --cl-slate-900: oklch(0.208 0.042 265.755);
   --cl-slate-950: oklch(0.129 0.042 264.695);
+
+  --cl-blue-50: oklch(0.97 0.014 254.604);
+  --cl-blue-100: oklch(0.932 0.032 255.585);
+  --cl-blue-200: oklch(0.882 0.059 254.128);
+  --cl-blue-300: oklch(0.809 0.105 251.813);
+  --cl-blue-400: oklch(0.707 0.165 254.624);
+  --cl-blue-500: oklch(0.623 0.214 259.815);
+  --cl-blue-600: oklch(0.546 0.245 262.881);
+  --cl-blue-700: oklch(0.488 0.243 264.376);
+  --cl-blue-800: oklch(0.424 0.199 265.638);
+  --cl-blue-900: oklch(0.379 0.146 265.522);
+  --cl-blue-950: oklch(0.282 0.091 267.935);
 }
 
-[data-theme="dark"], .dark {
+[data-theme="dark"], .theme-dark {
   --cl-slate-50: oklch(0.129 0.042 264.695);
   --cl-slate-100: oklch(0.208 0.042 265.755);
   --cl-slate-200: oklch(0.279 0.041 260.031);
@@ -28,6 +40,18 @@
   --cl-slate-800: oklch(0.929 0.013 255.508);
   --cl-slate-900: oklch(0.968 0.007 247.896);
   --cl-slate-950: oklch(0.984 0.003 247.858);
+
+  --cl-blue-50: oklch(0.282 0.091 267.935);
+  --cl-blue-100: oklch(0.379 0.146 265.522);
+  --cl-blue-200: oklch(0.424 0.199 265.638);
+  --cl-blue-300: oklch(0.488 0.243 264.376);
+  --cl-blue-400: oklch(0.546 0.245 262.881);
+  --cl-blue-500: oklch(0.623 0.214 259.815);
+  --cl-blue-600: oklch(0.707 0.165 254.624);
+  --cl-blue-700: oklch(0.809 0.105 251.813);
+  --cl-blue-800: oklch(0.882 0.059 254.128);
+  --cl-blue-900: oklch(0.932 0.032 255.585);
+  --cl-blue-950: oklch(0.97 0.014 254.604);
 }
 
 @theme inline {
@@ -42,4 +66,28 @@
   --color-slate-800: var(--cl-slate-800);
   --color-slate-900: var(--cl-slate-900);
   --color-slate-950: var(--cl-slate-950);
+
+  --color-blue-50: var(--cl-blue-50);
+  --color-blue-100: var(--cl-blue-100);
+  --color-blue-200: var(--cl-blue-200);
+  --color-blue-300: var(--cl-blue-300);
+  --color-blue-400: var(--cl-blue-400);
+  --color-blue-500: var(--cl-blue-500);
+  --color-blue-600: var(--cl-blue-600);
+  --color-blue-700: var(--cl-blue-700);
+  --color-blue-800: var(--cl-blue-800);
+  --color-blue-900: var(--cl-blue-900);
+  --color-blue-950: var(--cl-blue-950);
+}
+
+.theme-dark:not(.theme-system) .theme-switcher_dark,
+.theme-system .theme-switcher_system,
+.theme-light .theme-switcher_light {
+  background-color: var(--color-slate-50);
+}
+
+.theme-dark:not(.theme-system) .theme-switcher_dark:hover,
+.theme-system .theme-switcher_system:hover,
+.theme-light .theme-switcher_light:hover {
+  background-color: var(--color-slate-100);
 }

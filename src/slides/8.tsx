@@ -17,7 +17,7 @@ export const Slide8 = () => (
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4"
+                className="bg-slate-200 p-4 rounded-lg border border-slate-200 mb-4"
             >
                 <pre className="text-sm overflow-x-auto p-2 bg-slate-100 rounded">
                     <code>{`// Server-side
@@ -33,7 +33,7 @@ io.emit("slideChange", slideNumber);
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
-                className="bg-slate-50 p-4 rounded-lg border border-slate-200"
+                className="bg-slate-200 p-4 rounded-lg border border-slate-200"
             >
                 <pre className="text-sm overflow-x-auto p-2 bg-slate-100 rounded">
                     <code>{`// Client-side

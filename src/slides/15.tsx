@@ -19,16 +19,16 @@ export const Slide15 = () => (
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="relative w-full max-w-lg aspect-video bg-slate-50 rounded-lg p-4"
             >
-                <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border-2 border-blue-300">
+                <div className="absolute top-16 left-16 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center border-2 border-blue-300">
                     <span className="font-bold">A</span>
                 </div>
-                <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center border-2 border-green-300">
+                <div className="absolute top-8 right-4 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center border-2 border-green-300">
                     <span className="font-bold">B</span>
                 </div>
-                <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center border-2 border-purple-300">
+                <div className="absolute bottom-12 left-40 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center border-2 border-purple-300">
                     <span className="font-bold">C</span>
                 </div>
-                <div className="absolute bottom-1/3 right-1/3 w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center border-2 border-yellow-300">
+                <div className="absolute bottom-20 right-20 w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center border-2 border-yellow-300">
                     <span className="font-bold">D</span>
                 </div>
 

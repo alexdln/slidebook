@@ -19,7 +19,7 @@ export const Slide11 = () => (
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="w-full space-y-6"
             >
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-200 p-4 rounded-lg border border-slate-200">
                     <h3 className="font-semibold mb-2">File Structure</h3>
                     <pre className="text-sm overflow-x-auto p-2 bg-slate-100 rounded">
                         <code>{`app/
@@ -31,7 +31,7 @@ export const Slide11 = () => (
 └── page.tsx (redirects to /1)`}</code>
                     </pre>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                <div className="bg-slate-200 p-4 rounded-lg border border-slate-200">
                     <h3 className="font-semibold mb-2">URL Pattern</h3>
                     <div className="flex items-center space-x-2 p-2 bg-slate-100 rounded">
                         <span className="text-slate-500">/</span>

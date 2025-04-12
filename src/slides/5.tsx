@@ -17,7 +17,7 @@ export const Slide5 = () => (
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500"
+                className="bg-slate-100 p-4 rounded-lg border-l-4 border-blue-500"
             >
                 <h3 className="text-xl font-semibold mb-2">Responsive Design</h3>
                 <p className="text-slate-600">Optimized for all screen sizes and devices</p>
@@ -26,7 +26,7 @@ export const Slide5 = () => (
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="bg-slate-50 p-4 rounded-lg border-l-4 border-green-500"
+                className="bg-slate-100 p-4 rounded-lg border-l-4 border-green-500"
             >
                 <h3 className="text-xl font-semibold mb-2">Keyboard Navigation</h3>
                 <p className="text-slate-600">Use arrow keys to navigate between slides</p>
@@ -35,7 +35,7 @@ export const Slide5 = () => (
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="bg-slate-50 p-4 rounded-lg border-l-4 border-purple-500"
+                className="bg-slate-100 p-4 rounded-lg border-l-4 border-purple-500"
             >
                 <h3 className="text-xl font-semibold mb-2">Smooth Transitions</h3>
                 <p className="text-slate-600">Elegant animations between slides and elements</p>

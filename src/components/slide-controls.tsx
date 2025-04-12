@@ -3,6 +3,7 @@
 import { useAuthentication } from "@/providers/authentication/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import Link from "next/link";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export const SlideControls = () => {
     const { setCurrentSlide } = useSetSlider();
@@ -62,9 +63,12 @@ export const SlideControls = () => {
             <span className="text-sm text-slate-700">
                 <span className="max-md:hidden">Slide</span> {currentSlide} of {totalSlides}
             </span>
-            <Link href="/admin" className="py-2 text-sm text-slate-500 hover:text-slate-700">
-                {isAuthenticated ? "Admin Panel" : "Login as Admin"}
-            </Link>
+            <div className="flex space-x-4">
+                <Link href="/admin" className="py-2 text-sm text-slate-500 hover:text-slate-700">
+                    {isAuthenticated ? "Admin Panel" : "Login as Admin"}
+                </Link>
+                <ThemeSwitcher />
+            </div>
         </div>
     );
 };

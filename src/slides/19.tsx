@@ -29,7 +29,7 @@ export const Slide19 = () => (
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                    className="bg-slate-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col items-center justify-center text-center h-32"
+                    className="bg-slate-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col items-center justify-center text-center h-32"
                 >
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">
                         <svg
