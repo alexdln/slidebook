@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide6 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -39,4 +39,17 @@ export const Slide6 = () => (
             </motion.div>
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        Architecture Overview
+        <br />
+        <br />
+        <ul>
+            <li>Client</li>
+            <li>Next.js Server</li>
+            <li>Socket.io</li>
+        </ul>
+    </p>
 );

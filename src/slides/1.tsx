@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide1 = () => (
+export const Slide = () => (
     <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -26,4 +26,11 @@ export const Slide1 = () => (
             A real-time Advanced Presentation Tool
         </motion.p>
     </motion.div>
+);
+
+export const Notes = () => (
+    <p>
+        Welcome to the Slidebook. This is a real-time presentation tool that allows you to create and share
+        presentations with your audience.
+    </p>
 );

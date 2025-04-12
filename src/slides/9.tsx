@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide9 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -86,4 +86,18 @@ export const Slide9 = () => (
             </div>
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        Animation Techniques
+        <br />
+        <br />
+        <ul>
+            <li>Fade In</li>
+            <li>Scale</li>
+            <li>Slide</li>
+            <li>Rotate</li>
+        </ul>
+    </p>
 );

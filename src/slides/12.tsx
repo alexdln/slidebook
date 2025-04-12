@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide12 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -63,4 +63,16 @@ return Response.json({ success: true });
             </motion.div>
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        API Routes
+        <br />
+        <br />
+        <ul>
+            <li>Authentication API</li>
+            <li>Socket.io API</li>
+        </ul>
+    </p>
 );

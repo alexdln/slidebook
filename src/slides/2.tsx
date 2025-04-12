@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const Slide2 = () => (
+export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
             className="text-3xl font-bold mb-8"
@@ -32,4 +32,18 @@ export const Slide2 = () => (
             ))}
         </div>
     </div>
+);
+
+export const Notes = () => (
+    <p>
+        We want to create engaging presentations that are easy to create and share.
+        <br />
+        Our objectives are:
+        <ul>
+            <li>Create engaging presentations</li>
+            <li>Synchronize across devices</li>
+            <li>Simple admin controls</li>
+            <li>Smooth animations</li>
+        </ul>
+    </p>
 );
