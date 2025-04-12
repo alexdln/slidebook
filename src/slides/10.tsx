@@ -20,18 +20,18 @@ export const Slide10 = () => (
                 className="grid grid-cols-3 gap-4"
             >
                 <div className="col-start-2">
-                    <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center shadow-md">
+                    <div className="w-16 h-16 bg-slate-200 rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-2xl">↑</span>
                     </div>
                 </div>
                 <div className="col-start-1 col-end-4 flex justify-center space-x-4">
-                    <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center shadow-md">
+                    <div className="w-16 h-16 bg-slate-200 rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-2xl">←</span>
                     </div>
-                    <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center shadow-md">
+                    <div className="w-16 h-16 bg-slate-200 rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-2xl">↓</span>
                     </div>
-                    <div className="w-16 h-16 bg-blue-500 text-white rounded-lg flex items-center justify-center shadow-md">
+                    <div className="w-16 h-16 bg-blue-500 text-slate-50 rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-2xl">→</span>
                     </div>
                 </div>
@@ -39,8 +39,8 @@ export const Slide10 = () => (
                     <p className="text-lg">
                         Use <span className="font-bold">arrow keys</span> to navigate between slides
                     </p>
-                    <p className="text-gray-600 mt-2">
-                        Press <span className="font-mono bg-gray-100 px-2 py-1 rounded">Space</span> to advance to the
+                    <p className="text-slate-600 mt-2">
+                        Press <span className="font-mono bg-slate-100 px-2 py-1 rounded">Space</span> to advance to the
                         next slide
                     </p>
                 </div>

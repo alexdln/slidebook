@@ -29,7 +29,7 @@ export const Slide4 = () => (
                     className="bg-blue-50 p-4 rounded-lg border border-blue-100"
                 >
                     <h3 className="text-lg font-semibold text-blue-700">{tech.name}</h3>
-                    <p className="text-sm text-gray-600">{tech.desc}</p>
+                    <p className="text-sm text-slate-600">{tech.desc}</p>
                 </motion.div>
             ))}
         </div>

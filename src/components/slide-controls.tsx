@@ -3,6 +3,7 @@
 import { useAuthentication } from "@/providers/authentication/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import Link from "next/link";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export const SlideControls = () => {
     const { setCurrentSlide } = useSetSlider();
@@ -15,11 +16,11 @@ export const SlideControls = () => {
                 <button
                     onClick={() => setCurrentSlide(currentSlide - 1)}
                     disabled={currentSlide === 1}
-                    className="cursor-pointer text-sm px-3 py-2 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer text-sm px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     ← <span className="max-md:hidden">Prev</span>
                 </button>
-                <Link href="/list" className="cursor-pointer text-sm p-2 rounded bg-gray-200 hover:bg-gray-300">
+                <Link href="/list" className="cursor-pointer text-sm p-2 rounded bg-slate-200 hover:bg-slate-300">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M8.4 3H4.6C4.03995 3 3.75992 3 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3 3.75992 3 4.03995 3 4.6V8.4C3 8.96005 3 9.24008 3.10899 9.45399C3.20487 9.64215 3.35785 9.79513 3.54601 9.89101C3.75992 10 4.03995 10 4.6 10H8.4C8.96005 10 9.24008 10 9.45399 9.89101C9.64215 9.79513 9.79513 9.64215 9.89101 9.45399C10 9.24008 10 8.96005 10 8.4V4.6C10 4.03995 10 3.75992 9.89101 3.54601C9.79513 3.35785 9.64215 3.20487 9.45399 3.10899C9.24008 3 8.96005 3 8.4 3Z"
@@ -54,17 +55,20 @@ export const SlideControls = () => {
                 <button
                     onClick={() => setCurrentSlide(currentSlide + 1)}
                     disabled={currentSlide === totalSlides}
-                    className="cursor-pointer text-sm px-3 py-2 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-pointer text-sm px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <span className="max-md:hidden">Next</span> →
                 </button>
             </div>
-            <span className="text-sm text-gray-700">
+            <span className="text-sm text-slate-700">
                 <span className="max-md:hidden">Slide</span> {currentSlide} of {totalSlides}
             </span>
-            <Link href="/admin" className="py-2 text-sm text-gray-500 hover:text-gray-700">
-                {isAuthenticated ? "Admin Panel" : "Login as Admin"}
-            </Link>
+            <div className="flex space-x-4">
+                <Link href="/admin" className="py-2 text-sm text-slate-500 hover:text-slate-700">
+                    {isAuthenticated ? "Admin Panel" : "Login as Admin"}
+                </Link>
+                <ThemeSwitcher />
+            </div>
         </div>
     );
 };

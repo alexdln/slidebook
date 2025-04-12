@@ -12,7 +12,7 @@ export const BackLink: React.FC<BackLinkProps> = ({ className }) => {
     const { currentSlide } = useSlider();
 
     return (
-        <Link href={`/${currentSlide}`} className={cn("block text-gray-500 hover:text-gray-700", className)}>
+        <Link href={`/${currentSlide}`} className={cn("block text-slate-500 hover:text-slate-700", className)}>
             Back to Main View
         </Link>
     );

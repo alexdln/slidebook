@@ -27,7 +27,7 @@ export const Slide13 = () => (
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="text-center text-gray-600"
+                className="text-center text-slate-600"
             >
                 <p>Progress is automatically tracked and displayed</p>
                 <p>All viewers see the same progress in real-time</p>

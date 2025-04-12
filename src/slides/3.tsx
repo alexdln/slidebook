@@ -24,10 +24,10 @@ export const Slide3 = () => (
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 + index * 0.2, duration: 0.5 }}
-                    className="bg-gray-100 p-4 rounded-lg"
+                    className="bg-slate-100 p-4 rounded-lg"
                 >
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.desc}</p>
+                    <p className="text-slate-600">{item.desc}</p>
                 </motion.div>
             ))}
         </div>

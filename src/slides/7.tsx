@@ -17,7 +17,7 @@ export const Slide7 = () => (
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="bg-gray-50 p-6 rounded-lg border border-gray-200"
+                className="bg-slate-100 p-6 rounded-lg border border-slate-200"
             >
                 <h3 className="text-xl font-semibold mb-3">Secure Access</h3>
                 <ul className="space-y-2 list-disc pl-5">
@@ -30,7 +30,7 @@ export const Slide7 = () => (
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="bg-gray-50 p-6 rounded-lg border border-gray-200"
+                className="bg-slate-100 p-6 rounded-lg border border-slate-200"
             >
                 <h3 className="text-xl font-semibold mb-3">Presentation Control</h3>
                 <ul className="space-y-2 list-disc pl-5">

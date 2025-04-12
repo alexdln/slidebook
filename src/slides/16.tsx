@@ -24,7 +24,7 @@ export const Slide16 = () => (
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 + index * 0.2, duration: 0.5 }}
-                    className="bg-gray-50 p-4 rounded-lg border border-gray-200 flex"
+                    className="bg-slate-100 p-4 rounded-lg border border-slate-200 flex"
                 >
                     <div className="mr-4 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
                         <svg
@@ -44,7 +44,7 @@ export const Slide16 = () => (
                     </div>
                     <div>
                         <h3 className="font-semibold mb-1">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.desc}</p>
+                        <p className="text-sm text-slate-600">{item.desc}</p>
                     </div>
                 </motion.div>
             ))}

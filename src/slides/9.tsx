@@ -18,10 +18,10 @@ export const Slide9 = () => (
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
-                    className="bg-blue-50 p-4 rounded-lg"
+                    className="bg-blue-500/50 p-4 rounded-lg"
                 >
                     <h3 className="font-semibold mb-2">Fade In</h3>
-                    <div className="h-16 bg-blue-100 rounded flex items-center justify-center">
+                    <div className="h-16 bg-blue-500 rounded flex items-center justify-center">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -35,10 +35,10 @@ export const Slide9 = () => (
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.5 }}
-                    className="bg-green-50 p-4 rounded-lg"
+                    className="bg-green-500/50 p-4 rounded-lg"
                 >
                     <h3 className="font-semibold mb-2">Scale</h3>
-                    <div className="h-16 bg-green-100 rounded flex items-center justify-center">
+                    <div className="h-16 bg-green-500 rounded flex items-center justify-center">
                         <motion.div
                             initial={{ scale: 0.5 }}
                             animate={{ scale: 1 }}
@@ -54,10 +54,10 @@ export const Slide9 = () => (
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="bg-purple-50 p-4 rounded-lg"
+                    className="bg-purple-500/50 p-4 rounded-lg"
                 >
                     <h3 className="font-semibold mb-2">Slide</h3>
-                    <div className="h-16 bg-purple-100 rounded flex items-center justify-center overflow-hidden">
+                    <div className="h-16 bg-purple-500 rounded flex items-center justify-center overflow-hidden">
                         <motion.div
                             initial={{ x: -100 }}
                             animate={{ x: 0 }}
@@ -71,15 +71,15 @@ export const Slide9 = () => (
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.5 }}
-                    className="bg-orange-50 p-4 rounded-lg"
+                    className="bg-orange-500/50 p-4 rounded-lg"
                 >
                     <h3 className="font-semibold mb-2">Rotate</h3>
-                    <div className="h-16 bg-orange-100 rounded flex items-center justify-center">
+                    <div className="h-16 bg-orange-500 rounded flex items-center justify-center">
                         <motion.div
                             initial={{ rotate: 0 }}
                             animate={{ rotate: 360 }}
                             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                            className="w-8 h-8 bg-orange-500 rounded"
+                            className="w-8 h-8 bg-orange-300 rounded"
                         />
                     </div>
                 </motion.div>

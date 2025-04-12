@@ -25,12 +25,12 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
     useEffect(actualizeSlide, [actualizeSlide]);
 
     return (
-        <div className="max-w-full bg-white rounded-lg shadow-lg m-1 p-1">
-            <div className="bg-gray-100 rounded-t-md overflow-hidden grid gap-2 grid-cols-2 justify-center">
+        <div className="max-w-full bg-slate-50 rounded-lg shadow-lg m-1 p-1">
+            <div className="bg-slate-100 rounded-t-md overflow-hidden grid gap-2 grid-cols-2 justify-center">
                 <p className="pt-4 px-[4%] text-sm font-bold">Current slide</p>
                 <p className="pt-4 px-[4%] text-sm font-bold">Next slide</p>
             </div>
-            <div className="bg-gray-100 rounded-b-md overflow-hidden grid gap-2 grid-cols-2 justify-center h-32 sm:h-48 md:h-60 lg:h-64">
+            <div className="bg-slate-100 rounded-b-md overflow-hidden grid gap-2 grid-cols-2 justify-center h-32 sm:h-48 md:h-60 lg:h-64">
                 <div className="flex items-center justify-center">
                     <AutoZoomContainer>
                         <SlideContent>{children[currentSlide - 1]}</SlideContent>
@@ -49,34 +49,34 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
                     <button
                         onClick={() => setCurrentSlide(1)}
                         disabled={currentSlide === 1}
-                        className="cursor-pointer min-w-9 h-9 bg-gray-200 py-1 px-2 rounded-md enabled:hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="cursor-pointer min-w-9 h-9 bg-slate-200 py-1 px-2 rounded-md enabled:hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         «
                     </button>
                     <button
                         onClick={() => setCurrentSlide(currentSlide - 1)}
                         disabled={currentSlide === 1}
-                        className="cursor-pointer min-w-9 h-9 bg-gray-200 py-1 px-2 rounded-md enabled:hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="cursor-pointer min-w-9 h-9 bg-slate-200 py-1 px-2 rounded-md enabled:hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         ‹
                     </button>
                     <button
                         onClick={actualizeSlide}
-                        className="cursor-pointer flex-1 h-9 bg-gray-200 py-1 px-2 rounded-md enabled:hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="cursor-pointer flex-1 h-9 bg-slate-200 py-1 px-2 rounded-md enabled:hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Present <span className="max-md:hidden">from current slide</span>
                     </button>
                     <button
                         onClick={() => setCurrentSlide(currentSlide + 1)}
                         disabled={currentSlide === totalSlides}
-                        className="cursor-pointer min-w-9 h-9 bg-blue-600 text-white py-1 px-2 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="cursor-pointer min-w-9 h-9 bg-blue-600 text-slate-50 py-1 px-2 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         ›
                     </button>
                     <button
                         onClick={() => setCurrentSlide(totalSlides)}
                         disabled={currentSlide === totalSlides}
-                        className="cursor-pointer min-w-9 h-9 bg-blue-600 text-white py-1 px-2 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="cursor-pointer min-w-9 h-9 bg-blue-600 text-slate-50 py-1 px-2 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         »
                     </button>
@@ -87,7 +87,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
                         <div className="group" key={num}>
                             <button
                                 onClick={() => setCurrentSlide(num)}
-                                className={`text-sm cursor-pointer p-2 h-9 min-w-9 rounded-md ${currentSlide === num ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
+                                className={`text-sm cursor-pointer p-2 h-9 min-w-9 rounded-md ${currentSlide === num ? "bg-blue-600 text-slate-50" : "bg-slate-200 hover:bg-slate-300"}`}
                             >
                                 {num}
                             </button>
@@ -101,7 +101,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children }) => {
                 </div>
                 <Link
                     href={`/${currentSlide}`}
-                    className="block mt-6 mb-3 w-full text-center text-sm text-gray-500 hover:text-gray-700"
+                    className="block mt-6 mb-3 w-full text-center text-sm text-slate-500 hover:text-slate-700"
                 >
                     Back to Main View
                 </Link>
