@@ -9,7 +9,7 @@ export type ListViewProps = {
 };
 
 export const ListView: React.FC<ListViewProps> = ({ children }) => (
-    <div className="max-w-full bg-white rounded-lg shadow-lg m-1 p-4 mt-3">
+    <div className="max-w-full bg-slate-50 rounded-lg shadow-lg m-1 p-4 mt-3">
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 w-7xl max-w-full gap-2">
             {children.map((child, index) => (
                 <div key={index} className="relative h-48 md:h-60 lg:h-64">

@@ -27,7 +27,7 @@ export const Slide18 = () => (
                     className="bg-blue-50 p-6 rounded-lg border border-blue-100"
                 >
                     <h3 className="text-xl font-semibold mb-2 text-blue-700">{item.title}</h3>
-                    <p className="text-gray-700">{item.desc}</p>
+                    <p className="text-slate-700">{item.desc}</p>
                 </motion.div>
             ))}
         </div>

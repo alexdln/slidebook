@@ -17,7 +17,7 @@ export const Slide6 = () => (
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="relative w-full max-w-2xl aspect-video bg-gray-50 rounded-lg p-4"
+                className="relative w-full max-w-2xl aspect-video bg-slate-50 rounded-lg p-4"
             >
                 {/* Simple architecture diagram */}
                 <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-32 h-20 bg-blue-100 border border-blue-300 rounded flex items-center justify-center">

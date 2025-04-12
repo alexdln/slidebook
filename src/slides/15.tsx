@@ -17,7 +17,7 @@ export const Slide15 = () => (
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="relative w-full max-w-lg aspect-video bg-gray-50 rounded-lg p-4"
+                className="relative w-full max-w-lg aspect-video bg-slate-50 rounded-lg p-4"
             >
                 <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border-2 border-blue-300">
                     <span className="font-bold">A</span>
@@ -35,7 +35,7 @@ export const Slide15 = () => (
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                         <p className="font-medium">All viewers see the same slide</p>
-                        <p className="text-sm text-gray-600">in real-time</p>
+                        <p className="text-sm text-slate-600">in real-time</p>
                     </div>
                 </div>
             </motion.div>

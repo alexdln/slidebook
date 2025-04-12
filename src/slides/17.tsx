@@ -34,11 +34,11 @@ export const Slide17 = () => (
                         <div className="flex justify-between">
                             <div>
                                 <h3 className="font-semibold">{item.title}</h3>
-                                <p className="text-sm text-gray-600">{item.desc}</p>
+                                <p className="text-sm text-slate-600">{item.desc}</p>
                             </div>
                             <span className="font-bold">{item.value}%</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2.5">
+                        <div className="w-full bg-slate-200 rounded-full h-2.5">
                             <motion.div
                                 className="bg-blue-600 h-2.5 rounded-full"
                                 initial={{ width: 0 }}

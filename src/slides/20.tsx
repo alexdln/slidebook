@@ -31,17 +31,17 @@ export const Slide20 = () => (
                     </svg>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Presentation Complete</h3>
-                <p className="text-gray-600 mb-6">You&apos;ve reached the end of the presentation</p>
+                <p className="text-slate-600 mb-6">You&apos;ve reached the end of the presentation</p>
                 <div className="flex justify-center space-x-4">
                     <button
                         onClick={() => (window.location.href = "/1")}
-                        className="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                        className="cursor-pointer px-4 py-2 bg-blue-600 text-slate-50 rounded-md hover:bg-blue-700 transition-colors"
                     >
                         Restart
                     </button>
                     <button
                         onClick={() => (window.location.href = "/admin")}
-                        className="cursor-pointer px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors"
+                        className="cursor-pointer px-4 py-2 bg-slate-200 rounded-md hover:bg-slate-300 transition-colors"
                     >
                         Admin Panel
                     </button>

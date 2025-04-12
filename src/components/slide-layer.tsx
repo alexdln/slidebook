@@ -13,7 +13,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
     <SocketProvider>
         <SliderProvider totalSlides={20}>
             <AuthenticationProvider>
-                <main className="flex min-h-screen flex-col items-center justify-between">
+                <main className="flex min-h-screen flex-col items-center justify-between bg-slate-100 text-slate-950">
                     <div className="w-full h-screen flex flex-col">
                         <div className="flex-1 flex items-center justify-center">
                             <AutoZoomContainer ignoredPaths={["/admin", "/list"]}>{children}</AutoZoomContainer>

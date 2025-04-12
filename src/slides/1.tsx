@@ -18,7 +18,7 @@ export const Slide1 = () => (
             Welcome to the Slidebook
         </motion.h1>
         <motion.p
-            className="text-xl text-gray-600"
+            className="text-xl text-slate-600"
             initial={{ y: 50 }}
             animate={{ y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}

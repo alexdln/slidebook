@@ -17,10 +17,10 @@ export const Slide12 = () => (
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="bg-gray-50 p-4 rounded-lg border border-gray-200"
+                className="bg-slate-50 p-4 rounded-lg border border-slate-200"
             >
                 <h3 className="font-semibold mb-2">Authentication API</h3>
-                <pre className="text-sm overflow-x-auto p-2 bg-gray-100 rounded">
+                <pre className="text-sm overflow-x-auto p-2 bg-slate-100 rounded">
                     <code>{`// app/api/auth/route.ts
 export async function POST(request) {
 const { key } = await request.json();
@@ -40,10 +40,10 @@ return Response.json(
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="bg-gray-50 p-4 rounded-lg border border-gray-200"
+                className="bg-slate-50 p-4 rounded-lg border border-slate-200"
             >
                 <h3 className="font-semibold mb-2">Socket.io API</h3>
-                <pre className="text-sm overflow-x-auto p-2 bg-gray-100 rounded">
+                <pre className="text-sm overflow-x-auto p-2 bg-slate-100 rounded">
                     <code>{`// app/api/socketio/route.ts
 import { Server } from "socket.io";
 

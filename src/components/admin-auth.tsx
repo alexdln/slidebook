@@ -25,12 +25,12 @@ export const AdminAuth: React.FC = () => {
 
     return (
         <AutoZoomContainer>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-slate-50 p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Admin Authentication</h2>
 
                 <form action={formAction}>
                     <div className="mb-4">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-1">
                             Admin Key
                         </label>
                         <input
@@ -38,7 +38,7 @@ export const AdminAuth: React.FC = () => {
                             autoComplete="current-password"
                             id="password"
                             name="password"
-                            className="w-full p-2 border border-gray-300 rounded-md"
+                            className="w-full p-2 border border-slate-300 rounded-md"
                             placeholder="Enter admin password"
                             required
                         />
@@ -48,14 +48,14 @@ export const AdminAuth: React.FC = () => {
 
                     <button
                         type="submit"
-                        className="cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                        className="cursor-pointer w-full bg-blue-600 text-slate-50 py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
                     >
                         Login
                     </button>
                 </form>
                 <Link
                     href={`/${currentSlide}`}
-                    className="mt-4 w-full text-center text-sm text-gray-500 hover:text-gray-700"
+                    className="mt-4 w-full text-center text-sm text-slate-500 hover:text-slate-700"
                 >
                     Back to Presentation as Viewer
                 </Link>
