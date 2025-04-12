@@ -12,7 +12,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 // Track the current slide
-let currentSlide = 1;
+let currentSlide = 0;
 
 app.prepare().then(() => {
     const server = createServer((req: Request, res: Response) => {
@@ -29,7 +29,7 @@ app.prepare().then(() => {
     io.on("connection", (socket) => {
         // Send current slide to newly connected client
         socket.on("getCurrentSlide", () => {
-            socket.emit("currentSlide", currentSlide);
+            if (currentSlide) socket.emit("currentSlide", currentSlide);
         });
 
         // Client viewing a slide
@@ -49,7 +49,7 @@ app.prepare().then(() => {
 
         // Admin actualizes slide
         socket.on("actualizeSlide", (password) => {
-            if (isAuthenticated(password)) {
+            if (isAuthenticated(password) && currentSlide) {
                 io.emit("currentSlide", currentSlide);
             }
         });
