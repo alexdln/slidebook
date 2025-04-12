@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant hover (&:hover);
 
 :root {
   --cl-slate-50: oklch(0.984 0.003 247.858);
