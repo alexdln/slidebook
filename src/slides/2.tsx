@@ -35,7 +35,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         We want to create engaging presentations that are easy to create and share.
         <br />
         Our objectives are:
@@ -45,5 +45,5 @@ export const Notes = () => (
             <li>Simple admin controls</li>
             <li>Smooth animations</li>
         </ul>
-    </p>
+    </div>
 );

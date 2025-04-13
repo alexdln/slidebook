@@ -11,8 +11,8 @@ export const SlideControls = () => {
     const { isAuthenticated } = useAuthentication();
 
     return (
-        <div className="mt-4 flex justify-between items-center">
-            <div className="flex space-x-4">
+        <div className="mt-4 flex flex-wrap justify-between items-center gap-2">
+            <div className="flex space-x-2">
                 <button
                     onClick={() => setCurrentSlide(currentSlide - 1)}
                     disabled={currentSlide === 1}
@@ -63,7 +63,7 @@ export const SlideControls = () => {
             <span className="text-sm text-slate-700">
                 <span className="max-md:hidden">Slide</span> {currentSlide} of {totalSlides}
             </span>
-            <div className="flex space-x-4">
+            <div className="flex max-sm:flex-1 gap-4 min-w-56 justify-between items-center">
                 <Link href="/admin" className="py-2 text-sm text-slate-500 hover:text-slate-700">
                     {isAuthenticated ? "Admin Panel" : "Login as Admin"}
                 </Link>

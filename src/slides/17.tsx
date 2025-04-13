@@ -54,7 +54,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Performance Optimization
         <br />
         <br />
@@ -64,5 +64,5 @@ export const Notes = () => (
             <li>Caching - Store and reuse previously fetched resources</li>
             <li>Optimized Animations - Use hardware acceleration for smooth animations</li>
         </ul>
-    </p>
+    </div>
 );

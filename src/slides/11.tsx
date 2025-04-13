@@ -44,7 +44,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Dynamic Routing
         <br />
         <br />
@@ -52,5 +52,5 @@ export const Notes = () => (
             <li>URL Pattern</li>
             <li>File Structure</li>
         </ul>
-    </p>
+    </div>
 );

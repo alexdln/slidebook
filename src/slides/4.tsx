@@ -37,7 +37,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         We use the following technologies to create our presentation tool:
         <br />
         <br />
@@ -49,5 +49,5 @@ export const Notes = () => (
             <li>TypeScript</li>
             <li>API Routes</li>
         </ul>
-    </p>
+    </div>
 );

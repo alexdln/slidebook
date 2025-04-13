@@ -42,7 +42,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Architecture Overview
         <br />
         <br />
@@ -51,5 +51,5 @@ export const Notes = () => (
             <li>Next.js Server</li>
             <li>Socket.io</li>
         </ul>
-    </p>
+    </div>
 );

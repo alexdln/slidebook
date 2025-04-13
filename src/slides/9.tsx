@@ -89,7 +89,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Animation Techniques
         <br />
         <br />
@@ -99,5 +99,5 @@ export const Notes = () => (
             <li>Slide</li>
             <li>Rotate</li>
         </ul>
-    </p>
+    </div>
 );

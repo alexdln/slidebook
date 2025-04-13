@@ -37,7 +37,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Progress Tracking
         <br />
         <br />
@@ -45,5 +45,5 @@ export const Notes = () => (
             <li>Progress is automatically tracked and displayed</li>
             <li>All viewers see the same progress in real-time</li>
         </ul>
-    </p>
+    </div>
 );

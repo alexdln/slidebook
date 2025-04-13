@@ -48,7 +48,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Responsive Design
         <br />
         <br />
@@ -57,5 +57,5 @@ export const Notes = () => (
             <li>Tablet</li>
             <li>Desktop</li>
         </ul>
-    </p>
+    </div>
 );

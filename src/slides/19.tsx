@@ -56,7 +56,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Resources & Documentation
         <br />
         <br />
@@ -68,5 +68,5 @@ export const Notes = () => (
             <li>TypeScript</li>
             <li>React</li>
         </ul>
-    </p>
+    </div>
 );

@@ -44,7 +44,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Admin Features
         <br />
         <br />
@@ -54,5 +54,5 @@ export const Notes = () => (
             <li>Real-time synchronization</li>
             <li>Slide preview</li>
         </ul>
-    </p>
+    </div>
 );
