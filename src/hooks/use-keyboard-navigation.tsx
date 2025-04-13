@@ -1,20 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
-
+import { useRouter } from "next/navigation";
 export interface KeyboardNavigationProps {
     onPrevious: () => void;
     onNext: () => void;
     totalSlides: number;
     currentSlide: number;
-    // disabled: boolean
 }
 
 export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, currentSlide }: KeyboardNavigationProps) => {
+    const { push } = useRouter();
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            // if (disabled) return
-
             switch (e.key) {
                 case "ArrowLeft":
                 case "ArrowUp":
@@ -35,14 +34,14 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
                     e.preventDefault();
                     // Navigate to first slide
                     if (currentSlide !== 1) {
-                        window.location.href = "/1";
+                        push("/1");
                     }
                     break;
                 case "End":
                     e.preventDefault();
                     // Navigate to last slide
                     if (currentSlide !== totalSlides) {
-                        window.location.href = `/${totalSlides}`;
+                        push(`/${totalSlides}`);
                     }
                     break;
                 default:
@@ -55,5 +54,5 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [currentSlide, totalSlides, onPrevious, onNext]);
+    }, [currentSlide, totalSlides, onPrevious, onNext, push]);
 };

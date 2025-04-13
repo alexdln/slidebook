@@ -23,15 +23,15 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
     const [currentSlide, setCurrentSlide] = useState(slideNumber || 1);
 
     const navigateToSlide = useCallback(
-        (slideNumber: number) => {
+        (slideNumber: number, skipEvent?: boolean) => {
             if (slideNumber < 1 || slideNumber > totalSlides) return;
 
-            if (nameOrSlide !== "admin") {
+            if (!["admin", "list"].includes(nameOrSlide as string)) {
                 router.push(`/${slideNumber}`);
             }
 
             const password = sessionStorage.getItem("password");
-            if (password) {
+            if (password && !skipEvent) {
                 socket?.emit("changeSlide", slideNumber, password, socket.id);
             }
             setCurrentSlide(slideNumber);
@@ -59,7 +59,7 @@ export const SliderProvider: React.FC<SliderProviderProps> = ({ children, totalS
         // Listen for slide changes from the admin
         socket.on("currentSlide", (slideNumber: number) => {
             if (slideNumber !== currentSlide) {
-                navigateToSlide(slideNumber);
+                navigateToSlide(slideNumber, true);
             }
         });
 
