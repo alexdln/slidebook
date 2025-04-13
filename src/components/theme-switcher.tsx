@@ -17,9 +17,9 @@ export const ThemeSwitcher: React.FC = () => {
     };
 
     return (
-        <div className="bg-slate-200 rounded-md py-1">
+        <div className="bg-slate-200 rounded-md py-1 px-0.5">
             <button
-                className="theme-switcher_dark cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-1"
+                className="theme-switcher_dark cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-0.5"
                 type="button"
                 onClick={() => changeTheme("dark")}
             >
@@ -34,7 +34,7 @@ export const ThemeSwitcher: React.FC = () => {
                 </svg>
             </button>
             <button
-                className="theme-switcher_system cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-1"
+                className="theme-switcher_system cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-0.5"
                 type="button"
                 onClick={() => changeTheme("system")}
             >
@@ -67,7 +67,7 @@ export const ThemeSwitcher: React.FC = () => {
                 </svg>
             </button>
             <button
-                className="theme-switcher_light cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-1"
+                className="theme-switcher_light cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-0.5"
                 type="button"
                 onClick={() => changeTheme("light")}
             >

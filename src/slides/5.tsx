@@ -45,7 +45,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         We want to create a presentation tool that is easy to use and navigate.
         <br />
         <br />
@@ -54,5 +54,5 @@ export const Notes = () => (
             <li>Keyboard Navigation - Use arrow keys to navigate between slides</li>
             <li>Smooth Transitions - Elegant animations between slides and elements</li>
         </ul>
-    </p>
+    </div>
 );

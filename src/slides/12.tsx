@@ -66,7 +66,7 @@ return Response.json({ success: true });
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         API Routes
         <br />
         <br />
@@ -74,5 +74,5 @@ export const Notes = () => (
             <li>Authentication API</li>
             <li>Socket.io API</li>
         </ul>
-    </p>
+    </div>
 );

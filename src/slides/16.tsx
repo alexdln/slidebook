@@ -53,7 +53,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Security Considerations
         <br />
         <br />
@@ -63,5 +63,5 @@ export const Notes = () => (
             <li>Data Validation - Sanitize inputs to prevent injection attacks</li>
             <li>Environment Variables - Store sensitive data securely</li>
         </ul>
-    </p>
+    </div>
 );

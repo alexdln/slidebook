@@ -35,7 +35,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Future Enhancements
         <br />
         <br />
@@ -45,5 +45,5 @@ export const Notes = () => (
             <li>Analytics - Track viewer engagement and interactions</li>
             <li>Export Options - Export presentations to PDF or other formats</li>
         </ul>
-    </p>
+    </div>
 );

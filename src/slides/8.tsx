@@ -49,7 +49,7 @@ router.push(\`/\${slideNumber}\`);
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Socket.io Integration
         <br />
         <br />
@@ -57,5 +57,5 @@ export const Notes = () => (
             <li>Server-side</li>
             <li>Client-side</li>
         </ul>
-    </p>
+    </div>
 );

@@ -26,10 +26,10 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
     useEffect(actualizeSlide, [actualizeSlide]);
 
     return (
-        <div className="max-w-full bg-slate-50 rounded-lg shadow-lg m-1 p-1">
+        <div className="w-full max-w-4xl bg-slate-50 rounded-lg shadow-lg my-1 mt-4 mb-auto p-1">
             <div className="bg-slate-100 rounded-t-md overflow-hidden grid gap-2 grid-cols-2 justify-center">
-                <p className="pt-4 px-[4%] text-sm font-bold">Current slide</p>
-                <p className="pt-4 px-[4%] text-sm font-bold">Next slide</p>
+                <p className="pt-3 px-[4%] text-sm font-bold">Current slide</p>
+                <p className="pt-3 px-[4%] text-sm font-bold">Next slide</p>
             </div>
             <div className="bg-slate-100 rounded-b-md overflow-hidden grid gap-2 grid-cols-2 justify-center h-32 sm:h-48 md:h-60 lg:h-64">
                 <div className="flex items-center justify-center">
@@ -45,8 +45,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                     </div>
                 )}
             </div>
-            <div className="bg-slate-100 rounded-md px-4 py-2 mt-1 text-sm">{notes[currentSlide - 1]}</div>
-            <div className="relative mt-4">
+            <div className="relative mt-2">
                 <div className="flex justify-between gap-2 px-2">
                     <button
                         onClick={() => setCurrentSlide(1)}
@@ -83,8 +82,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                         »
                     </button>
                 </div>
-
-                <div className="mt-4 flex gap-2 max-w-[100vw] overflow-x-auto px-2">
+                <div className="mt-2 flex gap-2 max-w-[100vw] overflow-x-auto px-2">
                     {Array.from({ length: totalSlides }, (_, i) => i + 1).map((num) => (
                         <div className="group" key={num}>
                             <button
@@ -93,7 +91,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                             >
                                 {num}
                             </button>
-                            <div className="pointer-events-none opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 absolute w-60 h-40 sm:w-100 sm:h-56 left-1/2 -translate-x-1/2 bottom-20">
+                            <div className="pointer-events-none opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 absolute w-60 h-40 sm:w-100 sm:h-56 left-1/2 -translate-x-1/2 -top-28 sm:-top-44">
                                 <AutoZoomContainer transformOrigin="left top">
                                     <SlideContent>{children[num - 1]}</SlideContent>
                                 </AutoZoomContainer>
@@ -101,6 +99,9 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                         </div>
                     ))}
                 </div>
+
+                <div className="bg-slate-100 rounded-md p-2 mt-2 mx-2 text-sm">{notes[currentSlide - 1]}</div>
+
                 <Link
                     href={`/${currentSlide}`}
                     className="block my-3 w-full text-center text-sm text-slate-500 hover:text-slate-700"

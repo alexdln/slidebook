@@ -44,7 +44,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Real-time Collaboration
         <br />
         <br />
@@ -52,5 +52,5 @@ export const Notes = () => (
             <li>All viewers see the same slide in real-time</li>
             <li>Multiple viewers can interact with the same slide</li>
         </ul>
-    </p>
+    </div>
 );

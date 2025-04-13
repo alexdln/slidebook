@@ -29,8 +29,8 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Welcome to the Slidebook. This is a real-time presentation tool that allows you to create and share
         presentations with your audience.
-    </p>
+    </div>
 );

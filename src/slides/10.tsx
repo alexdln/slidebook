@@ -50,7 +50,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Keyboard Navigation
         <br />
         <br />
@@ -58,5 +58,5 @@ export const Notes = () => (
             <li>Use arrow keys to navigate between slides</li>
             <li>Press Space to advance to the next slide</li>
         </ul>
-    </p>
+    </div>
 );

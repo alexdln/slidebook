@@ -35,7 +35,7 @@ export const Slide = () => (
 );
 
 export const Notes = () => (
-    <p>
+    <div>
         Key Features
         <br />
         <br />
@@ -45,5 +45,5 @@ export const Notes = () => (
             <li>Animations - Smooth transitions between elements</li>
             <li>Progress Tracking - Clear indication of presentation progress</li>
         </ul>
-    </p>
+    </div>
 );

@@ -51,14 +51,4 @@ export const Slide = () => (
     </div>
 );
 
-export const Notes = () => (
-    <p>
-        Thank You!
-        <br />
-        <br />
-        <ul>
-            <li>Restart - Restart the presentation</li>
-            <li>Admin Panel - Access the admin panel</li>
-        </ul>
-    </p>
-);
+export const Notes = () => <div>Thank You!</div>;
