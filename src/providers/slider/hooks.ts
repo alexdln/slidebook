@@ -5,9 +5,9 @@ import { useContext } from "react";
 import { SetSliderContext, SliderContext } from "./context";
 
 export const useSlider = () => {
-    const { currentSlide, totalSlides } = useContext(SliderContext);
+    const { slide: currentSlide, fragment, totalSlides } = useContext(SliderContext);
 
-    return { currentSlide, totalSlides };
+    return { currentSlide, fragment, totalSlides };
 };
 
 export const useSetSlider = () => {

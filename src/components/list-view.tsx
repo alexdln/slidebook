@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import { SlideContent } from "./slide-content";
 import { AutoZoomContainer } from "./auto-zoom-container";
 import { BackLink } from "./back-link";
+import { SlideLink } from "./slide-link";
 
 export type ListViewProps = {
     children: React.ReactNode[];
@@ -18,9 +17,9 @@ export const ListView: React.FC<ListViewProps> = ({ children }) => (
                     </div>
                     <AutoZoomContainer transformOrigin="left top">
                         <SlideContent>{child}</SlideContent>
-                        <Link
-                            href={`/${index + 1}`}
-                            className="absolute block top-0 left-0 w-full h-full bg-blue-300/10 hover:bg-blue-600/30 focus:bg-blue-600/30 transition-colors duration-300 rounded-md"
+                        <SlideLink
+                            slide={index + 1}
+                            className="absolute block top-0 left-0 w-full h-full bg-blue-300/10 hover:bg-blue-600/30 focus:bg-blue-600/30 transition-colors duration-300 rounded-md cursor-pointer"
                         />
                     </AutoZoomContainer>
                 </div>

@@ -2,20 +2,24 @@
 
 import { createContext } from "react";
 
+type Fragment = string | number;
+
 type SliderContextType = {
-    currentSlide: number;
+    slide: number;
+    fragment: Fragment;
     totalSlides: number;
 };
 
 type SetSliderContextType = {
-    setCurrentSlide: (slide: number) => void;
+    setCurrentSlide: ({ slide, fragment }: { slide: number; fragment: Fragment }) => void;
 };
 
 export const SliderContext = createContext<SliderContextType>({
-    currentSlide: 1,
+    slide: 1,
+    fragment: "f",
     totalSlides: 20,
 });
 
 export const SetSliderContext = createContext<SetSliderContextType>({
-    setCurrentSlide: () => {},
+    setCurrentSlide: () => ({}),
 });

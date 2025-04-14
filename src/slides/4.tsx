@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "@/components/fragment";
 import { motion } from "framer-motion";
 
 export const Slide = () => (
@@ -21,16 +22,18 @@ export const Slide = () => (
                 { name: "TypeScript", desc: "Type-safe JavaScript" },
                 { name: "API Routes", desc: "Backend functionality" },
             ].map((tech, index) => (
-                <motion.div
-                    key={index}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
-                    className="bg-blue-50 p-4 rounded-lg border border-blue-100"
-                >
-                    <h3 className="text-lg font-semibold text-blue-700">{tech.name}</h3>
-                    <p className="text-sm text-slate-600">{tech.desc}</p>
-                </motion.div>
+                <Fragment key={index} index={index + 1}>
+                    <motion.div
+                        key={index}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.4 }}
+                        className="bg-blue-50 p-4 rounded-lg border border-blue-100"
+                    >
+                        <h3 className="text-lg font-semibold text-blue-700">{tech.name}</h3>
+                        <p className="text-sm text-slate-600">{tech.desc}</p>
+                    </motion.div>
+                </Fragment>
             ))}
         </div>
     </div>

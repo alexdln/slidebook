@@ -1,20 +1,21 @@
 "use client";
 
-import { useAuthentication } from "@/providers/authentication/hooks";
-import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import Link from "next/link";
+
+import { useAuthentication } from "@/providers/authentication/hooks";
+import { useNavigations } from "@/providers/navigation/hooks";
+
 import { ThemeSwitcher } from "./theme-switcher";
 
 export const SlideControls = () => {
-    const { setCurrentSlide } = useSetSlider();
-    const { currentSlide, totalSlides } = useSlider();
+    const { prev, next, currentSlide, totalSlides } = useNavigations();
     const { isAuthenticated } = useAuthentication();
 
     return (
         <div className="mt-4 flex flex-wrap justify-between items-center gap-2">
             <div className="flex space-x-2">
                 <button
-                    onClick={() => setCurrentSlide(currentSlide - 1)}
+                    onClick={() => prev()}
                     disabled={currentSlide === 1}
                     className="cursor-pointer text-sm px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -53,7 +54,7 @@ export const SlideControls = () => {
                     </svg>
                 </Link>
                 <button
-                    onClick={() => setCurrentSlide(currentSlide + 1)}
+                    onClick={() => next()}
                     disabled={currentSlide === totalSlides}
                     className="cursor-pointer text-sm px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >

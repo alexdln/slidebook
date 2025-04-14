@@ -3,7 +3,7 @@
 import { useCallback, useEffect } from "react";
 import Link from "next/link";
 
-import { useSetSlider, useSlider } from "@/providers/slider/hooks";
+import { useNavigations } from "@/providers/navigation/hooks";
 import { useSocket } from "@/providers/socket/hooks";
 
 import { SlideContent } from "./slide-content";
@@ -15,8 +15,7 @@ export type AdminControlsProps = {
 };
 
 export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes }) => {
-    const { currentSlide, totalSlides } = useSlider();
-    const { setCurrentSlide } = useSetSlider();
+    const { currentSlide, totalSlides, navigate, prev, next } = useNavigations();
     const socket = useSocket();
 
     const actualizeSlide = useCallback(() => {
@@ -48,14 +47,14 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
             <div className="relative mt-2">
                 <div className="flex justify-between gap-2 px-2">
                     <button
-                        onClick={() => setCurrentSlide(1)}
+                        onClick={() => navigate(1)}
                         disabled={currentSlide === 1}
                         className="cursor-pointer min-w-9 h-9 bg-slate-200 py-1 px-2 rounded-md enabled:hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         «
                     </button>
                     <button
-                        onClick={() => setCurrentSlide(currentSlide - 1)}
+                        onClick={() => prev()}
                         disabled={currentSlide === 1}
                         className="cursor-pointer min-w-9 h-9 bg-slate-200 py-1 px-2 rounded-md enabled:hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
@@ -68,14 +67,14 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                         Present <span className="max-md:hidden">from current slide</span>
                     </button>
                     <button
-                        onClick={() => setCurrentSlide(currentSlide + 1)}
+                        onClick={() => next()}
                         disabled={currentSlide === totalSlides}
                         className="cursor-pointer min-w-9 h-9 bg-blue-600 text-slate-50 py-1 px-2 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         ›
                     </button>
                     <button
-                        onClick={() => setCurrentSlide(totalSlides)}
+                        onClick={() => navigate(totalSlides)}
                         disabled={currentSlide === totalSlides}
                         className="cursor-pointer min-w-9 h-9 bg-blue-600 text-slate-50 py-1 px-2 rounded-md enabled:hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
@@ -86,7 +85,7 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                     {Array.from({ length: totalSlides }, (_, i) => i + 1).map((num) => (
                         <div className="group" key={num}>
                             <button
-                                onClick={() => setCurrentSlide(num)}
+                                onClick={() => navigate(num, currentSlide <= num ? "l" : "f")}
                                 className={`text-sm cursor-pointer p-2 h-9 min-w-9 rounded-md ${currentSlide === num ? "bg-blue-600 text-slate-50" : "bg-slate-200 hover:bg-slate-300"}`}
                             >
                                 {num}
