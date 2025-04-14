@@ -18,17 +18,13 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
                 case "ArrowLeft":
                 case "ArrowUp":
                     e.preventDefault();
-                    if (currentSlide > 1) {
-                        onPrevious();
-                    }
+                    onPrevious();
                     break;
                 case "ArrowRight":
                 case "ArrowDown":
                 case " ": // Space key
                     e.preventDefault();
-                    if (currentSlide < totalSlides) {
-                        onNext();
-                    }
+                    onNext();
                     break;
                 case "Home":
                     e.preventDefault();
