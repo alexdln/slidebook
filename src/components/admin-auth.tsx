@@ -8,7 +8,7 @@ import { useAuthorize } from "@/providers/authentication/hooks";
 import { AutoZoomContainer } from "./auto-zoom-container";
 
 export const AdminAuth: React.FC = () => {
-    const { currentSlide } = useSlider();
+    const { currentSlide, fragment } = useSlider();
     const { authorize } = useAuthorize();
 
     const [state, formAction] = useActionState(
@@ -54,8 +54,8 @@ export const AdminAuth: React.FC = () => {
                     </button>
                 </form>
                 <Link
-                    href={`/${currentSlide}`}
-                    className="mt-4 w-full text-center text-sm text-slate-500 hover:text-slate-700"
+                    href={`/${currentSlide}/${fragment}`}
+                    className="block mt-4 w-full text-sm text-slate-500 hover:text-slate-700"
                 >
                     Back to Presentation as Viewer
                 </Link>

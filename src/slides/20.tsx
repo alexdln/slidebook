@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
+import { useNavigations } from "@/providers/navigation/hooks";
+
 export const Slide = () => {
     const { push } = useRouter();
+    const { navigate } = useNavigations();
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -38,7 +41,7 @@ export const Slide = () => {
                     <p className="text-slate-600 mb-6">You&apos;ve reached the end of the presentation</p>
                     <div className="flex justify-center space-x-4">
                         <button
-                            onClick={() => push("/1")}
+                            onClick={() => navigate(1, "f")}
                             className="cursor-pointer px-4 py-2 bg-blue-600 text-slate-50 rounded-md hover:bg-blue-700 transition-colors"
                         >
                             Restart

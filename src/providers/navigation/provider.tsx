@@ -9,12 +9,13 @@ import { useNavigations } from "./hooks";
 
 export const NavigationProvider: React.FC = () => {
     const socket = useSocket();
-    const { currentSlide, next, prev, totalSlides, navigate } = useNavigations();
+    const { currentSlide, next, prev, navigate, totalSlides } = useNavigations();
 
     // Set up keyboard navigation
     useKeyboardNavigation({
         onPrevious: prev,
         onNext: next,
+        navigate,
         totalSlides,
         currentSlide,
     });

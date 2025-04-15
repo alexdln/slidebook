@@ -5,13 +5,14 @@ import { useRouter, useParams } from "next/navigation";
 
 import { useSocket } from "@/providers/socket/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
-import { useFragments } from "@/providers/fragments/hooks";
+import { useFragments, useSetFragments } from "@/providers/fragments/hooks";
 
 export const useNavigations = () => {
     const params = useParams();
     const { currentSlide, fragment, totalSlides } = useSlider();
     const { setCurrentSlide: setNavigationParams } = useSetSlider();
     const { lastIndex } = useFragments();
+    const setFragments = useSetFragments();
     const router = useRouter();
     const socket = useSocket();
 
@@ -21,9 +22,10 @@ export const useNavigations = () => {
             if (slideNumber < 1 || slideNumber > totalSlides) return;
 
             if (!Number.isNaN(+nameOrSlide) || force) {
-                if (slideNumber === currentSlide) {
+                if (slideNumber === currentSlide && !Number.isNaN(+nameOrSlide)) {
                     window.history.pushState({}, "", `/${slideNumber}/${fragmentNumber}`);
                 } else {
+                    setFragments({ slide: slideNumber, lastIndex: 0 });
                     router.push(`/${slideNumber}/${fragmentNumber}`);
                 }
             }
@@ -34,7 +36,7 @@ export const useNavigations = () => {
             }
             setNavigationParams({ slide: slideNumber, fragment: fragmentNumber });
         },
-        [router, currentSlide, nameOrSlide, totalSlides, setNavigationParams, socket],
+        [router, setFragments, currentSlide, nameOrSlide, totalSlides, setNavigationParams, socket],
     );
 
     const prev = useCallback(
