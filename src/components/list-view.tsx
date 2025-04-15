@@ -26,7 +26,7 @@ export const ListView: React.FC<ListViewProps> = ({ children }) => (
             ))}
         </div>
         <div className="relative mt-8">
-            <BackLink className="my-3 w-full text-center text-sm" />
+            <BackLink className="w-full text-sm" />
         </div>
     </div>
 );

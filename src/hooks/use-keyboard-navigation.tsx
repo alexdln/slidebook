@@ -1,17 +1,22 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+
 export interface KeyboardNavigationProps {
     onPrevious: () => void;
     onNext: () => void;
+    navigate: (slideNumber: number, fragmentNumber?: "f" | "l" | number, skipEvent?: boolean, force?: boolean) => void;
     totalSlides: number;
     currentSlide: number;
 }
 
-export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, currentSlide }: KeyboardNavigationProps) => {
-    const { push } = useRouter();
-
+export const useKeyboardNavigation = ({
+    onPrevious,
+    onNext,
+    navigate,
+    totalSlides,
+    currentSlide,
+}: KeyboardNavigationProps) => {
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             switch (e.key) {
@@ -30,14 +35,14 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
                     e.preventDefault();
                     // Navigate to first slide
                     if (currentSlide !== 1) {
-                        push("/1");
+                        navigate(1, "f");
                     }
                     break;
                 case "End":
                     e.preventDefault();
                     // Navigate to last slide
                     if (currentSlide !== totalSlides) {
-                        push(`/${totalSlides}`);
+                        navigate(totalSlides, "l");
                     }
                     break;
                 default:
@@ -50,5 +55,5 @@ export const useKeyboardNavigation = ({ onPrevious, onNext, totalSlides, current
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [currentSlide, totalSlides, onPrevious, onNext, push]);
+    }, [currentSlide, totalSlides, onPrevious, onNext, navigate]);
 };

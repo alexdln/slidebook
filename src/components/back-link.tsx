@@ -9,10 +9,13 @@ export type BackLinkProps = {
 };
 
 export const BackLink: React.FC<BackLinkProps> = ({ className }) => {
-    const { currentSlide } = useSlider();
+    const { currentSlide, fragment } = useSlider();
 
     return (
-        <Link href={`/${currentSlide}`} className={cn("block text-slate-500 hover:text-slate-700", className)}>
+        <Link
+            href={`/${currentSlide}/${fragment}`}
+            className={cn("block text-slate-500 hover:text-slate-700", className)}
+        >
             Back to Main View
         </Link>
     );

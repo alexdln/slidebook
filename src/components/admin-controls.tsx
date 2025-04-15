@@ -15,7 +15,7 @@ export type AdminControlsProps = {
 };
 
 export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes }) => {
-    const { currentSlide, totalSlides, navigate, prev, next } = useNavigations();
+    const { currentSlide, totalSlides, navigate, prev, next, fragment } = useNavigations();
     const socket = useSocket();
 
     const actualizeSlide = useCallback(() => {
@@ -102,8 +102,8 @@ export const AdminControls: React.FC<AdminControlsProps> = ({ children, notes })
                 <div className="bg-slate-100 rounded-md p-2 mt-2 mx-2 text-sm">{notes[currentSlide - 1]}</div>
 
                 <Link
-                    href={`/${currentSlide}`}
-                    className="block my-3 w-full text-center text-sm text-slate-500 hover:text-slate-700"
+                    href={`/${currentSlide}/${fragment}`}
+                    className="block mx-2 my-3 w-full text-sm text-slate-500 hover:text-slate-700"
                 >
                     Back to Main View
                 </Link>
