@@ -1,13 +1,14 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useRouter, useParams } from "next/navigation";
 
 import { useSocket } from "@/providers/socket/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import { useFragments, useSetFragments } from "@/providers/fragments/hooks";
+import { SyncContext } from "./context";
 
-export const useNavigations = () => {
+export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
     const params = useParams();
     const { currentSlide, fragment, totalSlides } = useSlider();
     const { setCurrentSlide: setNavigationParams } = useSetSlider();
@@ -15,6 +16,8 @@ export const useNavigations = () => {
     const setFragments = useSetFragments();
     const router = useRouter();
     const socket = useSocket();
+    const syncRefHook = useSync();
+    const syncRef = syncRefArg || syncRefHook;
 
     const nameOrSlide = params.pathname?.[0] || 0;
     const navigate = useCallback(
@@ -31,12 +34,12 @@ export const useNavigations = () => {
             }
 
             const password = sessionStorage.getItem("password");
-            if (password && !skipEvent) {
+            if (password && !skipEvent && syncRef.current) {
                 socket?.emit("changeSlide", slideNumber, password, socket.id);
             }
             setNavigationParams({ slide: slideNumber, fragment: fragmentNumber });
         },
-        [router, setFragments, currentSlide, nameOrSlide, totalSlides, setNavigationParams, socket],
+        [router, setFragments, currentSlide, nameOrSlide, totalSlides, setNavigationParams, socket, syncRef],
     );
 
     const prev = useCallback(
@@ -72,4 +75,9 @@ export const useNavigations = () => {
     );
 
     return { currentSlide, fragment, totalSlides, lastIndex, navigate, prev, next };
+};
+
+export const useSync = () => {
+    const syncRef = useContext(SyncContext);
+    return syncRef;
 };

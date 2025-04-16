@@ -1,15 +1,21 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { useSocket } from "@/providers/socket/hooks";
 import { useKeyboardNavigation } from "@/hooks/use-keyboard-navigation";
 
 import { useNavigations } from "./hooks";
+import { SyncContext } from "./context";
 
-export const NavigationProvider: React.FC = () => {
+export interface NavigationProviderProps {
+    children: React.ReactNode;
+}
+
+export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children }) => {
     const socket = useSocket();
-    const { currentSlide, next, prev, navigate, totalSlides } = useNavigations();
+    const syncRef = useRef(true);
+    const { currentSlide, next, prev, navigate, totalSlides } = useNavigations(syncRef);
 
     // Set up keyboard navigation
     useKeyboardNavigation({
@@ -25,13 +31,13 @@ export const NavigationProvider: React.FC = () => {
 
         // Listen for slide changes from the admin
         socket.on("slideChange", (slideNumber: number, socketId: string) => {
-            if (slideNumber !== currentSlide && socket.id !== socketId) {
+            if (slideNumber !== currentSlide && socket.id !== socketId && syncRef.current) {
                 navigate(slideNumber, "f");
             }
         });
         // Listen for slide changes from the admin
         socket.on("currentSlide", (slideNumber: number) => {
-            if (slideNumber !== currentSlide) {
+            if (slideNumber !== currentSlide && syncRef.current) {
                 navigate(slideNumber, "f", true);
             }
         });
@@ -49,5 +55,5 @@ export const NavigationProvider: React.FC = () => {
         socket?.emit("getCurrentSlide");
     }, [socket]);
 
-    return <></>;
+    return <SyncContext.Provider value={syncRef}>{children}</SyncContext.Provider>;
 };

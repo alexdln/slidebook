@@ -3,13 +3,14 @@
 import Link from "next/link";
 
 import { useAuthentication } from "@/providers/authentication/hooks";
-import { useNavigations } from "@/providers/navigation/hooks";
+import { useNavigations, useSync } from "@/providers/navigation/hooks";
 
 import { ThemeSwitcher } from "./theme-switcher";
 
 export const SlideControls = () => {
     const { prev, next, currentSlide, totalSlides } = useNavigations();
     const { isAuthenticated } = useAuthentication();
+    const syncRef = useSync();
 
     return (
         <div className="mt-4 flex flex-wrap justify-between items-center gap-2">
@@ -60,6 +61,28 @@ export const SlideControls = () => {
                 >
                     <span className="max-md:hidden">Next</span> →
                 </button>
+                <label>
+                    <input
+                        type="checkbox"
+                        onChange={(e) => {
+                            syncRef.current = e.target.checked;
+                        }}
+                        hidden
+                        className="peer"
+                        defaultChecked={syncRef.current}
+                    />
+                    <span className="block cursor-pointer p-2 rounded bg-slate-200 hover:bg-slate-300 peer-checked:bg-blue-500 peer-checked:hover:bg-blue-600">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17 2L21 6M21 6L17 10M21 6H7.8C6.11984 6 5.27976 6 4.63803 6.32698C4.07354 6.6146 3.6146 7.07354 3.32698 7.63803C3 8.27976 3 9.11984 3 10.8V11M3 18H16.2C17.8802 18 18.7202 18 19.362 17.673C19.9265 17.3854 20.3854 16.9265 20.673 16.362C21 15.7202 21 14.8802 21 13.2V13M3 18L7 22M3 18L7 14"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </label>
             </div>
             <span className="text-sm text-slate-700">
                 <span className="max-md:hidden">Slide</span> {currentSlide} of {totalSlides}
