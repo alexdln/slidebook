@@ -1,9 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 import { useSlider } from "@/providers/slider/hooks";
 import { useSetFragments } from "@/providers/fragments/hooks";
+import "./fragment.scss";
 
 export interface FragmentProps {
     children: React.ReactNode;
@@ -36,5 +38,9 @@ export const Fragment: React.FC<FragmentProps> = ({ children, index }) => {
 
     if (!isActive) return <div ref={registerFragment} />;
 
-    return <div ref={registerFragment}>{children}</div>;
+    return (
+        <div ref={registerFragment} className={clsx("fragment", isActive && "fragment--active")}>
+            {children}
+        </div>
+    );
 };

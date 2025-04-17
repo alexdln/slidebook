@@ -1,0 +1,7 @@
+.auto-zoom-container {
+    position: absolute;
+    width: var(--slide-width);
+    height: fit-content;
+    transform-origin: center;
+    transform: scale(0);
+}

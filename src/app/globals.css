@@ -92,3 +92,8 @@
 .theme-light .theme-switcher_light:hover {
   background-color: var(--color-slate-100);
 }
+
+body {
+  background-color: var(--color-slate-100);
+  color: var(--color-slate-950);
+}

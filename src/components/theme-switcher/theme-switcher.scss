@@ -1,0 +1,17 @@
+.theme-switcher {
+    background-color: var(--cl-slate-200);
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.125rem;
+}
+
+.theme-switcher-button {
+    cursor: pointer;
+    background-color: var(--cl-slate-300);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    margin: 0 0.125rem;
+
+    &:hover {
+        background-color: var(--cl-slate-100);
+    }
+}

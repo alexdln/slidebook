@@ -1,0 +1,15 @@
+.slide-content {
+    background-color: var(--cl-slate-50);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    width: var(--slide-width);
+    height: var(--slide-height);
+}
+
+.slide-content__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
