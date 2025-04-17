@@ -1,0 +1,46 @@
+.slide-progress {
+    width: 100%;
+    background-color: var(--cl-slate-200);
+    border-radius: 9999px;
+    height: 0.625rem;
+}
+
+.slide-progress__bar {
+    background-color: var(--cl-blue-600);
+    height: 0.625rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease-in-out;
+}
+
+.slide-progress__dots {
+    display: flex;
+    gap: 0.25rem;
+    width: 100%;
+    margin-top: -1.25rem;
+}
+
+.slide-progress__dot {
+    cursor: pointer;
+    flex: 1;
+    padding: 0.5rem 0;
+    color: transparent;
+    transition: color 0.2s;
+}
+
+.slide-progress__dot:hover:enabled {
+    color: var(--cl-blue-500);
+}
+
+.slide-progress__dot:disabled {
+    cursor: default;
+}
+
+.slide-progress__dot-icon {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 auto;
+    border-radius: 9999px;
+    color: inherit;
+    background-color: currentColor;
+}

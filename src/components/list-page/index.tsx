@@ -2,6 +2,8 @@ import { SlideContent } from "@/components/slide-content";
 import { ListView } from "@/components/list-view";
 import { Slide } from "@/lib/slides";
 
+import "./list-page.scss";
+
 export type ListPageProps = {
     slides: Slide[];
 };

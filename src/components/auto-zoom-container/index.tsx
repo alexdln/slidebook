@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 
 import { SLIDE_HEIGHT, SLIDE_WIDTH } from "@/lib/settings";
 
+import "./auto-zoom-container.scss";
+
 export interface AutoZoomContainerProps {
     children: React.ReactNode;
     transformOrigin?: string;
@@ -40,6 +42,7 @@ export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
     if (ignoredPaths?.includes(pathname)) {
         return <>{children}</>;
     }
@@ -47,12 +50,9 @@ export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({
     return (
         <div
             ref={registerResize}
+            className="auto-zoom-container"
             style={{
-                position: "absolute",
-                width: SLIDE_WIDTH,
-                height: "fit-content",
                 transformOrigin,
-                transform: "scale(0)",
             }}
         >
             {children}

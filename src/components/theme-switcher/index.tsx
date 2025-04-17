@@ -1,5 +1,9 @@
 "use client";
 
+import clsx from "clsx";
+
+import "./theme-switcher.scss";
+
 export const ThemeSwitcher: React.FC = () => {
     const changeTheme = (theme: string) => {
         localStorage.setItem("theme", theme);
@@ -17,9 +21,9 @@ export const ThemeSwitcher: React.FC = () => {
     };
 
     return (
-        <div className="bg-slate-200 rounded-md py-1 px-0.5">
+        <div className="theme-switcher">
             <button
-                className="theme-switcher_dark cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-0.5"
+                className={clsx("theme-switcher-button", "theme-switcher_dark")}
                 type="button"
                 onClick={() => changeTheme("dark")}
             >
@@ -34,7 +38,7 @@ export const ThemeSwitcher: React.FC = () => {
                 </svg>
             </button>
             <button
-                className="theme-switcher_system cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-0.5"
+                className={clsx("theme-switcher-button", "theme-switcher_system")}
                 type="button"
                 onClick={() => changeTheme("system")}
             >
@@ -67,7 +71,7 @@ export const ThemeSwitcher: React.FC = () => {
                 </svg>
             </button>
             <button
-                className="theme-switcher_light cursor-pointer bg-slate-300 hover:bg-slate-100 p-2 rounded-md mx-0.5"
+                className={clsx("theme-switcher-button", "theme-switcher_light")}
                 type="button"
                 onClick={() => changeTheme("light")}
             >

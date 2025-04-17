@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useAuthentication } from "@/providers/authentication/hooks";
 import { useNavigations, useSync } from "@/providers/navigation/hooks";
 
-import { ThemeSwitcher } from "./theme-switcher";
+import { ThemeSwitcher } from "../theme-switcher";
+
+import "./slide-controls.scss";
 
 export const SlideControls = () => {
     const { prev, next, currentSlide, totalSlides } = useNavigations();
@@ -13,16 +15,12 @@ export const SlideControls = () => {
     const syncRef = useSync();
 
     return (
-        <div className="mt-4 flex flex-wrap justify-between items-center gap-2">
-            <div className="flex space-x-2">
-                <button
-                    onClick={() => prev()}
-                    disabled={currentSlide === 1}
-                    className="cursor-pointer text-sm px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
+        <div className="slide-controls">
+            <div className="slide-controls__left">
+                <button onClick={() => prev()} disabled={currentSlide === 1} className="slide-controls__button">
                     ← <span className="max-md:hidden">Prev</span>
                 </button>
-                <Link href="/list" className="cursor-pointer text-sm p-2 rounded bg-slate-200 hover:bg-slate-300">
+                <Link href="/list" className="slide-controls__link">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M8.4 3H4.6C4.03995 3 3.75992 3 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3 3.75992 3 4.03995 3 4.6V8.4C3 8.96005 3 9.24008 3.10899 9.45399C3.20487 9.64215 3.35785 9.79513 3.54601 9.89101C3.75992 10 4.03995 10 4.6 10H8.4C8.96005 10 9.24008 10 9.45399 9.89101C9.64215 9.79513 9.79513 9.64215 9.89101 9.45399C10 9.24008 10 8.96005 10 8.4V4.6C10 4.03995 10 3.75992 9.89101 3.54601C9.79513 3.35785 9.64215 3.20487 9.45399 3.10899C9.24008 3 8.96005 3 8.4 3Z"
@@ -57,7 +55,7 @@ export const SlideControls = () => {
                 <button
                     onClick={() => next()}
                     disabled={currentSlide === totalSlides}
-                    className="cursor-pointer text-sm px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="slide-controls__button"
                 >
                     <span className="max-md:hidden">Next</span> →
                 </button>
@@ -68,10 +66,10 @@ export const SlideControls = () => {
                             syncRef.current = e.target.checked;
                         }}
                         hidden
-                        className="peer"
+                        className="slide-controls__sync"
                         defaultChecked={syncRef.current}
                     />
-                    <span className="block cursor-pointer p-2 rounded bg-slate-200 hover:bg-slate-300 peer-checked:bg-blue-500 peer-checked:hover:bg-blue-600">
+                    <span className="slide-controls__sync-label">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M17 2L21 6M21 6L17 10M21 6H7.8C6.11984 6 5.27976 6 4.63803 6.32698C4.07354 6.6146 3.6146 7.07354 3.32698 7.63803C3 8.27976 3 9.11984 3 10.8V11M3 18H16.2C17.8802 18 18.7202 18 19.362 17.673C19.9265 17.3854 20.3854 16.9265 20.673 16.362C21 15.7202 21 14.8802 21 13.2V13M3 18L7 22M3 18L7 14"
@@ -84,11 +82,11 @@ export const SlideControls = () => {
                     </span>
                 </label>
             </div>
-            <span className="text-sm text-slate-700">
+            <span className="slide-controls__text">
                 <span className="max-md:hidden">Slide</span> {currentSlide} of {totalSlides}
             </span>
-            <div className="flex max-sm:flex-1 gap-4 min-w-56 justify-between items-center">
-                <Link href="/admin" className="py-2 text-sm text-slate-500 hover:text-slate-700">
+            <div className="slide-controls__right">
+                <Link href="/admin" className="slide-controls__admin-link">
                     {isAuthenticated ? "Admin Panel" : "Login as Admin"}
                 </Link>
                 <ThemeSwitcher />

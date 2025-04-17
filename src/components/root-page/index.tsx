@@ -3,6 +3,8 @@ import { AdminPanel } from "@/components/admin-panel";
 import { ListView } from "@/components/list-view";
 import { Slide } from "@/lib/slides";
 
+import "./root-page.scss";
+
 export type RootPageProps = {
     segments: string[];
     slides: Slide[];
