@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useNavigations } from "@/providers/navigation/hooks";
 import { useSocket } from "@/providers/socket/hooks";
 
-import { SlideContent } from "./slide-content";
-import { AutoZoomContainer } from "./auto-zoom-container";
+import { SlideContent } from "../slide-content";
+import { AutoZoomContainer } from "../auto-zoom-container";
 
 export type AdminControlsProps = {
     children: React.ReactNode[];

@@ -2,8 +2,8 @@
 
 import { useAuthentication } from "@/providers/authentication/hooks";
 
-import { AdminControls } from "./admin-controls";
-import { AdminAuth } from "./admin-auth";
+import { AdminControls } from "../admin-controls";
+import { AdminAuth } from "../admin-auth";
 
 export type AdminPanelProps = {
     children: React.ReactNode[];

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import { useSlider } from "@/providers/slider/hooks";
 import { cn } from "@/lib/utils";
 

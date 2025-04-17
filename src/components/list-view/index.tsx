@@ -1,7 +1,7 @@
-import { SlideContent } from "./slide-content";
-import { AutoZoomContainer } from "./auto-zoom-container";
-import { BackLink } from "./back-link";
-import { SlideLink } from "./slide-link";
+import { SlideContent } from "../slide-content";
+import { AutoZoomContainer } from "../auto-zoom-container";
+import { BackLink } from "../back-link";
+import { SlideLink } from "../slide-link";
 
 export type ListViewProps = {
     children: React.ReactNode[];

@@ -4,10 +4,10 @@ import { SocketProvider } from "@/providers/socket/provider";
 import { NavigationProvider } from "@/providers/navigation/provider";
 import { FragmentsProvider } from "@/providers/fragments/provider";
 
-import { AutoZoomContainer } from "./auto-zoom-container";
-import { SlideProgress } from "./slide-progress";
-import { SlideControls } from "./slide-controls";
-import { ThemeDetector } from "./theme-detector";
+import { AutoZoomContainer } from "../auto-zoom-container";
+import { SlideProgress } from "../slide-progress";
+import { SlideControls } from "../slide-controls";
+import { ThemeDetector } from "../theme-detector";
 
 export type SlideLayerProps = {
     children: React.ReactNode;

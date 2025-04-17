@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useAuthentication } from "@/providers/authentication/hooks";
 import { useNavigations, useSync } from "@/providers/navigation/hooks";
 
-import { ThemeSwitcher } from "./theme-switcher";
+import { ThemeSwitcher } from "../theme-switcher";
 
 export const SlideControls = () => {
     const { prev, next, currentSlide, totalSlides } = useNavigations();

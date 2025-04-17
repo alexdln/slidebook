@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { useSlider } from "@/providers/slider/hooks";
 import { useAuthorize } from "@/providers/authentication/hooks";
-import { AutoZoomContainer } from "./auto-zoom-container";
+import { AutoZoomContainer } from "../auto-zoom-container";
 
 export const AdminAuth: React.FC = () => {
     const { currentSlide, fragment } = useSlider();
