@@ -150,8 +150,7 @@
 }
 
 .host-controls__slide-group:hover .host-controls__slide-preview,
-.host-controls__slide-group:focus .host-controls__slide-preview,
-.host-controls__slide-group:focus-within .host-controls__slide-preview {
+.host-controls__slide-button:focus-visible~.host-controls__slide-preview {
     opacity: 1;
 }
 
