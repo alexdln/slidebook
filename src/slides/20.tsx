@@ -53,10 +53,10 @@ export const Slide = () => {
                             List View
                         </button>
                         <button
-                            onClick={() => push("/admin")}
+                            onClick={() => push("/host")}
                             className="cursor-pointer px-4 py-2 bg-slate-200 rounded-md hover:bg-slate-300 transition-colors"
                         >
-                            Admin Panel
+                            Host Panel
                         </button>
                     </div>
                 </motion.div>

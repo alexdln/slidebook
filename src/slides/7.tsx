@@ -10,7 +10,7 @@ export const Slide = () => (
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            Admin Features
+            Host Features
         </motion.h2>
         <div className="grid grid-cols-2 gap-6">
             <motion.div
@@ -22,7 +22,7 @@ export const Slide = () => (
                 <h3 className="text-xl font-semibold mb-3">Secure Access</h3>
                 <ul className="space-y-2 list-disc pl-5">
                     <li>Simple key-based authentication</li>
-                    <li>Protected admin route</li>
+                    <li>Protected host route</li>
                     <li>Session management</li>
                 </ul>
             </motion.div>
@@ -45,7 +45,7 @@ export const Slide = () => (
 
 export const Notes = () => (
     <div>
-        Admin Features
+        Host Features
         <br />
         <br />
         <ul>

@@ -1,5 +1,5 @@
 import { SlideContent } from "@/components/slide-content";
-import { AdminPanel } from "@/components/admin-panel";
+import { HostPanel } from "@/components/host-panel";
 import { ListView } from "@/components/list-view";
 import { Slide } from "@/lib/slides";
 
@@ -13,9 +13,9 @@ export type RootPageProps = {
 export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) => {
     const [nameOrSlide] = segments || ["1"];
 
-    if (nameOrSlide === "admin") {
+    if (nameOrSlide === "host") {
         return (
-            <AdminPanel
+            <HostPanel
                 notes={slides.map(({ notes: Notes }, index) => (
                     <Notes slideNumber={index + 1} key={index} />
                 ))}
@@ -25,7 +25,7 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
                         <SlideItem slideNumber={index + 1} />
                     </SlideContent>
                 ))}
-            </AdminPanel>
+            </HostPanel>
         );
     }
 

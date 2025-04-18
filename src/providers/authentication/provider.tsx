@@ -25,7 +25,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
                 setIsAuthenticated(true);
                 sessionStorage.setItem("password", password);
             } else {
-                return { error: "Invalid admin password" };
+                return { error: "Invalid host password" };
             }
         } catch {
             return { error: "Authentication failed" };

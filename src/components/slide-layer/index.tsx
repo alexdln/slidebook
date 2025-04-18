@@ -34,7 +34,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
                         >
                             <div className="slide-layer__main">
                                 <div className="slide-layer__content">
-                                    <AutoZoomContainer ignoredPaths={["/admin", "/list"]}>{children}</AutoZoomContainer>
+                                    <AutoZoomContainer ignoredPaths={["/host", "/list"]}>{children}</AutoZoomContainer>
                                 </div>
                                 <div className="slide-layer__controls">
                                     <SlideProgress />

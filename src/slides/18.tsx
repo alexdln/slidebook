@@ -14,7 +14,7 @@ export const Slide = () => (
         </motion.h2>
         <div className="grid grid-cols-2 gap-6">
             {[
-                { title: "User Authentication", desc: "Multiple admin accounts with different permissions" },
+                { title: "User Authentication", desc: "Multiple host accounts with different permissions" },
                 { title: "Slide Editor", desc: "Visual editor for creating and modifying slides" },
                 { title: "Analytics", desc: "Track viewer engagement and interactions" },
                 { title: "Export Options", desc: "Export presentations to PDF or other formats" },
@@ -40,7 +40,7 @@ export const Notes = () => (
         <br />
         <br />
         <ul>
-            <li>User Authentication - Multiple admin accounts with different permissions</li>
+            <li>User Authentication - Multiple host accounts with different permissions</li>
             <li>Slide Editor - Visual editor for creating and modifying slides</li>
             <li>Analytics - Track viewer engagement and interactions</li>
             <li>Export Options - Export presentations to PDF or other formats</li>

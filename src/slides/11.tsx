@@ -26,7 +26,7 @@ export const Slide = () => (
 ├── slides/
 │   └── [slideId]/
 │       └── page.tsx
-├── admin/
+├── host/
 │   └── page.tsx
 └── page.tsx (redirects to /1)`}</code>
                     </pre>

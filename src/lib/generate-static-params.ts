@@ -4,6 +4,6 @@ export const generateStaticParamsFactory = (length: number) => () => {
             acc.push({ pathname: [cur.toString()] });
             return acc;
         },
-        [{ pathname: ["admin"] }],
+        [{ pathname: ["host"] }],
     );
 };
