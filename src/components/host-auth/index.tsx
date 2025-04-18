@@ -8,9 +8,9 @@ import { useAuthorize } from "@/providers/authentication/hooks";
 
 import { AutoZoomContainer } from "../auto-zoom-container";
 
-import "./admin-auth.scss";
+import "./host-auth.scss";
 
-export const AdminAuth: React.FC = () => {
+export const HostAuth: React.FC = () => {
     const { currentSlide, fragment } = useSlider();
     const { authorize } = useAuthorize();
 
@@ -28,32 +28,32 @@ export const AdminAuth: React.FC = () => {
 
     return (
         <AutoZoomContainer>
-            <div className="admin-auth">
-                <h2 className="admin-auth-title">Admin Authentication</h2>
+            <div className="host-auth">
+                <h2 className="host-auth-title">Host Authentication</h2>
 
                 <form action={formAction}>
                     <div className="mb-4">
-                        <label htmlFor="password" className="admin-auth-label">
-                            Admin Key
+                        <label htmlFor="password" className="host-auth-label">
+                            Host Key
                         </label>
                         <input
                             type="password"
                             autoComplete="current-password"
                             id="password"
                             name="password"
-                            className="admin-auth-input"
-                            placeholder="Enter admin password"
+                            className="host-auth-input"
+                            placeholder="Enter host password"
                             required
                         />
                     </div>
 
-                    {state?.error && <div className="admin-auth-error">{state.error}</div>}
+                    {state?.error && <div className="host-auth-error">{state.error}</div>}
 
-                    <button type="submit" className="admin-auth-button">
+                    <button type="submit" className="host-auth-button">
                         Login
                     </button>
                 </form>
-                <Link href={`/${currentSlide}/${fragment}`} className="admin-auth-link">
+                <Link href={`/${currentSlide}/${fragment}`} className="host-auth-link">
                     Back to Presentation as Viewer
                 </Link>
             </div>

@@ -29,13 +29,13 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
     useEffect(() => {
         if (!socket) return;
 
-        // Listen for slide changes from the admin
+        // Listen for slide changes from the host
         socket.on("slideChange", (slideNumber: number, socketId: string) => {
             if (slideNumber !== currentSlide && socket.id !== socketId && syncRef.current) {
                 navigate(slideNumber, "f");
             }
         });
-        // Listen for slide changes from the admin
+        // Listen for slide changes from the host
         socket.on("currentSlide", (slideNumber: number) => {
             if (slideNumber !== currentSlide && syncRef.current) {
                 navigate(slideNumber, "f", true);

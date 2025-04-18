@@ -10,7 +10,7 @@ export async function POST(request: Request) {
         if (isAuthenticated(password)) {
             return NextResponse.json({ success: true });
         } else {
-            return NextResponse.json({ success: false, message: "Invalid admin password" }, { status: 401 });
+            return NextResponse.json({ success: false, message: "Invalid host password" }, { status: 401 });
         }
     } catch {
         return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });

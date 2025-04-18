@@ -38,7 +38,7 @@ app.prepare().then(() => {
             console.log(`Client viewing slide ${slideNumber}`);
         });
 
-        // Admin changes slide
+        // Host changes slide
         socket.on("changeSlide", (slideNumber: number, password: string, socketId: string) => {
             if (isAuthenticated(password)) {
                 currentSlide = slideNumber;
@@ -47,7 +47,7 @@ app.prepare().then(() => {
             }
         });
 
-        // Admin actualizes slide
+        // Host actualizes slide
         socket.on("actualizeSlide", (password) => {
             if (isAuthenticated(password) && currentSlide) {
                 io.emit("currentSlide", currentSlide);

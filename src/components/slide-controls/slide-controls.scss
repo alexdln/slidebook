@@ -56,14 +56,14 @@
     align-items: center;
 }
 
-.slide-controls__admin-link {
+.slide-controls__host-link {
     padding: 0.5rem 0;
     font-size: 0.875rem;
     color: var(--cl-slate-500);
     transition: color 0.2s;
 }
 
-.slide-controls__admin-link:hover {
+.slide-controls__host-link:hover {
     color: var(--cl-slate-700);
 }
 

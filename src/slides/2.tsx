@@ -16,7 +16,7 @@ export const Slide = () => (
             {[
                 "Create engaging presentations",
                 "Synchronize across devices",
-                "Simple admin controls",
+                "Simple host controls",
                 "Smooth animations",
             ].map((item, index) => (
                 <motion.div
@@ -42,7 +42,7 @@ export const Notes = () => (
         <ul>
             <li>Create engaging presentations</li>
             <li>Synchronize across devices</li>
-            <li>Simple admin controls</li>
+            <li>Simple host controls</li>
             <li>Smooth animations</li>
         </ul>
     </div>

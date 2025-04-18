@@ -15,7 +15,7 @@ export const Slide = () => (
         <div className="grid grid-cols-2 gap-6">
             {[
                 { title: "Real-time Sync", desc: "All viewers see the same slide" },
-                { title: "Admin Controls", desc: "Simple authentication system" },
+                { title: "Host Controls", desc: "Simple authentication system" },
                 { title: "Animations", desc: "Smooth transitions between elements" },
                 { title: "Progress Tracking", desc: "Clear indication of presentation progress" },
             ].map((item, index) => (
@@ -41,7 +41,7 @@ export const Notes = () => (
         <br />
         <ul>
             <li>Real-time Sync - All viewers see the same slide</li>
-            <li>Admin Controls - Simple authentication system</li>
+            <li>Host Controls - Simple authentication system</li>
             <li>Animations - Smooth transitions between elements</li>
             <li>Progress Tracking - Clear indication of presentation progress</li>
         </ul>

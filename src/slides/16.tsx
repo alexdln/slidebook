@@ -14,7 +14,7 @@ export const Slide = () => (
         </motion.h2>
         <div className="grid grid-cols-2 gap-6">
             {[
-                { title: "Authentication", desc: "Secure admin access with key verification" },
+                { title: "Authentication", desc: "Secure host access with key verification" },
                 { title: "API Protection", desc: "Validate requests to prevent unauthorized access" },
                 { title: "Data Validation", desc: "Sanitize inputs to prevent injection attacks" },
                 { title: "Environment Variables", desc: "Store sensitive data securely" },
@@ -58,7 +58,7 @@ export const Notes = () => (
         <br />
         <br />
         <ul>
-            <li>Authentication - Secure admin access with key verification</li>
+            <li>Authentication - Secure host access with key verification</li>
             <li>API Protection - Validate requests to prevent unauthorized access</li>
             <li>Data Validation - Sanitize inputs to prevent injection attacks</li>
             <li>Environment Variables - Store sensitive data securely</li>

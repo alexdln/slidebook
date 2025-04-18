@@ -86,8 +86,8 @@ export const SlideControls = () => {
                 <span className="max-md:hidden">Slide</span> {currentSlide} of {totalSlides}
             </span>
             <div className="slide-controls__right">
-                <Link href="/admin" className="slide-controls__admin-link">
-                    {isAuthenticated ? "Admin Panel" : "Login as Admin"}
+                <Link href="/host" className="slide-controls__host-link">
+                    {isAuthenticated ? "Host Panel" : "Login as Host"}
                 </Link>
                 <ThemeSwitcher />
             </div>
