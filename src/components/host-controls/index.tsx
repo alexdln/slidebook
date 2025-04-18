@@ -7,7 +7,6 @@ import clsx from "clsx";
 import { useNavigations } from "@/providers/navigation/hooks";
 import { useSocket } from "@/providers/socket/hooks";
 
-import { SlideContent } from "../slide-content";
 import { AutoZoomContainer } from "../auto-zoom-container";
 
 import "./host-controls.scss";
@@ -35,15 +34,11 @@ export const HostControls: React.FC<HostControlsProps> = ({ children, notes }) =
             </div>
             <div className="host-controls__preview">
                 <div className="host-controls__preview-item">
-                    <AutoZoomContainer>
-                        <SlideContent>{children[currentSlide - 1]}</SlideContent>
-                    </AutoZoomContainer>
+                    <AutoZoomContainer>{children[currentSlide - 1]}</AutoZoomContainer>
                 </div>
                 {currentSlide < totalSlides && (
                     <div className="host-controls__preview-item">
-                        <AutoZoomContainer>
-                            <SlideContent>{children[currentSlide]}</SlideContent>
-                        </AutoZoomContainer>
+                        <AutoZoomContainer>{children[currentSlide]}</AutoZoomContainer>
                     </div>
                 )}
             </div>
@@ -80,7 +75,7 @@ export const HostControls: React.FC<HostControlsProps> = ({ children, notes }) =
                     {Array.from({ length: totalSlides }, (_, i) => i + 1).map((num) => (
                         <div className="host-controls__slide-group" key={num}>
                             <button
-                                onClick={() => navigate(num, currentSlide <= num ? "l" : "f")}
+                                onClick={() => navigate(num, currentSlide > num ? "l" : "f")}
                                 className={clsx(
                                     "host-controls__slide-button",
                                     currentSlide === num
@@ -91,9 +86,7 @@ export const HostControls: React.FC<HostControlsProps> = ({ children, notes }) =
                                 {num}
                             </button>
                             <div className="host-controls__slide-preview">
-                                <AutoZoomContainer transformOrigin="left top">
-                                    <SlideContent>{children[num - 1]}</SlideContent>
-                                </AutoZoomContainer>
+                                <AutoZoomContainer transformOrigin="left top">{children[num - 1]}</AutoZoomContainer>
                             </div>
                         </div>
                     ))}
