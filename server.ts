@@ -2,10 +2,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const { createServer } = require("http");
+const fs = require("fs");
 const { Server } = require("socket.io");
 const next = require("next");
 
 const { isAuthenticated } = require("./src/lib/authenticate.ts");
+const { formatSlide, formatSlides, cleanSlides } = require("./src/lib/format-slides.ts");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -14,7 +16,7 @@ const handle = app.getRequestHandler();
 // Track the current slide
 let currentSlide = 0;
 
-app.prepare().then(() => {
+app.prepare().then(async () => {
     const server = createServer((req: Request, res: Response) => {
         handle(req, res);
     });
@@ -58,6 +60,22 @@ app.prepare().then(() => {
             console.log("Client disconnected");
         });
     });
+
+    await cleanSlides();
+    await formatSlides();
+    if (dev) {
+        fs.watch("./src/slides", async (event: string, filename: string) => {
+            if (!filename) return;
+
+            if (event === "change") {
+                await formatSlide(filename);
+            } else if (event === "rename") {
+                await formatSlides();
+            } else {
+                console.log("Unknown event: " + event);
+            }
+        });
+    }
 
     const PORT = process.env.PORT || 3000;
 

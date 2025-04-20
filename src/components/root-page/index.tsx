@@ -1,8 +1,8 @@
+import { type Slide } from "@/lib/types";
 import { SlideProvider } from "@/providers/slide/provider";
 import { SlideContent } from "@/components/slide-content";
 import { HostPanel } from "@/components/host-panel";
 import { ListView } from "@/components/list-view";
-import { Slide } from "@/lib/slides";
 
 import "./root-page.scss";
 
@@ -17,7 +17,7 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
     if (nameOrSlide === "host") {
         return (
             <HostPanel
-                notes={slides.map(({ notes: Notes }, index) => (
+                notes={(slides.filter((el) => el.notes) as Required<Slide>[]).map(({ notes: Notes }, index) => (
                     <Notes slideNumber={index + 1} key={index} />
                 ))}
             >

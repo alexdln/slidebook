@@ -1,6 +1,6 @@
+import { type Slide } from "@/lib/types";
 import { SlideContent } from "@/components/slide-content";
 import { ListView } from "@/components/list-view";
-import { Slide } from "@/lib/slides";
 
 import "./list-page.scss";
 
