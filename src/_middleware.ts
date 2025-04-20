@@ -3,6 +3,8 @@ import { NextResponse, type NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
+    console.log(pathname);
+
     if (!pathname.match(/^\/(\d+|host|list)$/)) {
         return NextResponse.redirect(new URL("/1", request.url));
     }
