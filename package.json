@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node server.ts --turbopack",
-    "build": "next build",
+    "build": "node build.ts",
     "start": "cross-env NODE_ENV=production node server.ts",
     "lint": "next lint",
     "prepare": "husky"
@@ -16,7 +16,7 @@
     "dotenv": "16.4.7",
     "framer-motion": "12.6.5",
     "lucide-react": "0.485.0",
-    "next": "15.3.0",
+    "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sass": "1.86.3",
