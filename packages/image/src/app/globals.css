@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@slidebook/core/lib/styles.css";
+
+@custom-variant hover (&:hover);
+
+@theme inline {
+  --color-slate-50: var(--cl-slate-50);
+  --color-slate-100: var(--cl-slate-100);
+  --color-slate-200: var(--cl-slate-200);
+  --color-slate-300: var(--cl-slate-300);
+  --color-slate-400: var(--cl-slate-400);
+  --color-slate-500: var(--cl-slate-500);
+  --color-slate-600: var(--cl-slate-600);
+  --color-slate-700: var(--cl-slate-700);
+  --color-slate-800: var(--cl-slate-800);
+  --color-slate-900: var(--cl-slate-900);
+  --color-slate-950: var(--cl-slate-950);
+
+  --color-blue-50: var(--cl-blue-50);
+  --color-blue-100: var(--cl-blue-100);
+  --color-blue-200: var(--cl-blue-200);
+  --color-blue-300: var(--cl-blue-300);
+  --color-blue-400: var(--cl-blue-400);
+  --color-blue-500: var(--cl-blue-500);
+  --color-blue-600: var(--cl-blue-600);
+  --color-blue-700: var(--cl-blue-700);
+  --color-blue-800: var(--cl-blue-800);
+  --color-blue-900: var(--cl-blue-900);
+  --color-blue-950: var(--cl-blue-950);
+}

@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 
-import { useNavigations } from "@/providers/navigation/hooks";
+import { useNavigations } from "@slidebook/core/lib/providers/navigation/hooks";
 
 export const Slide = () => {
-    const { push } = useRouter();
-    const { navigate } = useNavigations();
+    const { navigate, push } = useNavigations();
 
     return (
         <div className="w-full h-full flex flex-col">

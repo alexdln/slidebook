@@ -10,7 +10,7 @@ export const Slide = () => (
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            User Experience
+            User Experience 2
         </motion.h2>
         <div className="flex flex-col space-y-6">
             <motion.div
