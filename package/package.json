@@ -1,34 +1,30 @@
 {
-  "name": "nimpl-slider",
-  "version": "0.1.0",
+  "name": "slidebook",
+  "version": "0.1.18",
   "private": true,
+  "bin": {
+    "slidebook": "./slidebook.js"
+  },
   "scripts": {
-    "dev": "node server.ts --turbopack",
-    "build": "node build.ts",
-    "start": "cross-env NODE_ENV=production node server.ts"
+    "dev": "node server.js --turbopack",
+    "build": "node build.js",
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cross-env": "7.0.3",
     "dotenv": "16.4.7",
-    "framer-motion": "12.6.5",
-    "lucide-react": "0.485.0",
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sass": "1.86.3",
     "socket.io": "4.8.1",
-    "socket.io-client": "4.8.1",
-    "tailwind-merge": "3.0.2",
-    "tw-animate-css": "1.2.5"
+    "socket.io-client": "4.8.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.0.17",
     "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
-    "tailwindcss": "4.1.3",
     "typescript": "5.8.2"
   }
 }

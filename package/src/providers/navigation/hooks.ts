@@ -74,7 +74,7 @@ export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
         [navigate, currentSlide, totalSlides, lastIndex, fragment],
     );
 
-    return { currentSlide, fragment, totalSlides, lastIndex, navigate, prev, next };
+    return { currentSlide, fragment, totalSlides, lastIndex, navigate, prev, next, push: router.push };
 };
 
 export const useSync = () => {

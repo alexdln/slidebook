@@ -3,25 +3,28 @@ dotenv.config();
 
 const { createServer } = require("http");
 const fs = require("fs");
+const path = require("path");
 const { Server } = require("socket.io");
 const next = require("next");
 
-const { isAuthenticated } = require("./src/lib/authenticate.ts");
-const { formatSlide, formatSlides, cleanSlides } = require("./src/lib/format-slides.ts");
+const { isAuthenticated } = require("./src/lib/authenticate");
+const { formatSlide, formatSlides, cleanSlides } = require("./src/lib/format-slides");
 
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== "production" || process.argv[2] !== "start";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
 // Track the current slide
 let currentSlide = 0;
+const ORIG_CWD = process.env.ORIG_CWD || process.cwd();
 
 app.prepare().then(async () => {
-    const server = createServer((req: Request, res: Response) => {
+    const server = createServer((req, res) => {
         handle(req, res);
     });
 
-    const io: import("socket.io").Server = new Server(server, {
+    /** @type {import("socket.io").Server} */
+    const io = new Server(server, {
         cors: {
             origin: "*",
             methods: ["GET", "POST"],
@@ -35,13 +38,13 @@ app.prepare().then(async () => {
         });
 
         // Client viewing a slide
-        socket.on("viewSlide", (slideNumber: number) => {
+        socket.on("viewSlide", (slideNumber) => {
             // You could track analytics here
             console.log(`Client viewing slide ${slideNumber}`);
         });
 
         // Host changes slide
-        socket.on("changeSlide", (slideNumber: number, password: string, socketId: string) => {
+        socket.on("changeSlide", (slideNumber, password, socketId) => {
             if (isAuthenticated(password)) {
                 currentSlide = slideNumber;
                 // Broadcast to all clients
@@ -64,12 +67,14 @@ app.prepare().then(async () => {
     await cleanSlides();
     await formatSlides();
     if (dev) {
-        fs.watch("./src/slides", async (event: string, filename: string) => {
+        fs.watch(path.join(ORIG_CWD, "src", "slides"), async (event, filename) => {
             if (!filename) return;
 
             if (event === "change") {
+                console.log("reloading slide", filename);
                 await formatSlide(filename);
             } else if (event === "rename") {
+                console.log("reloading slides");
                 await formatSlides();
             } else {
                 console.log("Unknown event: " + event);

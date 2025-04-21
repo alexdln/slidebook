@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -5,10 +6,18 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const sourceDir = path.join(process.cwd(), "src", "slides");
+const sourceDir = path.join(process.env.ORIG_CWD || process.cwd(), "src", "slides");
 const outputDir = path.join(__dirname, "..", "app", "[[...pathname]]", "slides");
 
-export const formatSlide = async (slide: string) => {
+if (!existsSync(sourceDir)) {
+    throw new Error("Slides directory not found");
+}
+
+if (!existsSync(outputDir)) {
+    mkdirSync(outputDir, { recursive: true });
+}
+
+export const formatSlide = async (slide) => {
     const slideContent = await fs.readFile(path.join(sourceDir, slide), "utf-8");
     const validSlideExport = slideContent.match(/^export const Slide = .*$/m);
     const validNotesExport = slideContent.match(/^export const Notes = .*$/m);
@@ -68,5 +77,5 @@ export const formatSlides = async () => {
 export const cleanSlides = async () => {
     await fs.rm(outputDir, { recursive: true, force: true });
     await fs.mkdir(outputDir, { recursive: true });
-    await fs.copyFile(path.join(outputDir, "_slides.ts"), path.join(outputDir, "index.ts"));
+    await fs.copyFile(path.join(outputDir, "../_slides.ts"), path.join(outputDir, "index.ts"));
 };
