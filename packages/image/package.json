@@ -1,0 +1,30 @@
+{
+  "name": "@slidebook/image",
+  "version": "0.1.20",
+  "private": true,
+  "bin": {
+    "slidebook": "./slidebook.js"
+  },
+  "scripts": {
+    "dev": "node server.js --turbopack",
+    "build": "node build.js",
+    "build-next": "next build",
+    "start": "node server.js --production"
+  },
+  "dependencies": {
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.10.tgz",
+    "clsx": "2.1.1",
+    "cross-env": "7.0.3",
+    "dotenv": "16.4.7",
+    "next": "15.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "socket.io": "4.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.14",
+    "@types/react": "19.0.12",
+    "@types/react-dom": "19.0.4",
+    "typescript": "5.8.2"
+  }
+}

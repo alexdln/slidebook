@@ -1,48 +1,34 @@
 {
-  "name": "nimpl-slider",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "node server.ts --turbopack",
-    "build": "node build.ts",
-    "start": "cross-env NODE_ENV=production node server.ts",
-    "lint": "next lint",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "class-variance-authority": "0.7.1",
-    "clsx": "2.1.1",
-    "cross-env": "7.0.3",
-    "dotenv": "16.4.7",
-    "framer-motion": "12.6.5",
-    "lucide-react": "0.485.0",
-    "next": "15.3.1",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "sass": "1.86.3",
-    "socket.io": "4.8.1",
-    "socket.io-client": "4.8.1",
-    "tailwind-merge": "3.0.2",
-    "tw-animate-css": "1.2.5"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "3.3.1",
-    "@tailwindcss/postcss": "4.0.17",
-    "@types/node": "22.13.14",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
-    "eslint": "9.13.0",
-    "eslint-config-next": "15.0.3",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.2.1",
-    "husky": "9.1.7",
-    "lint-staged": "15.5.1",
-    "tailwindcss": "4.1.3",
-    "typescript": "5.8.2",
-    "typescript-eslint": "8.11.0"
-  },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": "eslint"
-  },
-  "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
+    "name": "slidebook-root",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "lint": "eslint",
+        "prepare": "husky"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "3.3.1",
+        "eslint": "9.13.0",
+        "eslint-config-next": "15.0.3",
+        "eslint-config-prettier": "9.1.0",
+        "eslint-plugin-prettier": "5.2.1",
+        "husky": "9.1.7",
+        "lint-staged": "15.5.1",
+        "typescript": "5.8.2",
+        "typescript-eslint": "8.11.0"
+    },
+    "lint-staged": {
+        "*.{js,ts,jsx,tsx}": "eslint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/vordgi/slidebook.git"
+    },
+    "author": {
+        "name": "Savelyev Alexander",
+        "email": "vordgi1@gmail.com",
+        "url": "https://github.com/vordgi/"
+    },
+    "license": "MIT",
+    "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
 }

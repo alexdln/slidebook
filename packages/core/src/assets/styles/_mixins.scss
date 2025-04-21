@@ -1,0 +1,22 @@
+@use "sass:map";
+@import "./_breakpoints";
+
+@mixin media($sizeFrom: null, $sizeTo: null) {
+    @if $sizeFrom and $sizeTo and $sizeFrom !=null {
+        @media (min-width: #{map.get($sizes, $sizeFrom)}) and (max-width: #{map.get($sizes, $sizeTo) - 0.5}) {
+            @content;
+        }
+    }
+
+    @else if $sizeFrom and $sizeFrom !=null {
+        @media (min-width: #{map.get($sizes, $sizeFrom)}) {
+            @content;
+        }
+    }
+
+    @else {
+        @media (max-width: #{map.get($sizes, $sizeTo) - 0.5}) {
+            @content;
+        }
+    }
+}
