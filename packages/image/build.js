@@ -1,4 +1,4 @@
-import { formatSlides, cleanSlides } from "@slidebook/core/lib/lib/format-slides.js";
+import { formatFiles, cleanSlides } from "@slidebook/core/lib/lib/format-files.js";
 import { execSync } from "child_process";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const build = async () => {
     await cleanSlides();
-    await formatSlides();
+    await formatFiles();
 
     console.log("Compiling slides...");
 

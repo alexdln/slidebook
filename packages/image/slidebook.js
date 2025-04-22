@@ -5,13 +5,12 @@ import path from "path";
 import fs from "fs/promises";
 import { watch } from "fs";
 import { fileURLToPath } from "url";
-import { formatSlide, formatSlides, getDirs } from "./format-slides.js";
+
+import { formatFile, formatFiles, getDirs } from "./format-files.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const command = process.argv[2];
-
 const tmp = path.join(process.cwd(), "build", ".tmp");
 
 const run = async () => {
@@ -22,21 +21,21 @@ const run = async () => {
         await fs.rm(tmp, { recursive: true, force: true });
         await fs.mkdir(tmp, { recursive: true });
         await fs.cp(__dirname, tmp, { recursive: true });
-        await formatSlides();
+        await formatFiles();
     }
 
     if (["dev"].includes(command)) {
-        console.log("Watching Slides...");
+        console.log("Watching files...");
 
         watch(sourceDir, async (event, filename) => {
             if (!filename) return;
 
             if (event === "change") {
-                console.log("reloading slide", filename);
-                await formatSlide(filename);
+                console.log("reloading file", filename);
+                await formatFile(filename);
             } else if (event === "rename") {
-                console.log("reloading slides");
-                await formatSlides();
+                console.log("reloading files");
+                await formatFiles();
             } else {
                 console.log("Unknown event: " + event);
             }

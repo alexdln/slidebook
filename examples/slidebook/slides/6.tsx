@@ -19,6 +19,12 @@ export const Slide = () => (
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="relative w-full max-w-2xl aspect-video bg-slate-50 rounded-lg p-4"
             >
+                {/* Connecting lines */}
+                <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="25%" y1="25%" x2="75%" y2="25%" stroke="#888" strokeWidth="2" strokeDasharray="5,5" />
+                    <line x1="25%" y1="25%" x2="50%" y2="75%" stroke="#888" strokeWidth="2" strokeDasharray="5,5" />
+                    <line x1="75%" y1="25%" x2="50%" y2="75%" stroke="#888" strokeWidth="2" strokeDasharray="5,5" />
+                </svg>
                 {/* Simple architecture diagram */}
                 <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-32 h-20 bg-blue-500 border border-blue-300 rounded flex items-center justify-center">
                     <p className="text-center font-medium">Client</p>
@@ -29,13 +35,6 @@ export const Slide = () => (
                 <div className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-32 h-20 bg-purple-500 border border-purple-300 rounded flex items-center justify-center">
                     <p className="text-center font-medium">Socket.io</p>
                 </div>
-
-                {/* Connecting lines */}
-                <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="25%" y1="25%" x2="75%" y2="25%" stroke="#888" strokeWidth="2" strokeDasharray="5,5" />
-                    <line x1="25%" y1="25%" x2="50%" y2="75%" stroke="#888" strokeWidth="2" strokeDasharray="5,5" />
-                    <line x1="75%" y1="25%" x2="50%" y2="75%" stroke="#888" strokeWidth="2" strokeDasharray="5,5" />
-                </svg>
             </motion.div>
         </div>
     </div>
