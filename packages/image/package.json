@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.38",
+  "version": "0.1.40",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"

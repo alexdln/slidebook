@@ -1,6 +1,6 @@
 import { RootPage } from "@slidebook/core/lib/components/root-page";
 import { generateStaticParamsFactory } from "@slidebook/core/lib/lib/generate-static-params";
-import { slides } from "./slides";
+import { slides } from "../slides";
 
 const SlidePage: React.FC<{ params: Promise<{ pathname: string[] }> }> = async ({ params }) => {
     const { pathname } = await params;

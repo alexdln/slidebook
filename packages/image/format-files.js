@@ -12,7 +12,7 @@ export const getDirs = (soft = false) => {
         throw new Error("Slides directory not found");
     }
 
-    const outputDir = path.join(process.cwd(), "build", ".tmp", "src", "app", "[[...pathname]]", "slides");
+    const outputDir = path.join(process.cwd(), "build", ".tmp", "src", "app", "slides");
     if (!existsSync(outputDir)) {
         mkdirSync(outputDir, { recursive: true });
     }
@@ -56,15 +56,43 @@ export const formatSlide = async (slide) => {
     }
 };
 
-export const formatSlides = async () => {
+export const formatSegment = async (segment) => {
     const { sourceDir, outputDir } = getDirs();
-    const files = await fs.readdir(sourceDir);
+
+    const segmentContent = await fs.readFile(path.join(sourceDir, segment), "utf-8");
+    if (segment.match(/^layer\.(tsx|jsx)$/)) {
+        const validLayoutExport = segmentContent.match(/^export const Layer = .*$/m);
+        if (!validLayoutExport) {
+            throw new Error(`Invalid segment: ${segment}. Please export a component called "Layer"`);
+        }
+    }
+
+    const segmentPath = path.join(outputDir, segment);
+    await fs.writeFile(segmentPath, segmentContent);
+};
+
+export const formatFile = async (filename) => {
+    if (filename.match(/^(slide-)?\d+\.(tsx|jsx)$/)) {
+        const data = await formatSlide(filename);
+        return { type: "slide", data };
+    }
+
+    await formatSegment(filename);
+    return { type: "segment", data: filename };
+};
+
+export const formatFiles = async () => {
+    const { sourceDir, outputDir } = getDirs();
+    const filenames = await fs.readdir(sourceDir);
 
     const slides = [];
-    for await (const filename of files) {
-        if (filename.match(/^(slide-)?\d+\.(tsx|jsx)$/)) {
-            const { import: importString, exports, index } = await formatSlide(filename);
-            slides.push({ import: importString, exports, index });
+    const segments = [];
+    for await (const filename of filenames) {
+        const { type, data } = await formatFile(filename);
+        if (type === "slide") {
+            slides.push(data);
+        } else {
+            segments.push(data);
         }
     }
 
