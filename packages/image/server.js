@@ -2,13 +2,10 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const { createServer } = require("http");
-const fs = require("fs");
-const path = require("path");
 const { Server } = require("socket.io");
 const next = require("next");
 
 const { isAuthenticated } = require("@slidebook/core/lib/lib/authenticate");
-const { formatSlide, formatSlides, cleanSlides } = require("@slidebook/core/lib/lib/format-slides");
 
 const dev = process.env.NODE_ENV !== "production" && process.argv[2] !== "--production";
 const app = next({ dev });
@@ -16,7 +13,6 @@ const handle = app.getRequestHandler();
 
 // Track the current slide
 let currentSlide = 0;
-const ORIG_CWD = process.env.ORIG_CWD || process.cwd();
 
 app.prepare().then(async () => {
     const server = createServer((req, res) => {
@@ -63,24 +59,6 @@ app.prepare().then(async () => {
             console.log("Client disconnected");
         });
     });
-
-    if (dev) {
-        await cleanSlides();
-        await formatSlides();
-        fs.watch(path.join(ORIG_CWD, "src", "slides"), async (event, filename) => {
-            if (!filename) return;
-
-            if (event === "change") {
-                console.log("reloading slide", filename);
-                await formatSlide(filename);
-            } else if (event === "rename") {
-                console.log("reloading slides");
-                await formatSlides();
-            } else {
-                console.log("Unknown event: " + event);
-            }
-        });
-    }
 
     const PORT = process.env.PORT || 3000;
 

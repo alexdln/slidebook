@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.20",
+  "version": "0.1.35",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
@@ -8,11 +8,10 @@
   "scripts": {
     "dev": "node server.js --turbopack",
     "build": "node build.js",
-    "build-next": "next build",
     "start": "node server.js --production"
   },
   "dependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.10.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.13.tgz",
     "clsx": "2.1.1",
     "cross-env": "7.0.3",
     "dotenv": "16.4.7",

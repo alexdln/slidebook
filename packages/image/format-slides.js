@@ -2,17 +2,26 @@ import { existsSync, mkdirSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
-const sourceDir = path.join(process.env.ORIG_CWD || process.cwd(), "src", "slides");
-const outputDir = path.join(process.env.IMAGE_CWD || process.cwd(), "src", "app", "[[...pathname]]", "slides");
-
-export const formatSlide = async (slide: string) => {
+export const getDirs = (soft = false) => {
+    let sourceDir = path.join(process.cwd(), "slides");
     if (!existsSync(sourceDir)) {
+        sourceDir = path.join(process.cwd(), "src", "slides");
+    }
+
+    if (!existsSync(sourceDir) && !soft) {
         throw new Error("Slides directory not found");
     }
 
+    const outputDir = path.join(process.cwd(), "build", ".tmp", "src", "app", "[[...pathname]]", "slides");
     if (!existsSync(outputDir)) {
         mkdirSync(outputDir, { recursive: true });
     }
+
+    return { sourceDir, outputDir };
+};
+
+export const formatSlide = async (slide) => {
+    const { sourceDir, outputDir } = getDirs();
 
     const slideContent = await fs.readFile(path.join(sourceDir, slide), "utf-8");
     const validSlideExport = slideContent.match(/^export const Slide = .*$/m);
@@ -41,13 +50,7 @@ export const formatSlide = async (slide: string) => {
 };
 
 export const formatSlides = async () => {
-    if (!existsSync(sourceDir)) {
-        throw new Error("Slides directory not found");
-    }
-
-    if (!existsSync(outputDir)) {
-        mkdirSync(outputDir, { recursive: true });
-    }
+    const { sourceDir, outputDir } = getDirs();
 
     const slides = await fs.readdir(sourceDir);
 
@@ -79,6 +82,7 @@ export const formatSlides = async () => {
 };
 
 export const cleanSlides = async () => {
+    const { outputDir } = getDirs(true);
     await fs.rm(outputDir, { recursive: true, force: true });
     await fs.mkdir(outputDir, { recursive: true });
     await fs.copyFile(path.join(outputDir, "../_slides.ts"), path.join(outputDir, "index.ts"));
