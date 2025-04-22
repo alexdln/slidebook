@@ -5,8 +5,12 @@ import path from "path";
 import fs from "fs/promises";
 import { watch } from "fs";
 import { fileURLToPath } from "url";
+import { config } from "dotenv";
 
 import { formatFile, formatFiles, getDirs } from "./format-files.js";
+
+config();
+config({ path: `.env.local`, override: true });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
