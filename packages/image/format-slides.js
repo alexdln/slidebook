@@ -21,6 +21,13 @@ export const getDirs = (soft = false) => {
 };
 
 export const formatSlide = async (slide) => {
+    const index = slide.match(/^(slide-)?(\d+)\.(tsx|jsx)$/)?.[2];
+    if (!index) {
+        throw new Error(
+            `Invalid slide: ${slide}. Please use the format "slide-<index>.{tsx|jsx}" or "<index>.{tsx|jsx}"`,
+        );
+    }
+
     const { sourceDir, outputDir } = getDirs();
 
     const slideContent = await fs.readFile(path.join(sourceDir, slide), "utf-8");
@@ -31,54 +38,49 @@ export const formatSlide = async (slide) => {
         throw new Error(`Invalid slide: ${slide}. Please export a component called "Slide"`);
     }
 
-    const slideIndex = slide.replace(".tsx", "");
-    const slidePath = path.join(outputDir, `${slideIndex}.tsx`);
-
+    const slidePath = path.join(outputDir, slide);
     await fs.writeFile(slidePath, slideContent);
 
     if (validNotesExport) {
         return {
-            import: `import { Slide as Slide${slideIndex}, Notes as Notes${slideIndex} } from "./${slide}";`,
-            name: { index: slideIndex, name: `Slide${slideIndex}`, notes: `Notes${slideIndex}` },
+            import: `import { Slide as Slide${index}, Notes as Notes${index} } from "./${slide}";`,
+            exports: { name: `Slide${index}`, notes: `Notes${index}` },
+            index,
         };
     } else {
         return {
-            import: `import { Slide as Slide${slideIndex} } from "./${slide}";`,
-            name: { index: slideIndex, name: `Slide${slideIndex}` },
+            import: `import { Slide as Slide${index} } from "./${slide}";`,
+            exports: { name: `Slide${index}` },
+            index,
         };
     }
 };
 
 export const formatSlides = async () => {
     const { sourceDir, outputDir } = getDirs();
+    const files = await fs.readdir(sourceDir);
 
-    const slides = await fs.readdir(sourceDir);
-
-    const imports = [];
-    const slideNames = [];
-    for await (const slide of slides) {
-        const { import: importString, name } = await formatSlide(slide);
-        imports.push(importString);
-        slideNames.push(name);
+    const slides = [];
+    for await (const filename of files) {
+        if (filename.match(/^(slide-)?\d+\.(tsx|jsx)$/)) {
+            const { import: importString, exports, index } = await formatSlide(filename);
+            slides.push({ import: importString, exports, index });
+        }
     }
 
-    if (slideNames.length === 0) {
+    if (slides.length === 0) {
         throw new Error("No slides found");
     }
 
-    imports.push(
-        "export const slides = [",
-        ...slideNames
-            .sort((a, b) => +a.index - +b.index)
-            .map((slide) =>
-                slide.notes
-                    ? `\t{ component: ${slide.name}, notes: ${slide.notes} },`
-                    : `\t{ component: ${slide.name} },`,
-            ),
-        "];",
+    slides.sort((a, b) => +a.index - +b.index);
+    const imports = slides.map((slide) => slide.import);
+    const list = slides.map((slide) =>
+        slide.exports.notes
+            ? `\t{ component: ${slide.exports.name}, notes: ${slide.exports.notes} },`
+            : `\t{ component: ${slide.exports.name} },`,
     );
-
-    await fs.writeFile(path.join(outputDir, "index.ts"), imports.join("\n"));
+    const content = `${imports.join("\n")}\nexport const slides = [\n${list.join("\n")}\n];`;
+    await fs.writeFile(path.join(outputDir, "index.ts"), content);
 };
 
 export const cleanSlides = async () => {
