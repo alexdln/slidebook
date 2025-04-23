@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.15.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.44.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.45.tgz",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "framer-motion": "12.6.5",
