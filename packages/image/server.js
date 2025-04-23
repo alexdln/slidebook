@@ -7,18 +7,14 @@ const next = require("next");
 
 const { isAuthenticated } = require("@slidebook/core/lib/lib/authenticate");
 
-const dev = process.env.NODE_ENV !== "production" && process.argv[2] !== "--production";
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const DEV = process.env.NODE_ENV !== "production" && !process.argv.includes("--production");
+const APP_ONLY = process.argv.includes("app");
+const SERVER_ONLY = process.argv.includes("server");
+const PORT = process.env.PORT || 3000;
 
-// Track the current slide
 let currentSlide = 0;
 
-app.prepare().then(async () => {
-    const server = createServer((req, res) => {
-        handle(req, res);
-    });
-
+const initSocket = (server = PORT) => {
     /** @type {import("socket.io").Server} */
     const io = new Server(server, {
         cors: {
@@ -59,10 +55,30 @@ app.prepare().then(async () => {
             console.log("Client disconnected");
         });
     });
+};
 
-    const PORT = process.env.PORT || 3000;
+if (SERVER_ONLY) {
+    const server = createServer();
+    initSocket(server);
 
     server.listen(PORT, () => {
-        console.log(`> Socket Server listening on port ${PORT}`);
+        console.log(`> Realtime Server listening on port ${PORT}`);
     });
-});
+} else {
+    const app = next({ dev: DEV });
+    const handle = app.getRequestHandler();
+
+    app.prepare().then(() => {
+        const server = createServer((req, res) => {
+            handle(req, res);
+        });
+
+        if (!APP_ONLY) {
+            initSocket(server);
+        }
+
+        server.listen(PORT, () => {
+            console.log(`> ${APP_ONLY ? "App" : "App and Realtime Server"} listening on port ${PORT}`);
+        });
+    });
+}

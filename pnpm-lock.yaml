@@ -42,8 +42,8 @@ importers:
         specifier: file:..\..\packages\core\slidebook-core-0.1.15.tgz
         version: file:packages/core/slidebook-core-0.1.15.tgz(sass@1.86.3)
       '@slidebook/image':
-        specifier: file:..\..\packages\image\slidebook-image-0.1.45.tgz
-        version: file:packages/image/slidebook-image-0.1.45.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\image\slidebook-image-0.1.56.tgz
+        version: file:packages/image/slidebook-image-0.1.56.tgz(sass@1.86.3)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -683,9 +683,9 @@ packages:
     resolution: {integrity: sha512-YAIzgVybMDdR5SJgYsfTLP3XWAQ454kW7lPUVv8YoBn5U/L5OSF+MlUqONkpdAbYnYQhpJCs8WDN6O8LP+hsKw==, tarball: file:packages/core/slidebook-core-0.1.15.tgz}
     version: 0.1.15
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.45.tgz':
-    resolution: {integrity: sha512-zCR/DkE36rmKTMF9LIkaDc/VOltzgR314BANvr0BuelRGH/u7YknkQk4LO8pnbkyKC/8JGdER6OeCAP5Liec/A==, tarball: file:packages/image/slidebook-image-0.1.45.tgz}
-    version: 0.1.45
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.56.tgz':
+    resolution: {integrity: sha512-6Z9IBA91CnJ6659g0cXaumR/2Hy7gMMUgOYaglqnOvva8F6bszSP/M43mwXAol4KPz8TnqDe+q9g7vZ0Yh04rA==, tarball: file:packages/image/slidebook-image-0.1.56.tgz}
+    version: 0.1.56
     hasBin: true
 
   '@socket.io/component-emitter@3.1.2':
@@ -3103,7 +3103,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.45.tgz(sass@1.86.3)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.56.tgz(sass@1.86.3)':
     dependencies:
       '@slidebook/core': file:packages/core/slidebook-core-0.1.15.tgz(sass@1.86.3)
       clsx: 2.1.1

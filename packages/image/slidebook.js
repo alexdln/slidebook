@@ -47,7 +47,7 @@ const run = async () => {
     }
 
     if (["start", "dev"].includes(command)) {
-        spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command], {
+        spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
             shell: true,
             stdio: "inherit",
             cwd: tmp,
@@ -57,6 +57,7 @@ const run = async () => {
                 NEXT_PUBLIC_SLIDE_WIDTH: process.env.SLIDE_WIDTH,
                 NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
             },
+            argv0: process.argv.slice(3).join(" "),
         });
     } else if (["build"].includes(command)) {
         spawn("next", ["build", '"./build/.tmp"'], {
