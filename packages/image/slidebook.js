@@ -53,6 +53,9 @@ const run = async () => {
             cwd: tmp,
             env: {
                 ...process.env,
+                NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
+                NEXT_PUBLIC_SLIDE_WIDTH: process.env.SLIDE_WIDTH,
+                NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
             },
         });
     } else if (["build"].includes(command)) {
@@ -62,6 +65,8 @@ const run = async () => {
             cwd: process.cwd(),
             env: {
                 ...process.env,
+                NEXT_PUBLIC_SLIDE_WIDTH: process.env.SLIDE_WIDTH,
+                NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
             },
         });
     } else {
