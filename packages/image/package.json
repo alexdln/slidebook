@@ -1,10 +1,20 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.44",
+  "version": "0.1.45",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
   },
+  "files": [
+    "src",
+    "build.js",
+    "format-files.js",
+    "next-env.d.ts",
+    "next.config.ts",
+    "server.js",
+    "slidebook.js",
+    "tsconfig.json"
+  ],
   "scripts": {
     "dev": "node server.js --turbopack",
     "build": "node build.js",
