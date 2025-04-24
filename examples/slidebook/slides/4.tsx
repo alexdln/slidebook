@@ -22,7 +22,7 @@ export const Slide = () => (
                 { name: "TypeScript", desc: "Type-safe JavaScript" },
                 { name: "API Routes", desc: "Backend functionality" },
             ].map((tech, index) => (
-                <Fragment key={index} index={index + 1}>
+                <Fragment key={index} index={index + 1} timeout={[0, 1, 3, 4].includes(index) ? 300 : undefined}>
                     <motion.div
                         key={index}
                         initial={{ scale: 0.8, opacity: 0 }}

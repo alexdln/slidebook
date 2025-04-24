@@ -1,25 +1,27 @@
 "use client";
 
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 
 import { useSocket } from "@/providers/socket/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import { useFragments, useSetFragments } from "@/providers/fragments/hooks";
+
 import { SyncContext } from "./context";
 
 export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
     const params = useParams();
     const { currentSlide, fragment, totalSlides } = useSlider();
     const { setCurrentSlide: setNavigationParams } = useSetSlider();
-    const { lastIndex } = useFragments();
+    const { fragments } = useFragments();
     const setFragments = useSetFragments();
     const router = useRouter();
     const socket = useSocket();
     const syncRefHook = useSync();
     const syncRef = syncRefArg || syncRefHook;
-
+    const lastIndex = +(Object.keys(fragments).sort((a, b) => +b - +a)[0] || 0);
     const nameOrSlide = params.pathname?.[0] || 0;
+
     const navigate = useCallback(
         (slideNumber: number, fragmentNumber: "f" | "l" | number = "f", skipEvent?: boolean, force?: boolean) => {
             if (slideNumber < 1 || slideNumber > totalSlides) return;
@@ -28,7 +30,7 @@ export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
                 if (slideNumber === currentSlide && !Number.isNaN(+nameOrSlide)) {
                     window.history.pushState({}, "", `/${slideNumber}/${fragmentNumber}`);
                 } else {
-                    setFragments({ slide: slideNumber, lastIndex: 0 });
+                    setFragments({ preparedSlide: slideNumber, fragments: [] });
                     router.push(`/${slideNumber}/${fragmentNumber}`);
                 }
             }
@@ -73,6 +75,27 @@ export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
         },
         [navigate, currentSlide, totalSlides, lastIndex, fragment],
     );
+
+    useEffect(() => {
+        let currentFragment;
+        const keys = Object.keys(fragments).sort((a, b) => +b - +a);
+        if (fragment === "f") {
+            currentFragment = fragments[0];
+        } else if (fragment === "l") {
+            currentFragment = fragments[+keys[keys.length - 1]];
+        } else if (!Number.isNaN(+fragment)) {
+            currentFragment = fragments[+fragment];
+        }
+
+        if (currentFragment?.timeout) {
+            const timeout = setTimeout(() => {
+                next();
+            }, currentFragment.timeout);
+
+            return () => clearTimeout(timeout);
+        }
+        return () => ({});
+    }, [fragments, fragment, next]);
 
     return { currentSlide, fragment, totalSlides, lastIndex, navigate, prev, next, push: router.push };
 };

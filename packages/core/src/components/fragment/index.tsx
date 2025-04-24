@@ -12,9 +12,10 @@ import "./fragment.scss";
 export interface FragmentProps {
     children: React.ReactNode;
     index: number;
+    timeout?: number;
 }
 
-export const Fragment: React.FC<FragmentProps> = ({ children, index }) => {
+export const Fragment: React.FC<FragmentProps> = ({ children, index, timeout }) => {
     const pathname = usePathname();
     const { fragment } = useSlider();
     const { slideNumber, active } = useSlide();
@@ -26,11 +27,9 @@ export const Fragment: React.FC<FragmentProps> = ({ children, index }) => {
         node.dataset.registered = "true";
 
         setFragments((prev) => {
-            if (prev.lastIndex === undefined || prev.lastIndex === null || prev.slide !== slideNumber) {
-                return { slide: slideNumber, lastIndex: index };
+            if (prev.preparedSlide === undefined || prev.preparedSlide !== slideNumber || !(index in prev.fragments)) {
+                return { preparedSlide: slideNumber, fragments: { ...prev.fragments, [index]: { node, timeout } } };
             }
-
-            if (prev.lastIndex < index) return { slide: slideNumber, lastIndex: index };
 
             return prev;
         });
@@ -39,11 +38,9 @@ export const Fragment: React.FC<FragmentProps> = ({ children, index }) => {
     const isViewPage = pathname?.startsWith("/list");
     const activeFragment = isViewPage || fragment === "l" || (fragment === "f" && index === 0) || index <= +fragment;
 
-    if (!activeFragment && active) return <div ref={registerFragment} />;
-
     return (
         <div ref={registerFragment} className={clsx("fragment fragment--active")}>
-            {children}
+            {activeFragment && active && children}
         </div>
     );
 };
