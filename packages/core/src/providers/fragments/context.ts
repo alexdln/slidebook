@@ -1,10 +1,7 @@
 import { createContext } from "react";
 
-type Store = {
-    slide?: number;
-    lastIndex?: number | null;
-};
+import { type FragmentsStore } from "./types";
 
-export const FragmentsContext = createContext<Store>({});
+export const FragmentsContext = createContext<FragmentsStore>({ fragments: [] });
 
-export const SetFragmentsContext = createContext<React.Dispatch<React.SetStateAction<Store>>>(() => ({}));
+export const SetFragmentsContext = createContext<React.Dispatch<React.SetStateAction<FragmentsStore>>>(() => ({}));

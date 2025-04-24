@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.56",
+  "version": "0.1.60",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
@@ -21,7 +21,7 @@
     "start": "node server.js --production"
   },
   "dependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.15.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.19.tgz",
     "clsx": "2.1.1",
     "cross-env": "7.0.3",
     "dotenv": "16.4.7",

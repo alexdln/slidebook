@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 
 import { useSlider } from "@/providers/slider/hooks";
 
+import { type FragmentsStore } from "./types";
 import { FragmentsContext, SetFragmentsContext } from "./context";
 
 export const FragmentsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [fragments, setFragments] = useState<{ slide?: number; lastIndex?: number | null }>({});
+    const [fragments, setFragments] = useState<FragmentsStore>({ fragments: [] });
     const { currentSlide } = useSlider();
 
     useEffect(() => {
-        setFragments((prev) => (prev.slide === currentSlide ? prev : {}));
+        setFragments((prev) => (prev.preparedSlide === currentSlide ? prev : { fragments: [] }));
     }, [currentSlide]);
 
     return (
