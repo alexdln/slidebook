@@ -39,11 +39,11 @@ importers:
   examples/slidebook:
     dependencies:
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.19.tgz
-        version: file:packages/core/slidebook-core-0.1.19.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.23.tgz
+        version: file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       '@slidebook/image':
-        specifier: file:..\..\packages\image\slidebook-image-0.1.60.tgz
-        version: file:packages/image/slidebook-image-0.1.60.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\image\slidebook-image-0.1.62.tgz
+        version: file:packages/image/slidebook-image-0.1.62.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -148,9 +148,6 @@ importers:
 
   packages/image:
     dependencies:
-      '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.19.tgz
-        version: file:packages/core/slidebook-core-0.1.19.tgz(sass@1.86.3)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -173,6 +170,9 @@ importers:
         specifier: 4.8.1
         version: 4.8.1
     devDependencies:
+      '@slidebook/core':
+        specifier: file:..\..\packages\core\slidebook-core-0.1.23.tgz
+        version: file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       '@types/node':
         specifier: 22.13.14
         version: 22.13.14
@@ -679,14 +679,16 @@ packages:
   '@rushstack/eslint-patch@1.11.0':
     resolution: {integrity: sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==}
 
-  '@slidebook/core@file:packages/core/slidebook-core-0.1.19.tgz':
-    resolution: {integrity: sha512-R6aTKB3vdNrKC7L2JMi2XLYL5ZemA5mVomUr6fGK3i4TaOsBhrtUsubSXwwJjx8oypw1akaibDAVy5X2h/deVA==, tarball: file:packages/core/slidebook-core-0.1.19.tgz}
-    version: 0.1.19
+  '@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz':
+    resolution: {integrity: sha512-pvK/ymgCLs2/UANt5+L3dp2AFCrS6W19Ka6ucPoCtbelXMP2R33IJkkhtyB4a9kH7zFLVsphNGX3Kx/j41S8Cg==, tarball: file:packages/core/slidebook-core-0.1.23.tgz}
+    version: 0.1.23
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.60.tgz':
-    resolution: {integrity: sha512-DVW/gTUwpJGtx9Ivo54YsLynZ379CmFp+L2Vh7XwmriF0nhsrdVJq+AFgsJA/nhWQGrAR1qOohoD5xad/qDSGw==, tarball: file:packages/image/slidebook-image-0.1.60.tgz}
-    version: 0.1.60
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.62.tgz':
+    resolution: {integrity: sha512-1zfyvwuro9Q4VgB2RD/t6rzOW+auPtQd8iajKc77a3VQeKxdhvKF8mbwf/q4M8DMBYb+UPejwpNjV5r0tImrow==, tarball: file:packages/image/slidebook-image-0.1.62.tgz}
+    version: 0.1.62
     hasBin: true
+    peerDependencies:
+      '@slidebook/core': '>=0.1.20'
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
@@ -3085,7 +3087,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@slidebook/core@file:packages/core/slidebook-core-0.1.19.tgz(sass@1.86.3)':
+  '@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)':
     dependencies:
       clsx: 2.1.1
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
@@ -3103,9 +3105,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.60.tgz(sass@1.86.3)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.62.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)':
     dependencies:
-      '@slidebook/core': file:packages/core/slidebook-core-0.1.19.tgz(sass@1.86.3)
+      '@slidebook/core': file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       clsx: 2.1.1
       cross-env: 7.0.3
       dotenv: 16.4.7
