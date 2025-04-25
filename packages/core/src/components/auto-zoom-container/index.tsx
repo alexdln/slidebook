@@ -11,37 +11,42 @@ export interface AutoZoomContainerProps {
     children: React.ReactNode;
     transformOrigin?: string;
     ignoredPaths?: string[];
+    padding?: number;
 }
 
 export const AutoZoomContainer: React.FC<AutoZoomContainerProps> = ({
     children,
     ignoredPaths,
     transformOrigin = "center",
+    padding = 0.02,
 }) => {
     const pathname = usePathname();
-    const registerResize = useCallback((ref: HTMLDivElement) => {
-        const handleResize = () => {
-            ref.style.transform = `scale(0)`;
-            const parentWidth = ref.parentElement?.clientWidth;
-            const parentHeight = ref.parentElement?.clientHeight;
+    const registerResize = useCallback(
+        (ref: HTMLDivElement) => {
+            const handleResize = () => {
+                ref.style.transform = `scale(0)`;
+                const parentWidth = ref.parentElement?.clientWidth;
+                const parentHeight = ref.parentElement?.clientHeight;
 
-            if (!parentWidth || !parentHeight || !SLIDE_WIDTH || !SLIDE_HEIGHT) return;
+                if (!parentWidth || !parentHeight || !SLIDE_WIDTH || !SLIDE_HEIGHT) return;
 
-            const scale = Math.min(
-                (parentWidth - window.innerWidth * 0.02) / SLIDE_WIDTH,
-                (parentHeight - window.innerHeight * 0.02) / SLIDE_HEIGHT,
-            );
+                const scale = Math.min(
+                    (parentWidth - window.innerWidth * padding) / SLIDE_WIDTH,
+                    (parentHeight - window.innerHeight * padding) / SLIDE_HEIGHT,
+                );
 
-            ref.style.transform = `scale(${scale})`;
-        };
+                ref.style.transform = `scale(${scale})`;
+            };
 
-        window.addEventListener("resize", handleResize);
-        handleResize();
+            window.addEventListener("resize", handleResize);
+            handleResize();
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+            return () => {
+                window.removeEventListener("resize", handleResize);
+            };
+        },
+        [padding],
+    );
 
     if (ignoredPaths?.includes(pathname)) {
         return <>{children}</>;

@@ -29,6 +29,8 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
                                 {
                                     "--slide-width": `${SLIDE_WIDTH}px`,
                                     "--slide-height": `${SLIDE_HEIGHT}px`,
+                                    "--slide-width-num": SLIDE_WIDTH,
+                                    "--slide-height-num": SLIDE_HEIGHT,
                                 } as React.CSSProperties
                             }
                         >

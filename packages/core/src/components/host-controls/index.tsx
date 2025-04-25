@@ -34,11 +34,15 @@ export const HostControls: React.FC<HostControlsProps> = ({ children, notes }) =
             </div>
             <div className="host-controls__preview">
                 <div className="host-controls__preview-item">
-                    <AutoZoomContainer>{children[currentSlide - 1]}</AutoZoomContainer>
+                    <AutoZoomContainer padding={0} transformOrigin="left top">
+                        {children[currentSlide - 1]}
+                    </AutoZoomContainer>
                 </div>
                 {currentSlide < totalSlides && (
                     <div className="host-controls__preview-item">
-                        <AutoZoomContainer>{children[currentSlide]}</AutoZoomContainer>
+                        <AutoZoomContainer padding={0} transformOrigin="left top">
+                            {children[currentSlide]}
+                        </AutoZoomContainer>
                     </div>
                 )}
             </div>
@@ -86,7 +90,9 @@ export const HostControls: React.FC<HostControlsProps> = ({ children, notes }) =
                                 {num}
                             </button>
                             <div className="host-controls__slide-preview">
-                                <AutoZoomContainer transformOrigin="left top">{children[num - 1]}</AutoZoomContainer>
+                                <AutoZoomContainer transformOrigin="left top" padding={0}>
+                                    {children[num - 1]}
+                                </AutoZoomContainer>
                             </div>
                         </div>
                     ))}

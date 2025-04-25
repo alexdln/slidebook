@@ -15,7 +15,7 @@ export const ListView: React.FC<ListViewProps> = ({ children }) => (
             {children.map((child, index) => (
                 <div key={index} className="list-view__item">
                     <div className="list-view__number">{index + 1}</div>
-                    <AutoZoomContainer transformOrigin="left top">
+                    <AutoZoomContainer transformOrigin="left top" padding={0}>
                         <SlideContent>{child}</SlideContent>
                         <SlideLink slide={index + 1} className="list-view__link" />
                     </AutoZoomContainer>

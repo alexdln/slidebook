@@ -35,12 +35,12 @@ export const Fragment: React.FC<FragmentProps> = ({ children, index, timeout }) 
         });
     };
 
-    const isViewPage = pathname?.startsWith("/list");
-    const activeFragment = isViewPage || fragment === "l" || (fragment === "f" && index === 0) || index <= +fragment;
+    const isViewPage = pathname.startsWith("/list");
+    const activeFragment = fragment === "l" || (fragment === "f" && index === 0) || index <= +fragment;
 
     return (
         <div ref={registerFragment} className={clsx("fragment fragment--active")}>
-            {activeFragment && active && children}
+            {(isViewPage || (activeFragment && active)) && children}
         </div>
     );
 };

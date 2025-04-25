@@ -13,7 +13,7 @@
 .list-view__grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 0.5rem;
+    gap: 2rem;
     width: 1200px;
     max-width: 100%;
 
@@ -28,15 +28,8 @@
 
 .list-view__item {
     position: relative;
-    height: 12rem;
-
-    @include media(md) {
-        height: 15rem;
-    }
-
-    @include media(lg) {
-        height: 16rem;
-    }
+    aspect-ratio: var(--slide-width-num) / var(--slide-height-num);
+    height: auto;
 }
 
 .list-view__number {
