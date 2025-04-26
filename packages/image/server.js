@@ -8,6 +8,7 @@ const next = require("next");
 const { isAuthenticated } = require("@slidebook/core/lib/lib/authenticate");
 
 const DEV = process.env.NODE_ENV !== "production" && !process.argv.includes("--production");
+const TURBO = process.argv.includes("turbo") || process.argv.includes("turbopack");
 const APP_ONLY = process.argv.includes("app");
 const SERVER_ONLY = process.argv.includes("server");
 const PORT = process.env.PORT || 3000;
@@ -65,7 +66,7 @@ if (SERVER_ONLY) {
         console.log(`> Realtime Server listening on port ${PORT}`);
     });
 } else {
-    const app = next({ dev: DEV });
+    const app = next({ dev: DEV, turbo: TURBO, turbopack: TURBO });
     const handle = app.getRequestHandler();
 
     app.prepare().then(() => {
