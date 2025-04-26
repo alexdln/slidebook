@@ -24,4 +24,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
     </html>
 );
 
+export const dynamic = "error";
+
 export default RootLayout;

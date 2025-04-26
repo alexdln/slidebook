@@ -1,0 +1,19 @@
+import { NextResponse, type NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+    const pathname = request.nextUrl.pathname;
+
+    if (!pathname.match(/^\/(\d+|\d+\/(\d+|f|l)|host|list)\/?$/)) {
+        return NextResponse.redirect(new URL("/1", request.url));
+    }
+
+    if (pathname.match(/^\/\d+\/(\d+|f|l)\/?$/)) {
+        return NextResponse.rewrite(new URL(pathname.match(/^\/\d+/)?.[0] ?? "/1", request.url));
+    }
+
+    return NextResponse.next();
+}
+
+export const config = {
+    matcher: "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+};
