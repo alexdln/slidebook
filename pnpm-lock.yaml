@@ -42,8 +42,8 @@ importers:
         specifier: file:..\..\packages\core\slidebook-core-0.1.23.tgz
         version: file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       '@slidebook/image':
-        specifier: file:..\..\packages\image\slidebook-image-0.1.68.tgz
-        version: file:packages/image/slidebook-image-0.1.68.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)
+        specifier: file:..\..\packages\image\slidebook-image-0.1.73.tgz
+        version: file:packages/image/slidebook-image-0.1.73.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -683,9 +683,9 @@ packages:
     resolution: {integrity: sha512-pvK/ymgCLs2/UANt5+L3dp2AFCrS6W19Ka6ucPoCtbelXMP2R33IJkkhtyB4a9kH7zFLVsphNGX3Kx/j41S8Cg==, tarball: file:packages/core/slidebook-core-0.1.23.tgz}
     version: 0.1.23
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.68.tgz':
-    resolution: {integrity: sha512-vF2KmmH+m0WMimEjpv/B6Cy5NUHfOOZT73c/CXqbpdGdGm/19TUcpAeLoVb7SbvRIKHox0SAfQ35dNwgh58JXA==, tarball: file:packages/image/slidebook-image-0.1.68.tgz}
-    version: 0.1.68
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.73.tgz':
+    resolution: {integrity: sha512-DCD8aXnBSQmXW0hwD4uC+NbStLbYICEjAFJ6C8hKOms3uwllNnHRFX7EgFpykmvhQg0amHiob9PXcmFUjwMhpQ==, tarball: file:packages/image/slidebook-image-0.1.73.tgz}
+    version: 0.1.73
     hasBin: true
     peerDependencies:
       '@slidebook/core': '>=0.1.20'
@@ -3105,7 +3105,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.68.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.73.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)':
     dependencies:
       '@slidebook/core': file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       clsx: 2.1.1

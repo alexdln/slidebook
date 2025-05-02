@@ -1,7 +1,8 @@
-import { formatFiles, cleanSlides } from "@slidebook/core/lib/lib/format-files.js";
 import { execSync } from "child_process";
-import path from "path";
 import { fileURLToPath } from "url";
+import path from "path";
+
+import { formatFiles, cleanSlides } from "./format-files.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

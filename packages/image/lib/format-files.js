@@ -2,6 +2,8 @@ import { existsSync, mkdirSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
+import { OUT_DIR } from "./constants.js";
+
 export const getDirs = (soft = false) => {
     let sourceDir = path.join(process.cwd(), "slides");
     if (!existsSync(sourceDir)) {
@@ -12,7 +14,7 @@ export const getDirs = (soft = false) => {
         throw new Error("Slides directory not found");
     }
 
-    const outputDir = path.join(process.cwd(), "build", ".tmp", "src", "app", "slides");
+    const outputDir = path.join(OUT_DIR, "src", "app", "slides");
     if (!existsSync(outputDir)) {
         mkdirSync(outputDir, { recursive: true });
     }

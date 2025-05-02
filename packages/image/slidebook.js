@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 import { spawn } from "child_process";
-import path from "path";
-import fs from "fs/promises";
 import { watch } from "fs";
 import { fileURLToPath } from "url";
 import { config } from "dotenv";
+import fs from "fs/promises";
+import path from "path";
 
-import { formatFile, formatFiles, getDirs } from "./format-files.js";
+import { formatFile, formatFiles, getDirs } from "./lib/format-files.js";
+import { OUT_DIR } from "./lib/constants.js";
 
 config();
 config({ path: `.env.local`, override: true });
@@ -15,16 +16,15 @@ config({ path: `.env.local`, override: true });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const command = process.argv[2];
-const tmp = path.join(process.cwd(), "build", ".tmp");
 
 const run = async () => {
     console.log("Preparing Slidebook...");
 
     const { sourceDir } = getDirs();
     if (["dev", "build"].includes(command)) {
-        await fs.rm(tmp, { recursive: true, force: true });
-        await fs.mkdir(tmp, { recursive: true });
-        await fs.cp(__dirname, tmp, { recursive: true });
+        await fs.rm(OUT_DIR, { recursive: true, force: true });
+        await fs.mkdir(OUT_DIR, { recursive: true });
+        await fs.cp(__dirname, OUT_DIR, { recursive: true });
         await formatFiles();
     }
 
@@ -50,7 +50,7 @@ const run = async () => {
         spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
             shell: true,
             stdio: "inherit",
-            cwd: tmp,
+            cwd: OUT_DIR,
             env: {
                 ...process.env,
                 NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
@@ -60,7 +60,7 @@ const run = async () => {
             argv0: process.argv.slice(3).join(" "),
         });
     } else if (["build"].includes(command)) {
-        spawn("next", ["build", '"./build/.tmp"'], {
+        spawn("next", ["build", OUT_DIR], {
             shell: true,
             stdio: "inherit",
             cwd: process.cwd(),
