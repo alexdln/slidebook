@@ -42,14 +42,20 @@ importers:
         specifier: file:..\..\packages\core\slidebook-core-0.1.23.tgz
         version: file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       '@slidebook/image':
-        specifier: file:..\..\packages\image\slidebook-image-0.1.73.tgz
-        version: file:packages/image/slidebook-image-0.1.73.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)
+        specifier: file:..\..\packages\image\slidebook-image-0.1.78.tgz
+        version: file:packages/image/slidebook-image-0.1.78.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
       clsx:
         specifier: 2.1.1
         version: 2.1.1
+      cross-env:
+        specifier: 7.0.3
+        version: 7.0.3
+      dotenv:
+        specifier: 16.4.7
+        version: 16.4.7
       framer-motion:
         specifier: 12.6.5
         version: 12.6.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -62,6 +68,9 @@ importers:
       react-dom:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
+      socket.io:
+        specifier: 4.8.1
+        version: 4.8.1
       tailwind-merge:
         specifier: 3.0.2
         version: 3.0.2
@@ -157,15 +166,6 @@ importers:
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
-      next:
-        specifier: 15.3.1
-        version: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
-      react:
-        specifier: 19.1.0
-        version: 19.1.0
-      react-dom:
-        specifier: 19.1.0
-        version: 19.1.0(react@19.1.0)
       socket.io:
         specifier: 4.8.1
         version: 4.8.1
@@ -182,6 +182,15 @@ importers:
       '@types/react-dom':
         specifier: 19.0.4
         version: 19.0.4(@types/react@19.0.12)
+      next:
+        specifier: 15.3.1
+        version: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
+      react:
+        specifier: 19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: 19.1.0
+        version: 19.1.0(react@19.1.0)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -683,12 +692,15 @@ packages:
     resolution: {integrity: sha512-pvK/ymgCLs2/UANt5+L3dp2AFCrS6W19Ka6ucPoCtbelXMP2R33IJkkhtyB4a9kH7zFLVsphNGX3Kx/j41S8Cg==, tarball: file:packages/core/slidebook-core-0.1.23.tgz}
     version: 0.1.23
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.73.tgz':
-    resolution: {integrity: sha512-DCD8aXnBSQmXW0hwD4uC+NbStLbYICEjAFJ6C8hKOms3uwllNnHRFX7EgFpykmvhQg0amHiob9PXcmFUjwMhpQ==, tarball: file:packages/image/slidebook-image-0.1.73.tgz}
-    version: 0.1.73
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.78.tgz':
+    resolution: {integrity: sha512-f1ofolW5sZLq7g6AEo8kYKkG5QpD5REvl9JGvFkgfFgpuXdC4L9e+4SwIJL3Ct7SsppWtf1oa2/cBqlqf8O4rw==, tarball: file:packages/image/slidebook-image-0.1.78.tgz}
+    version: 0.1.78
     hasBin: true
     peerDependencies:
       '@slidebook/core': '>=0.1.20'
+      next: '>=15.0.0'
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
@@ -3105,7 +3117,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.73.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(sass@1.86.3)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.78.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@slidebook/core': file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
       clsx: 2.1.1
@@ -3116,13 +3128,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       socket.io: 4.8.1
     transitivePeerDependencies:
-      - '@babel/core'
-      - '@opentelemetry/api'
-      - '@playwright/test'
-      - babel-plugin-macros
-      - babel-plugin-react-compiler
       - bufferutil
-      - sass
       - supports-color
       - utf-8-validate
 

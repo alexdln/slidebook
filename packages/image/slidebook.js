@@ -2,19 +2,15 @@
 
 import { spawn } from "child_process";
 import { watch } from "fs";
-import { fileURLToPath } from "url";
 import { config } from "dotenv";
 import fs from "fs/promises";
-import path from "path";
 
-import { formatFile, formatFiles, getDirs } from "./lib/format-files.js";
-import { OUT_DIR } from "./lib/constants.js";
+import { formatFile, formatFiles, getDirs, cleanOutDir } from "./lib/format-files.js";
+import { OUT_DIR, IMAGE_DIR } from "./lib/constants.js";
 
 config();
 config({ path: `.env.local`, override: true });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const command = process.argv[2];
 
 const run = async () => {
@@ -22,9 +18,8 @@ const run = async () => {
 
     const { sourceDir } = getDirs();
     if (["dev", "build"].includes(command)) {
-        await fs.rm(OUT_DIR, { recursive: true, force: true });
-        await fs.mkdir(OUT_DIR, { recursive: true });
-        await fs.cp(__dirname, OUT_DIR, { recursive: true });
+        await cleanOutDir();
+        await fs.cp(IMAGE_DIR, OUT_DIR, { recursive: true });
         await formatFiles();
     }
 

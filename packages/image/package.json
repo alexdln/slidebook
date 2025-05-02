@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.73",
+  "version": "0.1.78",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
@@ -20,9 +20,6 @@
     "clsx": "2.1.1",
     "cross-env": "7.0.3",
     "dotenv": "16.4.7",
-    "next": "15.3.1",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
     "socket.io": "4.8.1"
   },
   "devDependencies": {
@@ -30,9 +27,15 @@
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.23.tgz",
+    "next": "15.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "typescript": "5.8.2"
   },
   "peerDependencies": {
+    "next": ">=15.0.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
     "@slidebook/core": ">=0.1.20"
   },
   "config": {

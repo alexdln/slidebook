@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.23.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.73.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.78.tgz",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "framer-motion": "12.6.5",
@@ -17,6 +17,9 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "3.0.2",
+    "cross-env": "7.0.3",
+    "dotenv": "16.4.7",
+    "socket.io": "4.8.1",
     "tw-animate-css": "1.2.5"
   },
   "devDependencies": {

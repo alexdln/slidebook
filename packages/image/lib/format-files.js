@@ -2,7 +2,7 @@ import { existsSync, mkdirSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
-import { OUT_DIR } from "./constants.js";
+import { IMAGE_DIR, OUT_DIR } from "./constants.js";
 
 export const getDirs = (soft = false) => {
     let sourceDir = path.join(process.cwd(), "slides");
@@ -113,9 +113,27 @@ export const formatFiles = async () => {
     await fs.writeFile(path.join(outputDir, "index.ts"), content);
 };
 
+export const cleanOutDir = async () => {
+    const { outputDir } = getDirs(true);
+    await Promise.all([
+        fs.rm(path.join(outputDir, "lib"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "src"), { recursive: true, force: true }),
+        fs.rm(path.join(IMAGE_DIR, "node_modules", ".bin"), { recursive: true, force: true }),
+        fs.rm(path.join(IMAGE_DIR, "node_modules", "next"), { recursive: true, force: true }),
+        fs.rm(path.join(IMAGE_DIR, "node_modules", "react"), { recursive: true, force: true }),
+        fs.rm(path.join(IMAGE_DIR, "node_modules", "react-dom"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "node_modules"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "next-env.d.ts"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "next.config.ts"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "package.json"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "slidebook.js"), { recursive: true, force: true }),
+        fs.rm(path.join(outputDir, "tsconfig.json"), { recursive: true, force: true }),
+    ]);
+    await fs.mkdir(outputDir, { recursive: true });
+};
+
 export const cleanSlides = async () => {
     const { outputDir } = getDirs(true);
-    await fs.rm(outputDir, { recursive: true, force: true });
-    await fs.mkdir(outputDir, { recursive: true });
+    await cleanOutDir();
     await fs.copyFile(path.join(outputDir, "../_slides.ts"), path.join(outputDir, "index.ts"));
 };
