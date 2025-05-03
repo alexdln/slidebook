@@ -1,0 +1,16 @@
+{
+  "name": "@slidebook/server",
+  "version": "0.1.8",
+  "private": true,
+  "bin": {
+    "slidebook-server": "./server.js"
+  },
+  "files": [
+    "lib",
+    "server.js"
+  ],
+  "dependencies": {
+    "dotenv": "16.4.7",
+    "socket.io": "4.8.1"
+  }
+}
