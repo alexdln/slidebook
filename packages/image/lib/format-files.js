@@ -2,7 +2,7 @@ import { existsSync, mkdirSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
-import { IMAGE_DIR, OUT_DIR } from "./constants.js";
+import { IMAGE_DIR, OUT_DIR, IS_LIMITED_CI } from "./constants.js";
 
 export const getDirs = (soft = false) => {
     let sourceDir = path.join(process.cwd(), "slides");
@@ -133,13 +133,18 @@ export const formatFiles = async () => {
 
 export const cleanOutDir = async () => {
     const { outputDir } = getDirs(true);
+    const rmQueue = IS_LIMITED_CI
+        ? [
+              fs.rm(path.join(IMAGE_DIR, "node_modules", ".bin"), { recursive: true, force: true }),
+              fs.rm(path.join(IMAGE_DIR, "node_modules", "next"), { recursive: true, force: true }),
+              fs.rm(path.join(IMAGE_DIR, "node_modules", "react"), { recursive: true, force: true }),
+              fs.rm(path.join(IMAGE_DIR, "node_modules", "react-dom"), { recursive: true, force: true }),
+          ]
+        : [fs.rm(path.join(IMAGE_DIR, "node_modules", ".bin"), { recursive: true, force: true })];
     await Promise.all([
+        ...rmQueue,
         fs.rm(path.join(outputDir, "lib"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "src"), { recursive: true, force: true }),
-        fs.rm(path.join(IMAGE_DIR, "node_modules", ".bin"), { recursive: true, force: true }),
-        fs.rm(path.join(IMAGE_DIR, "node_modules", "next"), { recursive: true, force: true }),
-        fs.rm(path.join(IMAGE_DIR, "node_modules", "react"), { recursive: true, force: true }),
-        fs.rm(path.join(IMAGE_DIR, "node_modules", "react-dom"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "node_modules"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "next-env.d.ts"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "next.config.ts"), { recursive: true, force: true }),
