@@ -14,12 +14,13 @@ export const getDirs = (soft = false) => {
         throw new Error("Slides directory not found");
     }
 
-    const outputDir = path.join(OUT_DIR, "src", "app", "slides");
+    const appOutputDir = path.join(OUT_DIR, "src", "app");
+    const outputDir = path.join(appOutputDir, "slides");
     if (!existsSync(outputDir)) {
         mkdirSync(outputDir, { recursive: true });
     }
 
-    return { sourceDir, outputDir };
+    return { sourceDir, outputDir, appOutputDir };
 };
 
 export const formatSlide = async (slide) => {
@@ -73,14 +74,31 @@ export const formatSegment = async (segment) => {
     await fs.writeFile(segmentPath, segmentContent);
 };
 
+export const formatRootFile = async (filename) => {
+    const { sourceDir, appOutputDir } = getDirs();
+
+    if (["favicon.ico"].includes(filename)) {
+        await fs.cp(path.join(sourceDir, filename), path.join(appOutputDir, filename));
+    }
+};
+
 export const formatFile = async (filename) => {
     if (filename.match(/^(slide-)?\d+\.(tsx|jsx)$/)) {
         const data = await formatSlide(filename);
         return { type: "slide", data };
     }
 
-    await formatSegment(filename);
-    return { type: "segment", data: filename };
+    if (filename.match(/^layer\.(tsx|jsx)$/)) {
+        await formatSegment(filename);
+        return { type: "segment", data: filename };
+    }
+
+    if (["favicon.ico"].includes(filename)) {
+        await formatRootFile(filename);
+        return { type: "root-file", data: filename };
+    }
+
+    return { type: "unknown", data: filename };
 };
 
 export const formatFiles = async () => {
