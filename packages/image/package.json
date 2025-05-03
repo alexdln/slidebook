@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.91",
+  "version": "0.1.93",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "node lib/server.js",
-    "build": "node lib/build.js",
+    "build": "next build",
     "start": "node lib/server.js --production"
   },
   "dependencies": {
