@@ -50,7 +50,7 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
     const { component: Slide } = slides[slideNumber - 1];
 
     return (
-        <SlideProvider slideNumber={slideNumber}>
+        <SlideProvider slideNumber={slideNumber} totalSlides={slides.length}>
             <SlideContent>
                 <Slide slideNumber={slideNumber} />
             </SlideContent>

@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.84",
+  "version": "0.1.87",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
@@ -28,7 +28,7 @@
     "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.24.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.27.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.8.tgz",
     "next": "15.3.1",
     "react": "19.1.0",
