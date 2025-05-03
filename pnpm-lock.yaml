@@ -39,11 +39,14 @@ importers:
   examples/slidebook:
     dependencies:
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.23.tgz
-        version: file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.24.tgz
+        version: file:packages/core/slidebook-core-0.1.24.tgz(sass@1.86.3)
       '@slidebook/image':
-        specifier: file:..\..\packages\image\slidebook-image-0.1.78.tgz
-        version: file:packages/image/slidebook-image-0.1.78.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: file:..\..\packages\image\slidebook-image-0.1.84.tgz
+        version: file:packages/image/slidebook-image-0.1.84.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.24.tgz(sass@1.86.3))(@slidebook/server@file:packages/server/slidebook-server-0.1.8.tgz)(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@slidebook/server':
+        specifier: file:..\..\packages\server\slidebook-server-0.1.8.tgz
+        version: file:packages/server/slidebook-server-0.1.8.tgz
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -68,9 +71,6 @@ importers:
       react-dom:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
-      socket.io:
-        specifier: 4.8.1
-        version: 4.8.1
       tailwind-merge:
         specifier: 3.0.2
         version: 3.0.2
@@ -171,8 +171,11 @@ importers:
         version: 4.8.1
     devDependencies:
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.23.tgz
-        version: file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.24.tgz
+        version: file:packages/core/slidebook-core-0.1.24.tgz(sass@1.86.3)
+      '@slidebook/server':
+        specifier: file:..\..\packages\server\slidebook-server-0.1.8.tgz
+        version: file:packages/server/slidebook-server-0.1.8.tgz
       '@types/node':
         specifier: 22.13.14
         version: 22.13.14
@@ -194,6 +197,15 @@ importers:
       typescript:
         specifier: 5.8.2
         version: 5.8.2
+
+  packages/server:
+    dependencies:
+      dotenv:
+        specifier: 16.4.7
+        version: 16.4.7
+      socket.io:
+        specifier: 4.8.1
+        version: 4.8.1
 
 packages:
 
@@ -688,19 +700,25 @@ packages:
   '@rushstack/eslint-patch@1.11.0':
     resolution: {integrity: sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==}
 
-  '@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz':
-    resolution: {integrity: sha512-pvK/ymgCLs2/UANt5+L3dp2AFCrS6W19Ka6ucPoCtbelXMP2R33IJkkhtyB4a9kH7zFLVsphNGX3Kx/j41S8Cg==, tarball: file:packages/core/slidebook-core-0.1.23.tgz}
-    version: 0.1.23
+  '@slidebook/core@file:packages/core/slidebook-core-0.1.24.tgz':
+    resolution: {integrity: sha512-vJXa5lIL70NaXRHF3i7PKK3C0nLfJHHaL1SrNJJdbEio82lQUUIbsVPtC8Alx1IaobUqMuGHDfm0eY9AdX+yJw==, tarball: file:packages/core/slidebook-core-0.1.24.tgz}
+    version: 0.1.24
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.78.tgz':
-    resolution: {integrity: sha512-f1ofolW5sZLq7g6AEo8kYKkG5QpD5REvl9JGvFkgfFgpuXdC4L9e+4SwIJL3Ct7SsppWtf1oa2/cBqlqf8O4rw==, tarball: file:packages/image/slidebook-image-0.1.78.tgz}
-    version: 0.1.78
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.84.tgz':
+    resolution: {integrity: sha512-NPJvIVMps+GVlsxU+PyQLTsaeTZy48aQkSC+JMHSgrI/yRGaI1tv+0DMmB932uivQyYvNkB03u3RNfv27SiARw==, tarball: file:packages/image/slidebook-image-0.1.84.tgz}
+    version: 0.1.84
     hasBin: true
     peerDependencies:
       '@slidebook/core': '>=0.1.20'
+      '@slidebook/server': '>=0.1.5'
       next: '>=15.0.0'
       react: '>=19.0.0'
       react-dom: '>=19.0.0'
+
+  '@slidebook/server@file:packages/server/slidebook-server-0.1.8.tgz':
+    resolution: {integrity: sha512-hc3bApz56S6fpYEK3TeboEA1pDwDmAerpD37ucSXYl3MTP8xV7GiMRDmQmuGI7p0sub9u9o3cI9C9dNVIEvCxw==, tarball: file:packages/server/slidebook-server-0.1.8.tgz}
+    version: 0.1.8
+    hasBin: true
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
@@ -3099,7 +3117,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)':
+  '@slidebook/core@file:packages/core/slidebook-core-0.1.24.tgz(sass@1.86.3)':
     dependencies:
       clsx: 2.1.1
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
@@ -3117,15 +3135,25 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.78.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.84.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.24.tgz(sass@1.86.3))(@slidebook/server@file:packages/server/slidebook-server-0.1.8.tgz)(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@slidebook/core': file:packages/core/slidebook-core-0.1.23.tgz(sass@1.86.3)
+      '@slidebook/core': file:packages/core/slidebook-core-0.1.24.tgz(sass@1.86.3)
+      '@slidebook/server': file:packages/server/slidebook-server-0.1.8.tgz
       clsx: 2.1.1
       cross-env: 7.0.3
       dotenv: 16.4.7
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
+      socket.io: 4.8.1
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
+  '@slidebook/server@file:packages/server/slidebook-server-0.1.8.tgz':
+    dependencies:
+      dotenv: 16.4.7
       socket.io: 4.8.1
     transitivePeerDependencies:
       - bufferutil

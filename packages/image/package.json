@@ -1,13 +1,15 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.78",
+  "version": "0.1.84",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
   },
   "files": [
-    "src",
     "lib",
+    "src",
+    "next-env.d.ts",
+    "next.config.ts",
     "slidebook.js",
     "tsconfig.json"
   ],
@@ -26,7 +28,8 @@
     "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.23.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.24.tgz",
+    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.8.tgz",
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -36,7 +39,8 @@
     "next": ">=15.0.0",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0",
-    "@slidebook/core": ">=0.1.20"
+    "@slidebook/core": ">=0.1.20",
+    "@slidebook/server": ">=0.1.5"
   },
   "config": {
     "server": true,
