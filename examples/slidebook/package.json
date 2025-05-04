@@ -8,8 +8,8 @@
     "start": "slidebook start"
   },
   "dependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.27.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.93.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.29.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.95.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.8.tgz",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",

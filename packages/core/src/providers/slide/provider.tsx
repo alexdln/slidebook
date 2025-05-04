@@ -18,21 +18,26 @@ export const SlideProvider: React.FC<SlideProviderProps> = ({ children, active, 
     const { prefetch } = useRouter();
 
     useEffect(() => {
+        if (totalSlides && slideNumber > 3) {
+            prefetch(`/${slideNumber - 3}/l`);
+        }
         if (totalSlides && slideNumber > 2) {
-            prefetch(`/${slideNumber - 2}/f`);
             prefetch(`/${slideNumber - 2}/l`);
         }
         if (totalSlides && slideNumber > 1) {
-            prefetch(`/${slideNumber - 1}/f`);
             prefetch(`/${slideNumber - 1}/l`);
+        }
+        if (totalSlides) {
+            prefetch(`/${slideNumber}/l`);
         }
         if (totalSlides && slideNumber < totalSlides) {
             prefetch(`/${slideNumber + 1}/f`);
-            prefetch(`/${slideNumber + 1}/l`);
         }
         if (totalSlides && slideNumber < totalSlides - 1) {
             prefetch(`/${slideNumber + 2}/f`);
-            prefetch(`/${slideNumber + 2}/l`);
+        }
+        if (totalSlides && slideNumber < totalSlides - 2) {
+            prefetch(`/${slideNumber + 3}/f`);
         }
     }, [slideNumber, prefetch, totalSlides]);
 
