@@ -11,21 +11,25 @@ export interface AuthenticationProviderProps {
 export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const authorize = useCallback(async (password: string) => {
+    const authorize = useCallback(async (secret: string, restore?: boolean) => {
         try {
-            const response = await fetch("/api/auth", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_SERVER_URL || ""}/${restore ? "restore" : "auth"}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ secret }),
                 },
-                body: JSON.stringify({ password }),
-            });
+            );
 
             if (response.ok) {
+                const secret = await response.text();
+                sessionStorage.setItem("secret", secret);
                 setIsAuthenticated(true);
-                sessionStorage.setItem("password", password);
             } else {
-                return { error: "Invalid host password" };
+                return { error: "Invalid host secret" };
             }
         } catch {
             return { error: "Authentication failed" };
@@ -33,7 +37,10 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     }, []);
 
     useEffect(() => {
-        authorize(sessionStorage.getItem("password") || "");
+        const secret = sessionStorage.getItem("secret");
+        if (secret) {
+            authorize(secret, true);
+        }
     }, [authorize]);
 
     return (
