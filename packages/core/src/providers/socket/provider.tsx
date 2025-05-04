@@ -10,7 +10,7 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
     useEffect(() => {
         // Initialize socket connection to our external Socket.io server
-        const socketInstance = io(process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000");
+        const socketInstance = io(process.env.NEXT_PUBLIC_SERVER_URL || window.location.origin);
 
         setSocket(socketInstance);
 

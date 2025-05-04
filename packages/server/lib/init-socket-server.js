@@ -1,10 +1,13 @@
 import { Server } from "socket.io";
 
-import { isAuthenticated } from "./authenticate.js";
+import { validateSecret } from "./authenticate.js";
 
 let currentSlide = 0;
 
-export const initSocket = (server) => {
+/**
+ * @param {import("http").Server} server
+ */
+export const initSocketServer = (server) => {
     /** @type {import("socket.io").Server} */
     const io = new Server(server, {
         cors: {
@@ -26,8 +29,8 @@ export const initSocket = (server) => {
         });
 
         // Host changes slide
-        socket.on("changeSlide", (slideNumber, password, socketId) => {
-            if (isAuthenticated(password)) {
+        socket.on("changeSlide", (slideNumber, secret, socketId) => {
+            if (validateSecret(secret)) {
                 currentSlide = slideNumber;
                 // Broadcast to all clients
                 io.emit("slideChange", slideNumber, socketId);
@@ -35,8 +38,8 @@ export const initSocket = (server) => {
         });
 
         // Host actualizes slide
-        socket.on("actualizeSlide", (password) => {
-            if (isAuthenticated(password) && currentSlide) {
+        socket.on("actualizeSlide", (secret) => {
+            if (validateSecret(secret) && currentSlide) {
                 io.emit("currentSlide", currentSlide);
             }
         });

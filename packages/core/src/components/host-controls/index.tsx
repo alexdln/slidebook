@@ -21,7 +21,7 @@ export const HostControls: React.FC<HostControlsProps> = ({ children, notes }) =
     const socket = useSocket();
 
     const actualizeSlide = useCallback(() => {
-        socket?.emit("actualizeSlide", sessionStorage.getItem("password"));
+        socket?.emit("actualizeSlide", sessionStorage.getItem("secret"));
     }, [socket]);
 
     useEffect(actualizeSlide, [actualizeSlide]);
