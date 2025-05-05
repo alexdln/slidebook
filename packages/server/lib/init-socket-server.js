@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 import { validateSecret } from "./authenticate.js";
 
-let currentSlide = 0;
+let currentSlide = { slide: 0, fragment: "f" };
 
 /**
  * @param {import("http").Server} server
@@ -23,17 +23,17 @@ export const initSocketServer = (server) => {
         });
 
         // Client viewing a slide
-        socket.on("viewSlide", (slideNumber) => {
+        socket.on("viewSlide", (currentSlideArg) => {
             // You could track analytics here
-            console.log(`Client viewing slide ${slideNumber}`);
+            console.log(`Client viewing slide ${currentSlideArg}`);
         });
 
         // Host changes slide
-        socket.on("changeSlide", (slideNumber, secret, socketId) => {
+        socket.on("changeSlide", (currentSlideArg, secret, socketId) => {
             if (validateSecret(secret)) {
-                currentSlide = slideNumber;
+                currentSlide = currentSlideArg;
                 // Broadcast to all clients
-                io.emit("slideChange", slideNumber, socketId);
+                io.emit("slideChange", currentSlideArg, socketId);
             }
         });
 

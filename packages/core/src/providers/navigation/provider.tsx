@@ -15,7 +15,7 @@ export interface NavigationProviderProps {
 export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children }) => {
     const socket = useSocket();
     const syncRef = useRef(true);
-    const { currentSlide, next, prev, navigate, totalSlides } = useNavigations(syncRef);
+    const { currentSlide, fragment, next, prev, navigate, totalSlides } = useNavigations(syncRef);
 
     // Set up keyboard navigation
     useKeyboardNavigation({
@@ -30,17 +30,23 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
         if (!socket) return;
 
         // Listen for slide changes from the host
-        socket.on("slideChange", (slideNumber: number, socketId: string) => {
-            if (slideNumber !== currentSlide && socket.id !== socketId && syncRef.current) {
-                navigate(slideNumber, "f");
-            }
-        });
-        // Listen for slide changes from the host
-        socket.on("currentSlide", (slideNumber: number) => {
-            if (slideNumber !== currentSlide && syncRef.current) {
-                navigate(slideNumber, "f", true);
-            }
-        });
+        socket.on(
+            "slideChange",
+            ({ slide, fragment: newFragment }: { slide: number; fragment: number | "f" | "l" }, socketId: string) => {
+                if ((slide !== currentSlide || newFragment !== fragment) && socket.id !== socketId && syncRef.current) {
+                    navigate(slide, newFragment, true);
+                }
+            },
+        );
+
+        socket.on(
+            "currentSlide",
+            ({ slide, fragment: newFragment }: { slide: number; fragment: number | "f" | "l" }) => {
+                if ((slide !== currentSlide || newFragment !== fragment) && syncRef.current) {
+                    navigate(slide, newFragment, true);
+                }
+            },
+        );
 
         // Inform the server about the current slide view
         socket.emit("viewSlide", currentSlide);
