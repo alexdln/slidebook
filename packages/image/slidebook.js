@@ -48,7 +48,7 @@ const run = async () => {
     }
 
     if (["start", "dev"].includes(command)) {
-        spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
+        return spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
             shell: true,
             stdio: "inherit",
             cwd: OUT_DIR,
@@ -60,10 +60,9 @@ const run = async () => {
             },
             argv0: process.argv.slice(3).join(" "),
         });
-        return process.exit(0);
     }
     if (["build"].includes(command)) {
-        spawn("next", ["build", OUT_DIR], {
+        return spawn("next", ["build", OUT_DIR], {
             shell: true,
             stdio: "inherit",
             cwd: process.cwd(),
@@ -74,8 +73,6 @@ const run = async () => {
                 NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
             },
         });
-
-        return process.exit(0);
     }
 
     console.error(`Invalid command: "${command}"`);

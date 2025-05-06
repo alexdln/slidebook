@@ -42,8 +42,8 @@ importers:
         specifier: file:..\..\packages\core\slidebook-core-0.1.34.tgz
         version: file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3)
       '@slidebook/image':
-        specifier: file:..\..\packages\image\slidebook-image-0.1.107.tgz
-        version: file:packages/image/slidebook-image-0.1.107.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: file:..\..\packages\image\slidebook-image-0.1.108.tgz
+        version: file:packages/image/slidebook-image-0.1.108.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@slidebook/server':
         specifier: file:..\..\packages\server\slidebook-server-0.1.14.tgz
         version: file:packages/server/slidebook-server-0.1.14.tgz
@@ -704,9 +704,9 @@ packages:
     resolution: {integrity: sha512-iw2YdEgYtpY23ca9PaV7qq7j1pAB9lA4mL0cLEXTZFmCNjbvS3cKh4ipyEF91cnsHATraomUJ5iWRxbkbBuMww==, tarball: file:packages/core/slidebook-core-0.1.34.tgz}
     version: 0.1.34
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.107.tgz':
-    resolution: {integrity: sha512-5jNgoHsD29o6hsi/JQUvgLJYdUc4k0estsB6O/ctw55yw3LWq+eykYaS/3ewJbTBJyy6HeWA+vrj/A4ETaNEEw==, tarball: file:packages/image/slidebook-image-0.1.107.tgz}
-    version: 0.1.107
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.108.tgz':
+    resolution: {integrity: sha512-4bAlXQTjI1IchU7o26u7oY3VIggkT+0kA1kCvntVu7P8X4EKR3cFOB9KBYMfyGdH5uIlUR6QGKZJaHR8gFWQrg==, tarball: file:packages/image/slidebook-image-0.1.108.tgz}
+    version: 0.1.108
     hasBin: true
     peerDependencies:
       '@slidebook/core': '>=0.1.20'
@@ -3135,7 +3135,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.107.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.108.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@slidebook/core': file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3)
       '@slidebook/server': file:packages/server/slidebook-server-0.1.14.tgz
