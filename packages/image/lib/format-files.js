@@ -155,3 +155,34 @@ export const cleanOutDir = async () => {
     ]);
     await fs.mkdir(outputDir, { recursive: true });
 };
+
+export const eject = async () => {
+    const copyQueue = [
+        fs.cp(path.join(IMAGE_DIR, "lib", "server.js"), path.join(OUT_DIR, "lib", "server.js"), { recursive: true }),
+        fs.cp(path.join(IMAGE_DIR, "src"), path.join(OUT_DIR, "src"), { recursive: true }),
+        fs.cp(path.join(IMAGE_DIR, "next-env.d.ts"), path.join(OUT_DIR, "next-env.d.ts"), { recursive: true }),
+        fs.cp(path.join(IMAGE_DIR, "next.config.ts"), path.join(OUT_DIR, "next.config.ts"), { recursive: true }),
+    ];
+    if (!existsSync(path.join(OUT_DIR, "tsconfig.json"))) {
+        copyQueue.push(
+            fs.cp(path.join(IMAGE_DIR, "tsconfig.json"), path.join(OUT_DIR, "tsconfig.json"), { recursive: true }),
+        );
+    }
+
+    await Promise.all(copyQueue);
+    await formatFiles();
+    const packageJsonRaw = await fs.readFile(path.join(OUT_DIR, "package.json"), "utf-8");
+    const packageJson = JSON.parse(packageJsonRaw);
+    delete packageJson.scripts.eject;
+    packageJson.scripts = {
+        ...packageJson.scripts,
+        dev: "node lib/server.js",
+        build: "next build",
+        start: "node lib/server.js --production",
+    };
+    await Promise.all([
+        fs.writeFile(path.join(OUT_DIR, "package.json"), JSON.stringify(packageJson, null, 2)),
+        fs.rm(path.join(OUT_DIR, "slides"), { recursive: true, force: true }),
+        fs.rm(path.join(OUT_DIR, "src", "slides"), { recursive: true, force: true }),
+    ]);
+};
