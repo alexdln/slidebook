@@ -5,7 +5,7 @@ import { watch } from "fs";
 import { config } from "dotenv";
 import fs from "fs/promises";
 
-import { formatFile, formatFiles, getDirs, cleanOutDir } from "./lib/format-files.js";
+import { formatFile, formatFiles, getDirs, cleanOutDir, eject } from "./lib/format-files.js";
 import { OUT_DIR, IMAGE_DIR } from "./lib/constants.js";
 
 config();
@@ -17,6 +17,12 @@ const run = async () => {
     console.log("Preparing Slidebook...");
 
     const { sourceDir } = getDirs();
+
+    if (["eject"].includes(command)) {
+        await eject();
+        return process.exit(0);
+    }
+
     if (["dev", "build"].includes(command)) {
         await cleanOutDir();
         await fs.cp(IMAGE_DIR, OUT_DIR, { recursive: true });
@@ -42,7 +48,7 @@ const run = async () => {
     }
 
     if (["start", "dev"].includes(command)) {
-        spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
+        return spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
             shell: true,
             stdio: "inherit",
             cwd: OUT_DIR,
@@ -54,8 +60,9 @@ const run = async () => {
             },
             argv0: process.argv.slice(3).join(" "),
         });
-    } else if (["build"].includes(command)) {
-        spawn("next", ["build", OUT_DIR], {
+    }
+    if (["build"].includes(command)) {
+        return spawn("next", ["build", OUT_DIR], {
             shell: true,
             stdio: "inherit",
             cwd: process.cwd(),
@@ -66,10 +73,10 @@ const run = async () => {
                 NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
             },
         });
-    } else {
-        console.error(`Invalid command: "${command}"`);
-        process.exit(1);
     }
+
+    console.error(`Invalid command: "${command}"`);
+    process.exit(1);
 };
 
 run();
