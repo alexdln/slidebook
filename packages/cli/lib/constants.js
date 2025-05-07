@@ -5,7 +5,4 @@ export const IS_LIMITED_CI = Boolean(process.env.VERCEL_PROJECT_ID) || process.a
 
 export const OUT_DIR = IS_LIMITED_CI ? process.cwd() : path.join(process.cwd(), "build", ".tmp");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export const IMAGE_DIR = path.join(__dirname, "..");
+export const IMAGE_DIR = path.dirname(fileURLToPath(import.meta.resolve("@slidebook/image/package.json")));
