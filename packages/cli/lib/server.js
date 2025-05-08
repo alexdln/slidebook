@@ -17,7 +17,7 @@ export const runServer = async ({ dev, turbo, type, port }) => {
             console.log(`> Realtime Server listening on port ${port}`);
         });
     } else {
-        const app = next({ dev, turbo, turbopack: turbo, dir: OUT_DIR });
+        const app = next({ dev, turbo, turbopack: turbo, dir: OUT_DIR, minimalMode: false, quiet: false });
         const handle = app.getRequestHandler();
 
         app.prepare().then(() => {
@@ -25,7 +25,7 @@ export const runServer = async ({ dev, turbo, type, port }) => {
                 handle(req, res);
             });
 
-            if (type === "app") {
+            if (type !== "app") {
                 initServer(server);
             }
 

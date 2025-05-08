@@ -19,26 +19,25 @@ const SERVER_ONLY = process.argv.includes("server");
 const PORT = process.env.PORT || 3000;
 
 const run = async () => {
-    console.log("Preparing Slidebook...");
-
-    const { sourceDir } = getDirs();
-
     if (["eject"].includes(command)) {
         if (!IS_EJECTED) {
             await eject();
             return process.exit(0);
         }
+
         console.error("App already ejected");
         return process.exit(1);
     }
 
     if (["dev", "build"].includes(command) && !IS_EJECTED) {
+        console.log("Preparing Slidebook...");
         await cleanOutDir();
         await fs.cp(IMAGE_DIR, OUT_DIR, { recursive: true });
         await formatFiles();
     }
 
     if (["dev"].includes(command) && !IS_EJECTED) {
+        const { sourceDir } = getDirs();
         console.log("Watching files...");
 
         watch(sourceDir, async (event, filename) => {
