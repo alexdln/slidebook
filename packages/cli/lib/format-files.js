@@ -144,13 +144,11 @@ export const cleanOutDir = async () => {
 
     await Promise.all([
         ...rmQueue,
-        fs.rm(path.join(outputDir, "lib"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "src"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "node_modules"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "next-env.d.ts"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "next.config.ts"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "package.json"), { recursive: true, force: true }),
-        fs.rm(path.join(outputDir, "slidebook.js"), { recursive: true, force: true }),
         fs.rm(path.join(outputDir, "tsconfig.json"), { recursive: true, force: true }),
     ]);
     await fs.mkdir(outputDir, { recursive: true });
@@ -162,7 +160,6 @@ export const eject = async () => {
     }
 
     const copyQueue = [
-        fs.cp(path.join(IMAGE_DIR, "lib", "server.js"), path.join(OUT_DIR, "lib", "server.js"), { recursive: true }),
         fs.cp(path.join(IMAGE_DIR, "src"), path.join(OUT_DIR, "src"), { recursive: true }),
         fs.cp(path.join(IMAGE_DIR, "next-env.d.ts"), path.join(OUT_DIR, "next-env.d.ts"), { recursive: true }),
         fs.cp(path.join(IMAGE_DIR, "next.config.ts"), path.join(OUT_DIR, "next.config.ts"), { recursive: true }),

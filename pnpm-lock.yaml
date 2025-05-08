@@ -39,8 +39,8 @@ importers:
   examples/slidebook:
     dependencies:
       '@slidebook/cli':
-        specifier: file:..\..\packages\cli\slidebook-cli-0.1.8.tgz
-        version: file:packages/cli/slidebook-cli-0.1.8.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.110.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)
+        specifier: file:..\..\packages\cli\slidebook-cli-0.1.10.tgz
+        version: file:packages/cli/slidebook-cli-0.1.10.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.110.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)
       '@slidebook/core':
         specifier: file:..\..\packages\core\slidebook-core-0.1.34.tgz
         version: file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3)
@@ -715,9 +715,9 @@ packages:
   '@rushstack/eslint-patch@1.11.0':
     resolution: {integrity: sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==}
 
-  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.8.tgz':
-    resolution: {integrity: sha512-tYai4/zdnWqEsphGRjXYYsrxzRhBXNRnTOKNQKAbkbK/lBx99y88yUXasXF1GSO1Aa2g9ebBcit6VnFm61DHBA==, tarball: file:packages/cli/slidebook-cli-0.1.8.tgz}
-    version: 0.1.8
+  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.10.tgz':
+    resolution: {integrity: sha512-fSO5qWI1cZJxXUND8c1Tm61KTc7HZcftazR/sleUoa4ZOR7z+MHp6bgwWz+IDbrSR+e1qMpcXB6OEpF+6RKKdg==, tarball: file:packages/cli/slidebook-cli-0.1.10.tgz}
+    version: 0.1.10
     hasBin: true
     peerDependencies:
       '@slidebook/core': '>=0.1.34'
@@ -3139,7 +3139,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.8.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.110.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)':
+  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.10.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.110.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)':
     dependencies:
       '@slidebook/core': file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3)
       '@slidebook/image': file:packages/image/slidebook-image-0.1.110.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.34.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
