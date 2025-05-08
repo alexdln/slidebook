@@ -1,38 +1,37 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const { createServer } = require("http");
-const next = require("next");
-const { initServer } = require("@slidebook/server/lib/init-server");
+import { createServer } from "http";
+import { initServer } from "@slidebook/server/lib/init-server.js";
 
-const DEV = process.env.NODE_ENV !== "production" && !process.argv.includes("--production");
-const TURBO = process.argv.includes("turbo") || process.argv.includes("turbopack");
-const APP_ONLY = process.argv.includes("app");
-const SERVER_ONLY = process.argv.includes("server");
-const PORT = process.env.PORT || 3000;
+import { OUT_DIR } from "./constants.js";
 
-if (SERVER_ONLY) {
-    const server = createServer();
-    initServer(server);
+export const runServer = async ({ dev, turbo, type, port }) => {
+    const { default: next } = await import("next");
 
-    server.listen(PORT, () => {
-        console.log(`> Realtime Server listening on port ${PORT}`);
-    });
-} else {
-    const app = next({ dev: DEV, turbo: TURBO, turbopack: TURBO });
-    const handle = app.getRequestHandler();
+    if (type === "server") {
+        const server = createServer();
+        initServer(server);
 
-    app.prepare().then(() => {
-        const server = createServer((req, res) => {
-            handle(req, res);
+        server.listen(port, () => {
+            console.log(`> Realtime Server listening on port ${port}`);
         });
+    } else {
+        const app = next({ dev, turbo, turbopack: turbo, dir: OUT_DIR });
+        const handle = app.getRequestHandler();
 
-        if (!APP_ONLY) {
-            initServer(server);
-        }
+        app.prepare().then(() => {
+            const server = createServer((req, res) => {
+                handle(req, res);
+            });
 
-        server.listen(PORT, () => {
-            console.log(`> ${APP_ONLY ? "App" : "App and Realtime Server"} listening on port ${PORT}`);
+            if (type === "app") {
+                initServer(server);
+            }
+
+            server.listen(port, () => {
+                console.log(`> ${type === "app" ? "App" : "App and Realtime Server"} listening on port ${port}`);
+            });
         });
-    });
-}
+    }
+};

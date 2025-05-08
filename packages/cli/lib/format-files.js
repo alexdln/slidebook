@@ -2,7 +2,7 @@ import { existsSync, mkdirSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
 
-import { IMAGE_DIR, OUT_DIR, IS_LIMITED_CI } from "./constants.js";
+import { IMAGE_DIR, OUT_DIR, IS_LIMITED_CI, IS_EJECTED } from "./constants.js";
 
 export const getDirs = (soft = false) => {
     let sourceDir = path.join(process.cwd(), "slides");
@@ -157,6 +157,10 @@ export const cleanOutDir = async () => {
 };
 
 export const eject = async () => {
+    if (IS_EJECTED) {
+        throw new Error("Already ejected");
+    }
+
     const copyQueue = [
         fs.cp(path.join(IMAGE_DIR, "lib", "server.js"), path.join(OUT_DIR, "lib", "server.js"), { recursive: true }),
         fs.cp(path.join(IMAGE_DIR, "src"), path.join(OUT_DIR, "src"), { recursive: true }),
@@ -174,12 +178,6 @@ export const eject = async () => {
     const packageJsonRaw = await fs.readFile(path.join(OUT_DIR, "package.json"), "utf-8");
     const packageJson = JSON.parse(packageJsonRaw);
     delete packageJson.scripts.eject;
-    packageJson.scripts = {
-        ...packageJson.scripts,
-        dev: "node lib/server.js",
-        build: "next build",
-        start: "node lib/server.js --production",
-    };
     await Promise.all([
         fs.writeFile(path.join(OUT_DIR, "package.json"), JSON.stringify(packageJson, null, 2)),
         fs.rm(path.join(OUT_DIR, "slides"), { recursive: true, force: true }),

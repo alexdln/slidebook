@@ -6,12 +6,17 @@ import { config } from "dotenv";
 import fs from "fs/promises";
 
 import { formatFile, formatFiles, getDirs, cleanOutDir, eject } from "./lib/format-files.js";
-import { OUT_DIR, IMAGE_DIR } from "./lib/constants.js";
+import { OUT_DIR, IMAGE_DIR, IS_EJECTED } from "./lib/constants.js";
+import { runServer } from "./lib/server.js";
 
 config();
 config({ path: `.env.local`, override: true });
 
 const command = process.argv[2];
+const TURBO = process.argv.includes("turbo") || process.argv.includes("turbopack");
+const APP_ONLY = process.argv.includes("app");
+const SERVER_ONLY = process.argv.includes("server");
+const PORT = process.env.PORT || 3000;
 
 const run = async () => {
     console.log("Preparing Slidebook...");
@@ -19,17 +24,21 @@ const run = async () => {
     const { sourceDir } = getDirs();
 
     if (["eject"].includes(command)) {
-        await eject();
-        return process.exit(0);
+        if (!IS_EJECTED) {
+            await eject();
+            return process.exit(0);
+        }
+        console.error("App already ejected");
+        return process.exit(1);
     }
 
-    if (["dev", "build"].includes(command)) {
+    if (["dev", "build"].includes(command) && !IS_EJECTED) {
         await cleanOutDir();
         await fs.cp(IMAGE_DIR, OUT_DIR, { recursive: true });
         await formatFiles();
     }
 
-    if (["dev"].includes(command)) {
+    if (["dev"].includes(command) && !IS_EJECTED) {
         console.log("Watching files...");
 
         watch(sourceDir, async (event, filename) => {
@@ -48,17 +57,11 @@ const run = async () => {
     }
 
     if (["start", "dev"].includes(command)) {
-        return spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", command, ...process.argv.slice(3)], {
-            shell: true,
-            stdio: "inherit",
-            cwd: OUT_DIR,
-            env: {
-                ...process.env,
-                NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
-                NEXT_PUBLIC_SLIDE_WIDTH: process.env.SLIDE_WIDTH,
-                NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
-            },
-            argv0: process.argv.slice(3).join(" "),
+        return runServer({
+            dev: command !== "start",
+            turbo: TURBO,
+            type: (APP_ONLY && "app") || (SERVER_ONLY && "server") || "all",
+            port: PORT,
         });
     }
     if (["build"].includes(command)) {
