@@ -9,7 +9,7 @@ import { useFragments, useSetFragments } from "@/providers/fragments/hooks";
 
 import { SyncContext } from "./context";
 
-export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
+export const useNavigations = (syncRefArg?: React.RefObject<HTMLInputElement | null>) => {
     const params = useParams();
     const { currentSlide, fragment, totalSlides } = useSlider();
     const { setCurrentSlide: setNavigationParams } = useSetSlider();
@@ -18,7 +18,6 @@ export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
     const router = useRouter();
     const socket = useSocket();
     const syncRefHook = useSync();
-    const syncRef = syncRefArg || syncRefHook;
     const lastIndex = +(Object.keys(fragments).sort((a, b) => +b - +a)[0] || 0);
     const nameOrSlide = params.pathname?.[0] || 0;
 
@@ -36,12 +35,13 @@ export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
             }
 
             const secret = sessionStorage.getItem("secret");
-            if (secret && !skipEvent && syncRef.current) {
+            const syncRef = syncRefArg?.current || syncRefHook;
+            if (secret && !skipEvent && syncRef?.checked) {
                 socket?.emit("changeSlide", { slide: slideNumber, fragment: fragmentNumber }, secret, socket.id);
             }
             setNavigationParams({ slide: slideNumber, fragment: fragmentNumber });
         },
-        [router, setFragments, currentSlide, nameOrSlide, totalSlides, setNavigationParams, socket, syncRef],
+        [router, setFragments, currentSlide, nameOrSlide, totalSlides, setNavigationParams, socket, syncRefArg],
     );
 
     const prev = useCallback(
@@ -102,5 +102,21 @@ export const useNavigations = (syncRefArg?: React.RefObject<boolean>) => {
 
 export const useSync = () => {
     const syncRef = useContext(SyncContext);
-    return syncRef;
+
+    return {
+        get checked() {
+            return syncRef?.current?.checked;
+        },
+        toggle: (value?: boolean) => {
+            if (!syncRef?.current) return;
+
+            const newValue = value ?? !syncRef.current.checked;
+            syncRef.current.checked = newValue;
+            localStorage.setItem("sync", newValue.toString());
+        },
+        register: (node: HTMLInputElement) => {
+            if (!syncRef) return;
+            syncRef.current = node;
+        },
+    };
 };

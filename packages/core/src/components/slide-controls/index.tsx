@@ -12,7 +12,7 @@ import "./slide-controls.scss";
 export const SlideControls = () => {
     const { prev, next, currentSlide, totalSlides } = useNavigations();
     const { isAuthenticated } = useAuthentication();
-    const syncRef = useSync();
+    const { toggle, register } = useSync();
 
     return (
         <div className="slide-controls">
@@ -61,13 +61,13 @@ export const SlideControls = () => {
                 </button>
                 <label>
                     <input
+                        ref={register}
                         type="checkbox"
                         onChange={(e) => {
-                            syncRef.current = e.target.checked;
+                            toggle(e.currentTarget.checked);
                         }}
                         hidden
                         className="slide-controls__sync"
-                        defaultChecked={syncRef.current}
                     />
                     <span className="slide-controls__sync-label">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

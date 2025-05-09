@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const SyncContext = createContext<React.RefObject<boolean>>({ current: true });
+export const SyncContext = createContext<React.RefObject<HTMLInputElement | null> | null>(null);

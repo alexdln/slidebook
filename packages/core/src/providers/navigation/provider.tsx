@@ -14,7 +14,7 @@ export interface NavigationProviderProps {
 
 export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children }) => {
     const socket = useSocket();
-    const syncRef = useRef(true);
+    const syncRef = useRef<HTMLInputElement | null>(null);
     const { currentSlide, fragment, next, prev, navigate, totalSlides } = useNavigations(syncRef);
 
     // Set up keyboard navigation
@@ -33,7 +33,11 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
         socket.on(
             "slideChange",
             ({ slide, fragment: newFragment }: { slide: number; fragment: number | "f" | "l" }, socketId: string) => {
-                if ((slide !== currentSlide || newFragment !== fragment) && socket.id !== socketId && syncRef.current) {
+                if (
+                    (slide !== currentSlide || newFragment !== fragment) &&
+                    socket.id !== socketId &&
+                    syncRef.current?.checked
+                ) {
                     navigate(slide, newFragment, true);
                 }
             },
@@ -42,7 +46,7 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
         socket.on(
             "currentSlide",
             ({ slide, fragment: newFragment }: { slide: number; fragment: number | "f" | "l" }) => {
-                if ((slide !== currentSlide || newFragment !== fragment) && syncRef.current) {
+                if ((slide !== currentSlide || newFragment !== fragment) && syncRef.current?.checked) {
                     navigate(slide, newFragment, true);
                 }
             },
@@ -60,6 +64,13 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
     useEffect(() => {
         socket?.emit("getCurrentSlide");
     }, [socket]);
+
+    useEffect(() => {
+        const sync = localStorage.getItem("sync");
+        if (syncRef.current) {
+            syncRef.current.checked = !sync || sync === "true";
+        }
+    }, []);
 
     return <SyncContext.Provider value={syncRef}>{children}</SyncContext.Provider>;
 };
