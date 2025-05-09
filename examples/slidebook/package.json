@@ -9,9 +9,9 @@
     "eject": "slidebook eject"
   },
   "dependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.34.tgz",
-    "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.10.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.110.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.38.tgz",
+    "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.12.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.113.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.14.tgz",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
