@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export const Slide = () => (
     <div className="w-full h-full flex flex-col">
         <motion.h2
-            className="text-3xl font-bold mb-8"
+            className="text-3xl font-bold mb-32"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -17,7 +17,7 @@ export const Slide = () => (
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="relative w-full max-w-lg aspect-video bg-slate-50 rounded-lg p-4"
+                className="relative w-full max-w-lg aspect-video bg-slate-100 rounded-lg p-4"
             >
                 <div className="absolute top-16 left-16 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center border-2 border-blue-300">
                     <span className="font-bold">A</span>
