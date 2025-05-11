@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/cli",
-  "version": "0.1.13",
+  "version": "0.1.16",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
