@@ -20,6 +20,7 @@ export const runServer = async ({ dev, turbo, type, port }) => {
         process.env.NEXT_PUBLIC_SERVER_URL = process.env.SERVER_URL;
         process.env.NEXT_PUBLIC_SLIDE_WIDTH = process.env.SLIDE_WIDTH;
         process.env.NEXT_PUBLIC_SLIDE_HEIGHT = process.env.SLIDE_HEIGHT;
+        if (type !== "app") process.env.NEXT_PUBLIC_DEFAULT_SERVER = "true";
 
         const app = next({
             dev,

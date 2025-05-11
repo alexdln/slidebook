@@ -22,12 +22,6 @@ export const initSocketServer = (server) => {
             if (currentSlide) socket.emit("currentSlide", currentSlide);
         });
 
-        // Client viewing a slide
-        socket.on("viewSlide", (currentSlideArg) => {
-            // You could track analytics here
-            console.log(`Client viewing slide ${currentSlideArg}`);
-        });
-
         // Host changes slide
         socket.on("changeSlide", (currentSlideArg, secret, socketId) => {
             if (validateSecret(secret)) {

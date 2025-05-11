@@ -3,6 +3,7 @@ import { SliderProvider } from "@/providers/slider/provider";
 import { SocketProvider } from "@/providers/socket/provider";
 import { NavigationProvider } from "@/providers/navigation/provider";
 import { FragmentsProvider } from "@/providers/fragments/provider";
+import { ConfigurationProvider } from "@/providers/configuration/provider";
 import { SLIDE_WIDTH, SLIDE_HEIGHT } from "@/lib/settings";
 
 import { AutoZoomContainer } from "../auto-zoom-container";
@@ -22,6 +23,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
             <AuthenticationProvider>
                 <FragmentsProvider>
                     <NavigationProvider>
+                        <ConfigurationProvider />
                         <ThemeDetector />
                         <main
                             className="slide-layer"
