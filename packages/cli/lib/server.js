@@ -17,7 +17,18 @@ export const runServer = async ({ dev, turbo, type, port }) => {
             console.log(`> Realtime Server listening on port ${port}`);
         });
     } else {
-        const app = next({ dev, turbo, turbopack: turbo, dir: OUT_DIR, minimalMode: false, quiet: false });
+        process.env.NEXT_PUBLIC_SERVER_URL = process.env.SERVER_URL;
+        process.env.NEXT_PUBLIC_SLIDE_WIDTH = process.env.SLIDE_WIDTH;
+        process.env.NEXT_PUBLIC_SLIDE_HEIGHT = process.env.SLIDE_HEIGHT;
+
+        const app = next({
+            dev,
+            turbo,
+            turbopack: turbo,
+            dir: OUT_DIR,
+            minimalMode: false,
+            quiet: false,
+        });
         const handle = app.getRequestHandler();
 
         app.prepare().then(() => {

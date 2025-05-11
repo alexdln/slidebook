@@ -39,8 +39,8 @@ importers:
   examples/slidebook:
     dependencies:
       '@slidebook/cli':
-        specifier: file:..\..\packages\cli\slidebook-cli-0.1.13.tgz
-        version: file:packages/cli/slidebook-cli-0.1.13.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.115.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)
+        specifier: file:..\..\packages\cli\slidebook-cli-0.1.16.tgz
+        version: file:packages/cli/slidebook-cli-0.1.16.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.115.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)
       '@slidebook/core':
         specifier: file:..\..\packages\core\slidebook-core-0.1.39.tgz
         version: file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3)
@@ -182,9 +182,6 @@ importers:
       '@slidebook/image':
         specifier: file:..\..\packages\image\slidebook-image-0.1.115.tgz
         version: file:packages/image/slidebook-image-0.1.115.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@slidebook/server':
-        specifier: file:..\..\packages\server\slidebook-server-0.1.14.tgz
-        version: file:packages/server/slidebook-server-0.1.14.tgz
 
   packages/image:
     devDependencies:
@@ -715,9 +712,9 @@ packages:
   '@rushstack/eslint-patch@1.11.0':
     resolution: {integrity: sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==}
 
-  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.13.tgz':
-    resolution: {integrity: sha512-THuj6DT0yFLrSegsh17PgZUyAGQ7Zqtx172+6OHsgCXVdgnX5wp5bfObiUiUXurXyeGUnK1Zbj8xhT+N8Gt8Kw==, tarball: file:packages/cli/slidebook-cli-0.1.13.tgz}
-    version: 0.1.13
+  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.16.tgz':
+    resolution: {integrity: sha512-boivVyrZsb71Iq3haCf9o8ONlWpexOnFsr2nXttwjovtdPTP66yLDPEw3ZXGiRJvCeOoJ21akZrZBIJrmAjvzA==, tarball: file:packages/cli/slidebook-cli-0.1.16.tgz}
+    version: 0.1.16
     hasBin: true
     peerDependencies:
       '@slidebook/core': '>=0.1.34'
@@ -3139,7 +3136,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.13.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.115.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)':
+  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.16.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.115.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.14.tgz)':
     dependencies:
       '@slidebook/core': file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3)
       '@slidebook/image': file:packages/image/slidebook-image-0.1.115.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.39.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
