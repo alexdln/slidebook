@@ -7,3 +7,7 @@ export const SLIDE_HEIGHT =
     !process.env.NEXT_PUBLIC_SLIDE_HEIGHT || Number.isNaN(+process.env.NEXT_PUBLIC_SLIDE_HEIGHT)
         ? 680
         : Number(process.env.NEXT_PUBLIC_SLIDE_HEIGHT);
+
+export const CONFIGURED_SERVER =
+    process.env.NEXT_PUBLIC_DEFAULT_SERVER ||
+    (typeof process.env.NEXT_PUBLIC_SERVER_URL === "string" && process.env.NEXT_PUBLIC_SERVER_URL !== "undefined");

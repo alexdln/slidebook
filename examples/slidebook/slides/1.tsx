@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "@slidebook/core/lib/components/fragment";
+import { Fragment } from "@slidebook/core/lib";
 import { motion } from "framer-motion";
 
 export const Slide = () => (

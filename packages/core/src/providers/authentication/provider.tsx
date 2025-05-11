@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { CONFIGURED_SERVER } from "@/lib/settings";
+
 import { AuthenticationContext, AuthorizeContext } from "./context";
 
 export interface AuthenticationProviderProps {
@@ -12,6 +14,8 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const authorize = useCallback(async (secret: string, restore?: boolean) => {
+        if (!CONFIGURED_SERVER) return;
+
         try {
             const response = await fetch(
                 `${process.env.NEXT_PUBLIC_SERVER_URL || ""}/${restore ? "restore" : "auth"}`,
@@ -38,7 +42,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
 
     useEffect(() => {
         const secret = sessionStorage.getItem("secret");
-        if (secret) {
+        if (secret && CONFIGURED_SERVER) {
             authorize(secret, true);
         }
     }, [authorize]);

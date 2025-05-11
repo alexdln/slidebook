@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/cli",
-  "version": "0.1.16",
+  "version": "0.1.18",
   "private": true,
   "bin": {
     "slidebook": "./slidebook.js"
@@ -17,9 +17,9 @@
     "start": "node lib/server.js --production"
   },
   "devDependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.39.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.115.tgz",
-    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.14.tgz"
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.45.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.117.tgz",
+    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.15.tgz"
   },
   "peerDependencies": {
     "@slidebook/core": ">=0.1.34",
