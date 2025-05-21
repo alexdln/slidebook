@@ -9,9 +9,9 @@
     "eject": "slidebook eject"
   },
   "dependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.45.tgz",
-    "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.18.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.117.tgz",
+    "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.19.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.50.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.118.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.15.tgz",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
@@ -19,9 +19,6 @@
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tailwind-merge": "3.0.2",
-    "cross-env": "7.0.3",
-    "dotenv": "16.4.7",
     "tw-animate-css": "1.2.5"
   },
   "devDependencies": {

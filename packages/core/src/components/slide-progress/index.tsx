@@ -12,7 +12,10 @@ export const SlideProgress: React.FC = () => {
     const percentage = (currentSlide / totalSlides) * 100;
 
     return (
-        <div className="slide-progress">
+        <div
+            className="slide-progress"
+            style={{ "--dot-size": `calc((100vw - 2rem) / ${totalSlides})` } as React.CSSProperties}
+        >
             <div className="slide-progress__bar" style={{ width: `${percentage}%` }}></div>
             <div className="slide-progress__dots">
                 {Array.from({ length: totalSlides }).map((_, index) => (
