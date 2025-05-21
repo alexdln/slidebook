@@ -14,7 +14,6 @@
 
 .slide-progress__dots {
     display: flex;
-    gap: 0.25rem;
     width: 100%;
     margin-top: -1.25rem;
 }
@@ -43,4 +42,6 @@
     border-radius: 9999px;
     color: inherit;
     background-color: currentColor;
+    max-width: var(--dot-size);
+    max-height: var(--dot-size);
 }
