@@ -37,7 +37,7 @@ export const useNavigations = (syncRefArg?: React.RefObject<HTMLInputElement | n
             const secret = sessionStorage.getItem("secret");
             const syncRef = syncRefArg?.current || syncRefHook;
             if (secret && !skipEvent && syncRef?.checked) {
-                socket?.emit("changeSlide", { slide: slideNumber, fragment: fragmentNumber }, secret, socket.id);
+                socket?.emit("changeSlide", { s: slideNumber, f: fragmentNumber }, secret, socket.id);
             }
             setNavigationParams({ slide: slideNumber, fragment: fragmentNumber });
         },
