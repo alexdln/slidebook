@@ -6,7 +6,7 @@ import "./theme-switcher.scss";
 
 export const ThemeSwitcher: React.FC = () => {
     const changeTheme = (theme: string) => {
-        localStorage.setItem("theme", theme);
+        document.cookie = `sb_theme=${theme}; Path=/; SameSite=Strict`;
         document.documentElement.classList.remove("theme-light", "theme-dark", "theme-system");
         if (theme === "system") {
             document.documentElement.classList.add(`theme-system`);

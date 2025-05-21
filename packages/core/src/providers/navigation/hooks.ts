@@ -112,7 +112,7 @@ export const useSync = () => {
 
             const newValue = value ?? !syncRef.current.checked;
             syncRef.current.checked = newValue;
-            localStorage.setItem("sync", newValue.toString());
+            document.cookie = `sb_sync=${newValue.toString()}; Path=/; SameSite=Strict`;
         },
         register: (node: HTMLInputElement) => {
             if (!syncRef) return;
