@@ -16,7 +16,7 @@ export const ConfigurationProvider: React.FC<ConfigurationProviderProps> = ({ ch
     const syncRef = useSync();
 
     useEffect(() => {
-        const sync = localStorage.getItem("sync");
+        const sync = document.cookie.match(/sb_sync=([^;]+)/)?.[1];
         syncRef.toggle(!sync || sync === "true");
     }, []);
 

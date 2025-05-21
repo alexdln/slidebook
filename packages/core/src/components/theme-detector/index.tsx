@@ -1,7 +1,7 @@
 "use client";
 
 const detectTheme = () => {
-    const userTheme = localStorage.getItem("theme");
+    const userTheme = document.cookie.match(/sb_theme=([^;]+)/)?.[1];
     if (userTheme && ["light", "dark"].includes(userTheme)) {
         document.documentElement.classList.add(`theme-${userTheme}`);
     } else {

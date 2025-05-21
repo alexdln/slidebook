@@ -37,7 +37,7 @@ export const useNavigations = (syncRefArg?: React.RefObject<HTMLInputElement | n
             const secret = sessionStorage.getItem("secret");
             const syncRef = syncRefArg?.current || syncRefHook;
             if (secret && !skipEvent && syncRef?.checked) {
-                socket?.emit("changeSlide", { slide: slideNumber, fragment: fragmentNumber }, secret, socket.id);
+                socket?.emit("changeSlide", { s: slideNumber, f: fragmentNumber }, secret, socket.id);
             }
             setNavigationParams({ slide: slideNumber, fragment: fragmentNumber });
         },
@@ -112,7 +112,7 @@ export const useSync = () => {
 
             const newValue = value ?? !syncRef.current.checked;
             syncRef.current.checked = newValue;
-            localStorage.setItem("sync", newValue.toString());
+            document.cookie = `sb_sync=${newValue.toString()}; Path=/; SameSite=Strict`;
         },
         register: (node: HTMLInputElement) => {
             if (!syncRef) return;

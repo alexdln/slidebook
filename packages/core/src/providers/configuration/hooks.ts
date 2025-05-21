@@ -60,25 +60,22 @@ export const useSocketNavigation = () => {
         // Listen for slide changes from the host
         socket.on(
             "slideChange",
-            ({ slide, fragment: newFragment }: { slide: number; fragment: number | "f" | "l" }, socketId: string) => {
+            ({ s: newSlide, f: newFragment }: { s: number; f: number | "f" | "l" }, socketId: string) => {
                 if (
-                    (slide !== currentSlide || newFragment !== fragment) &&
+                    (newSlide !== currentSlide || newFragment !== fragment) &&
                     socket.id !== socketId &&
                     syncRef?.checked
                 ) {
-                    navigate(slide, newFragment, true);
+                    navigate(newSlide, newFragment, true);
                 }
             },
         );
 
-        socket.on(
-            "currentSlide",
-            ({ slide, fragment: newFragment }: { slide: number; fragment: number | "f" | "l" }) => {
-                if ((slide !== currentSlide || newFragment !== fragment) && syncRef?.checked) {
-                    navigate(slide, newFragment, true);
-                }
-            },
-        );
+        socket.on("currentSlide", ({ s: newSlide, f: newFragment }: { s: number; f: number | "f" | "l" }) => {
+            if ((newSlide !== currentSlide || newFragment !== fragment) && syncRef?.checked) {
+                navigate(newSlide, newFragment, true);
+            }
+        });
 
         return () => {
             socket.off("slideChange");

@@ -1,8 +1,7 @@
 import { Server } from "socket.io";
 
 import { validateSecret } from "./authenticate.js";
-
-let currentSlide = { slide: 0, fragment: "f" };
+import { slideStore } from "./store.js";
 
 /**
  * @param {import("http").Server} server
@@ -19,13 +18,14 @@ export const initSocketServer = (server) => {
     io.on("connection", (socket) => {
         // Send current slide to newly connected client
         socket.on("getCurrentSlide", () => {
-            if (currentSlide) socket.emit("currentSlide", currentSlide);
+            if (slideStore) socket.emit("currentSlide", slideStore);
         });
 
         // Host changes slide
         socket.on("changeSlide", (currentSlideArg, secret, socketId) => {
             if (validateSecret(secret)) {
-                currentSlide = currentSlideArg;
+                slideStore.s = currentSlideArg.s;
+                slideStore.f = currentSlideArg.f;
                 // Broadcast to all clients
                 io.emit("slideChange", currentSlideArg, socketId);
             }
@@ -33,8 +33,8 @@ export const initSocketServer = (server) => {
 
         // Host actualizes slide
         socket.on("actualizeSlide", (secret) => {
-            if (validateSecret(secret) && currentSlide) {
-                io.emit("currentSlide", currentSlide);
+            if (validateSecret(secret) && slideStore) {
+                io.emit("currentSlide", slideStore);
             }
         });
 
