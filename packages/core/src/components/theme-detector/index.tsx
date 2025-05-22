@@ -1,5 +1,3 @@
-"use client";
-
 const detectTheme = () => {
     const userTheme = document.cookie.match(/sb_theme=([^;]+)/)?.[1];
     if (userTheme && ["light", "dark"].includes(userTheme)) {

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { CONFIGURED_SERVER } from "@/lib/settings";
+import { isDefaultServer } from "@/lib/configuration-helpers";
 
 import { AuthenticationContext, AuthorizeContext } from "./context";
 
@@ -14,7 +15,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const authorize = useCallback(async (secret: string, restore?: boolean) => {
-        if (!CONFIGURED_SERVER) return;
+        if (!CONFIGURED_SERVER && !isDefaultServer()) return;
 
         try {
             const response = await fetch(

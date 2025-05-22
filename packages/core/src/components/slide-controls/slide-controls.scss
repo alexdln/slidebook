@@ -58,10 +58,25 @@
 }
 
 .slide-controls__host-link {
+    display: none;
     padding: 0.5rem 0;
     font-size: 0.875rem;
     color: var(--cl-slate-500);
     transition: color 0.2s;
+
+    .sb-default-server &,
+    &.slide-controls__host-link--visible {
+        display: block;
+    }
+}
+
+.slide-controls__sync-label {
+    display: none;
+
+    .sb-default-server &,
+    &.slide-controls__sync-label--visible {
+        display: block;
+    }
 }
 
 .slide-controls__host-link:hover {
@@ -72,7 +87,7 @@
     display: none;
 }
 
-.slide-controls__sync-label {
+.slide-controls__sync-button {
     display: block;
     cursor: pointer;
     padding: 0.5rem;
@@ -81,15 +96,15 @@
     transition: background-color 0.2s;
 }
 
-.slide-controls__sync-label:hover {
+.slide-controls__sync-button:hover {
     background-color: var(--cl-slate-300);
 }
 
-.slide-controls__sync:checked+.slide-controls__sync-label {
+.slide-controls__sync:checked+.slide-controls__sync-button {
     background-color: var(--cl-blue-500);
     color: var(--cl-slate-50);
 }
 
-.slide-controls__sync:checked+.slide-controls__sync-label:hover {
+.slide-controls__sync:checked+.slide-controls__sync-button:hover {
     background-color: var(--cl-blue-600);
 }

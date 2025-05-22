@@ -10,6 +10,7 @@ import { AutoZoomContainer } from "../auto-zoom-container";
 import { SlideProgress } from "../slide-progress";
 import { SlideControls } from "../slide-controls";
 import { ThemeDetector } from "../theme-detector";
+import { ConfigurationDetector } from "../configuration-detector";
 
 import "./slide-layer.scss";
 
@@ -25,6 +26,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
                     <NavigationProvider>
                         <ConfigurationProvider />
                         <ThemeDetector />
+                        <ConfigurationDetector />
                         <main
                             className="slide-layer"
                             style={
