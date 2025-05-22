@@ -40,16 +40,16 @@ importers:
     dependencies:
       '@slidebook/cli':
         specifier: file:..\..\packages\cli\slidebook-cli-0.1.20.tgz
-        version: file:packages/cli/slidebook-cli-0.1.20.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.27.tgz)
+        version: file:packages/cli/slidebook-cli-0.1.20.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.28.tgz)
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.54.tgz
-        version: file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.58.tgz
+        version: file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)
       '@slidebook/image':
         specifier: file:..\..\packages\image\slidebook-image-0.1.118.tgz
-        version: file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@slidebook/server':
-        specifier: file:..\..\packages\server\slidebook-server-0.1.27.tgz
-        version: file:packages/server/slidebook-server-0.1.27.tgz
+        specifier: file:..\..\packages\server\slidebook-server-0.1.28.tgz
+        version: file:packages/server/slidebook-server-0.1.28.tgz
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -98,14 +98,14 @@ importers:
         version: 16.4.7
     devDependencies:
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.54.tgz
-        version: file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.58.tgz
+        version: file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)
       '@slidebook/image':
         specifier: file:..\..\packages\image\slidebook-image-0.1.118.tgz
-        version: file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@slidebook/server':
-        specifier: file:..\..\packages\server\slidebook-server-0.1.27.tgz
-        version: file:packages/server/slidebook-server-0.1.27.tgz
+        specifier: file:..\..\packages\server\slidebook-server-0.1.28.tgz
+        version: file:packages/server/slidebook-server-0.1.28.tgz
 
   packages/core:
     dependencies:
@@ -168,17 +168,17 @@ importers:
   packages/create-slidebook-app:
     dependencies:
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.54.tgz
-        version: file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.58.tgz
+        version: file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)
       '@slidebook/image':
         specifier: file:..\..\packages\image\slidebook-image-0.1.118.tgz
-        version: file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   packages/image:
     devDependencies:
       '@slidebook/core':
-        specifier: file:..\..\packages\core\slidebook-core-0.1.54.tgz
-        version: file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)
+        specifier: file:..\..\packages\core\slidebook-core-0.1.58.tgz
+        version: file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)
       '@types/node':
         specifier: 22.13.14
         version: 22.13.14
@@ -712,9 +712,9 @@ packages:
       '@slidebook/image': '>=0.1.108'
       '@slidebook/server': '>=0.1.14'
 
-  '@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz':
-    resolution: {integrity: sha512-yS/iimdspaYKx7QeQEvLT22d6z6rRnOpwm+KxQTne2gzg46T5upcweS+0hbcUO0ead0B8eHocG3zhBUF123axQ==, tarball: file:packages/core/slidebook-core-0.1.54.tgz}
-    version: 0.1.54
+  '@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz':
+    resolution: {integrity: sha512-VlK9khs/L+h8itLrYmRRFFRuDz0U89bOrCp3gkRdYt6Z+BEU/DXv4YbPY0XJX3aNHb4dYtYxeC+tmLWQnmkLVw==, tarball: file:packages/core/slidebook-core-0.1.58.tgz}
+    version: 0.1.58
 
   '@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz':
     resolution: {integrity: sha512-/IjF4X5Py3/QorlV5FINL95EB8bbZPjk+R7uF5gmkUvuG0vXhmsY7rVDBoo736fw9A6huNQL8gNYeWZXj/cKPQ==, tarball: file:packages/image/slidebook-image-0.1.118.tgz}
@@ -725,9 +725,9 @@ packages:
       react: '>=19.0.0'
       react-dom: '>=19.0.0'
 
-  '@slidebook/server@file:packages/server/slidebook-server-0.1.27.tgz':
-    resolution: {integrity: sha512-h8/y1ZlWU54plAN0zOS9MwXxJ4bUWP1RmUEz+75gPo6bdfRsvuaCOxWgJ1H6b6zreUOk+UIKcF5OLRAFUf7oSA==, tarball: file:packages/server/slidebook-server-0.1.27.tgz}
-    version: 0.1.27
+  '@slidebook/server@file:packages/server/slidebook-server-0.1.28.tgz':
+    resolution: {integrity: sha512-Lcmnu/1qK5Jb4h5jlmCmx5omsLGil6GHJk4pnlNoM7KlvbzmjAHxZWEH7r/k/nzf5LQ82m3zLdALNN1XSUPJug==, tarball: file:packages/server/slidebook-server-0.1.28.tgz}
+    version: 0.1.28
     hasBin: true
 
   '@socket.io/component-emitter@3.1.2':
@@ -3119,14 +3119,14 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.20.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.27.tgz)':
+  '@slidebook/cli@file:packages/cli/slidebook-cli-0.1.20.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@slidebook/server@file:packages/server/slidebook-server-0.1.28.tgz)':
     dependencies:
-      '@slidebook/core': file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)
-      '@slidebook/image': file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@slidebook/server': file:packages/server/slidebook-server-0.1.27.tgz
+      '@slidebook/core': file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)
+      '@slidebook/image': file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@slidebook/server': file:packages/server/slidebook-server-0.1.28.tgz
       dotenv: 16.4.7
 
-  '@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)':
+  '@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)':
     dependencies:
       clsx: 2.1.1
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
@@ -3144,14 +3144,14 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@slidebook/image@file:packages/image/slidebook-image-0.1.118.tgz(@slidebook/core@file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3))(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@slidebook/core': file:packages/core/slidebook-core-0.1.54.tgz(sass@1.86.3)
+      '@slidebook/core': file:packages/core/slidebook-core-0.1.58.tgz(sass@1.86.3)
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@slidebook/server@file:packages/server/slidebook-server-0.1.27.tgz':
+  '@slidebook/server@file:packages/server/slidebook-server-0.1.28.tgz':
     dependencies:
       dotenv: 16.4.7
       socket.io: 4.8.1

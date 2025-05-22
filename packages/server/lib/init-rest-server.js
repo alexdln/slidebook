@@ -7,20 +7,20 @@ import { slideStore, settingsStore } from "./store.js";
  */
 export const initRestServer = (server) => {
     server.addListener("request", async (req, res) => {
+        if (req.headers["rsc"]) return res;
+
         const url = new URL(req.url, "http://s");
 
         if (process.env.DEFAULT_SERVER) {
-            res.setHeader(
-                "Set-Cookie",
-                `slidebook=${JSON.stringify({ ...slideStore, ...settingsStore })}; Path=/; SameSite=Strict`,
-            );
+            res.setHeader("Set-Cookie", `sb_store=${JSON.stringify(slideStore)}; Path=/; SameSite=Strict`);
+            res.setHeader("Set-Cookie", `sb_configuration=${JSON.stringify(settingsStore)}; Path=/; SameSite=Strict`);
             const sync = req.headers.cookie?.match(/sb_sync=([^;]+)/)?.[1];
             const isRootPathname = ["/", ""].includes(url.pathname);
 
-            if (!req.headers["rsc"] && isRootPathname) {
+            if (isRootPathname) {
                 res.writeHead(302, { Location: `/${slideStore.s}/${slideStore.f}` });
                 return res.end();
-            } else if (!req.headers["rsc"] && (!sync || sync === "true") && url.pathname) {
+            } else if (!sync || sync === "true") {
                 const match = url.pathname.match(/^\/(\d+)\/(\d+|f|l)(\/|$)/);
                 if (match && (String(slideStore.s) !== match[1] || String(slideStore.f) !== match[2])) {
                     res.writeHead(302, { Location: `/${slideStore.s}/${slideStore.f}` });
