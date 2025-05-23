@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 
 import { validateSecret } from "./authenticate.js";
-import { slideStore } from "./store.js";
+import { slideStore, configurationStore } from "./store.js";
 
 /**
  * @param {import("http").Server} server
@@ -18,7 +18,7 @@ export const initSocketServer = (server) => {
     io.on("connection", (socket) => {
         // Send current slide to newly connected client
         socket.on("getCurrentSlide", () => {
-            if (slideStore) socket.emit("currentSlide", slideStore);
+            if (slideStore.s && slideStore.f) socket.emit("currentSlide", slideStore);
         });
 
         // Host changes slide
@@ -31,9 +31,18 @@ export const initSocketServer = (server) => {
             }
         });
 
+        // Host changes theme
+        socket.on("changeTheme", (theme, secret, socketId) => {
+            if (validateSecret(secret)) {
+                configurationStore.t = theme;
+                // Broadcast to all clients
+                io.emit("themeChange", theme, socketId);
+            }
+        });
+
         // Host actualizes slide
         socket.on("actualizeSlide", (secret) => {
-            if (validateSecret(secret) && slideStore) {
+            if (validateSecret(secret) && slideStore.s && slideStore.f) {
                 io.emit("currentSlide", slideStore);
             }
         });

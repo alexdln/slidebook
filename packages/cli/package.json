@@ -17,9 +17,9 @@
     "start": "node lib/server.js --production"
   },
   "devDependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.58.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.62.tgz",
     "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.118.tgz",
-    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.28.tgz"
+    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.30.tgz"
   },
   "peerDependencies": {
     "@slidebook/core": ">=0.1.34",

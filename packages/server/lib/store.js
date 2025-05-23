@@ -1,2 +1,2 @@
-export const slideStore = { s: 0, f: "f" };
-export const settingsStore = { t: "s", ds: process.env.DEFAULT_SERVER };
+export const slideStore = { s: null, f: null };
+export const configurationStore = { t: null };
