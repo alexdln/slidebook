@@ -1,5 +1,5 @@
 const detectConfiguration = () => {
-    if (document.cookie.match(/sb_configuration=([^;]+)/)) {
+    if (document.cookie.match(/sb_default_server=([^;]+)/)) {
         document.documentElement.classList.add("sb-default-server");
     }
 };

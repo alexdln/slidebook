@@ -43,7 +43,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
 
     useEffect(() => {
         const secret = sessionStorage.getItem("secret");
-        if (secret && CONFIGURED_SERVER) {
+        if (secret && (CONFIGURED_SERVER || isDefaultServer())) {
             authorize(secret, true);
         }
     }, [authorize]);

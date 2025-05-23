@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 import { useSocket } from "@/providers/socket/hooks";
 import { useNavigations, useSync } from "@/providers/navigation/hooks";
+import { changeTheme } from "@/lib/theming";
 
 export const useKeyboardNavigation = () => {
     const { currentSlide, next, prev, navigate, totalSlides } = useNavigations();
@@ -77,9 +78,16 @@ export const useSocketNavigation = () => {
             }
         });
 
+        socket.on("themeChange", (theme: string) => {
+            if (syncRef?.checked) {
+                changeTheme(theme);
+            }
+        });
+
         return () => {
             socket.off("slideChange");
             socket.off("currentSlide");
+            socket.off("themeChange");
         };
     }, [socket, currentSlide, navigate]);
 

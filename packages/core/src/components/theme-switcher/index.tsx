@@ -1,31 +1,32 @@
 "use client";
 
+import { useCallback } from "react";
 import clsx from "clsx";
+
+import { useSocket } from "@/providers/socket/hooks";
+import { changeTheme } from "@/lib/theming";
 
 import "./theme-switcher.scss";
 
 export const ThemeSwitcher: React.FC = () => {
-    const changeTheme = (theme: string) => {
-        document.cookie = `sb_theme=${theme}; Path=/; SameSite=Strict`;
-        document.documentElement.classList.remove("theme-light", "theme-dark", "theme-system");
-        if (theme === "system") {
-            document.documentElement.classList.add(`theme-system`);
-            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                document.documentElement.classList.add("theme-dark");
-            } else {
-                document.documentElement.classList.add("theme-light");
-            }
-        } else {
-            document.documentElement.classList.add(`theme-${theme}`);
-        }
-    };
+    const socket = useSocket();
+
+    const changeThemeHandler = useCallback(
+        (theme: string) => {
+            changeTheme(theme);
+
+            const secret = sessionStorage.getItem("secret");
+            socket?.emit("changeTheme", theme, secret, socket.id);
+        },
+        [socket],
+    );
 
     return (
         <div className="theme-switcher">
             <button
                 className={clsx("theme-switcher-button", "theme-switcher_dark")}
                 type="button"
-                onClick={() => changeTheme("dark")}
+                onClick={() => changeThemeHandler("dark")}
             >
                 <svg width="16" height="16" viewBox="0 0 20 20">
                     <title>Dark</title>
@@ -40,7 +41,7 @@ export const ThemeSwitcher: React.FC = () => {
             <button
                 className={clsx("theme-switcher-button", "theme-switcher_system")}
                 type="button"
-                onClick={() => changeTheme("system")}
+                onClick={() => changeThemeHandler("system")}
             >
                 <svg width="16" height="16" viewBox="0 0 20 20">
                     <title>System</title>
@@ -73,7 +74,7 @@ export const ThemeSwitcher: React.FC = () => {
             <button
                 className={clsx("theme-switcher-button", "theme-switcher_light")}
                 type="button"
-                onClick={() => changeTheme("light")}
+                onClick={() => changeThemeHandler("light")}
             >
                 <svg width="16" height="16" viewBox="0 0 20 20">
                     <title>Light</title>
