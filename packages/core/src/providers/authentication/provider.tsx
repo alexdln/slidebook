@@ -19,7 +19,11 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
 
         try {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_SERVER_URL || ""}/${restore ? "restore" : "auth"}`,
+                `${
+                    process.env.NEXT_PUBLIC_SERVER_URL && process.env.NEXT_PUBLIC_SERVER_URL !== "undefined"
+                        ? process.env.NEXT_PUBLIC_SERVER_URL
+                        : ""
+                }/${restore ? "restore" : "auth"}`,
                 {
                     method: "POST",
                     headers: {

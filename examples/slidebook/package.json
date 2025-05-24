@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.20.tgz",
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.62.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.118.tgz",
-    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.30.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.72.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.120.tgz",
+    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.38.tgz",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "framer-motion": "12.6.5",

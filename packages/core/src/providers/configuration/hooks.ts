@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useSocket } from "@/providers/socket/hooks";
 import { useNavigations, useSync } from "@/providers/navigation/hooks";
 import { changeTheme } from "@/lib/theming";
+import { changeQrVisible } from "@/lib/qr-code";
 
 export const useKeyboardNavigation = () => {
     const { currentSlide, next, prev, navigate, totalSlides } = useNavigations();
@@ -84,10 +85,17 @@ export const useSocketNavigation = () => {
             }
         });
 
+        socket.on("qrVisibleChange", ({ v }: { v: string }) => {
+            if (syncRef?.checked) {
+                changeQrVisible(v);
+            }
+        });
+
         return () => {
             socket.off("slideChange");
             socket.off("currentSlide");
             socket.off("themeChange");
+            socket.off("qrVisibleChange");
         };
     }, [socket, currentSlide, navigate]);
 

@@ -1,0 +1,24 @@
+.qr-window {
+    display: none;
+
+    .sb-default-server &,
+    &.qr-window--visible {
+        display: block;
+    }
+}
+
+.qr-window-content {
+    display: none;
+    position: fixed;
+    right: 2rem;
+    bottom: 6rem;
+    width: 20rem;
+    height: auto;
+    max-width: calc(100% - 4rem);
+    aspect-ratio: 1 / 1;
+    z-index: 1000;
+
+    .sb-qr-visible & {
+        display: block;
+    }
+}
