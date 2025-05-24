@@ -15,7 +15,11 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         if (!CONFIGURED_SERVER && !isDefaultServer()) return;
 
         // Initialize socket connection to our external Socket.io server
-        const socketInstance = io(process.env.NEXT_PUBLIC_SERVER_URL || window.location.origin);
+        const socketInstance = io(
+            process.env.NEXT_PUBLIC_SERVER_URL && process.env.NEXT_PUBLIC_SERVER_URL !== "undefined"
+                ? process.env.NEXT_PUBLIC_SERVER_URL
+                : window.location.origin,
+        );
 
         setSocket(socketInstance);
 

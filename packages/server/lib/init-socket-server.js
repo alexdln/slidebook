@@ -40,6 +40,16 @@ export const initSocketServer = (server) => {
             }
         });
 
+        // Host changes QR visibility
+        socket.on("changeQrVisible", ({ v, url }, secret, socketId) => {
+            configurationStore.qr = v;
+            configurationStore.url = url;
+
+            if (validateSecret(secret)) {
+                io.emit("qrVisibleChange", { v, url }, socketId);
+            }
+        });
+
         // Host actualizes slide
         socket.on("actualizeSlide", (secret) => {
             if (validateSecret(secret) && slideStore.s && slideStore.f) {

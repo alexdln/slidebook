@@ -1,5 +1,6 @@
 import { authRoute } from "./auth-route.js";
 import { restoreRoute } from "./restore-route.js";
+import { qrRoute } from "./qr-route.js";
 import { slideStore, configurationStore } from "./store.js";
 
 /**
@@ -20,6 +21,9 @@ export const initRestServer = (server) => {
         if (req.url === "/ok" && req.method === "GET") {
             return res.end("OK");
         }
+        if (req.url === "/qr-code.png" && req.method === "GET") {
+            return qrRoute(req, res);
+        }
 
         if (process.env.DEFAULT_SERVER) {
             res.appendHeader("Set-Cookie", `sb_default_server=true; Path=/; SameSite=Strict`);
@@ -34,6 +38,9 @@ export const initRestServer = (server) => {
             if (!sync || sync === "true") {
                 if (configurationStore.t) {
                     res.appendHeader("Set-Cookie", `sb_theme=${configurationStore.t}; Path=/; SameSite=Strict`);
+                }
+                if (configurationStore.qr) {
+                    res.appendHeader("Set-Cookie", `sb_qr_visible=${configurationStore.qr}; Path=/; SameSite=Strict`);
                 }
 
                 const match = url.pathname.match(/^\/(\d+)\/(\d+|f|l)(\/|$)/);
