@@ -2,6 +2,7 @@ const commonjs = require("@rollup/plugin-commonjs");
 const typescript = require("@rollup/plugin-typescript");
 const terser = require("@rollup/plugin-terser");
 const scss = require("rollup-plugin-scss");
+const copy = require("rollup-plugin-copy");
 const { default: preserveDirectives } = require("rollup-preserve-directives");
 
 module.exports = {
@@ -40,6 +41,12 @@ module.exports = {
             fileName: "styles.css",
             sourceMap: true,
             exclude: ["node_modules/"],
+        }),
+        copy({
+            targets: [
+                { src: "src/assets/themes/blue.css", dest: "lib/assets/themes" },
+                { src: "src/assets/themes/orange.css", dest: "lib/assets/themes" },
+            ],
         }),
     ],
 };
