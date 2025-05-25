@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.120",
+  "version": "0.1.121",
   "private": true,
   "files": [
     "src",
@@ -17,7 +17,7 @@
     "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.72.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.77.tgz",
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",

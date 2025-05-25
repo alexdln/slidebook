@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/core",
-  "version": "0.1.72",
+  "version": "0.1.77",
   "private": true,
   "files": [
     "lib"
@@ -15,6 +15,7 @@
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "rollup-plugin-copy": "3.5.0",
     "socket.io-client": "4.8.1"
   },
   "devDependencies": {
