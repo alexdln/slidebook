@@ -1,12 +1,12 @@
 .slide-progress {
     width: 100%;
-    background-color: var(--cl-slate-200);
+    background-color: var(--cl-base-200);
     border-radius: 9999px;
     height: 0.625rem;
 }
 
 .slide-progress__bar {
-    background-color: var(--cl-blue-600);
+    background-color: var(--cl-primary-600);
     height: 0.625rem;
     border-radius: 9999px;
     transition: all 0.3s ease-in-out;
@@ -27,7 +27,7 @@
 }
 
 .slide-progress__dot:hover:enabled {
-    color: var(--cl-blue-500);
+    color: var(--cl-primary-500);
 }
 
 .slide-progress__dot:disabled {

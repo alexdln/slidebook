@@ -17,12 +17,12 @@
     font-size: 0.875rem;
     padding: 0.5rem 0.75rem;
     border-radius: 0.375rem;
-    background-color: var(--cl-slate-200);
+    background-color: var(--cl-base-200);
     transition: background-color 0.2s;
 }
 
 .slide-controls__button:hover:enabled {
-    background-color: var(--cl-slate-300);
+    background-color: var(--cl-base-300);
 }
 
 .slide-controls__button:disabled {
@@ -35,17 +35,17 @@
     font-size: 0.875rem;
     padding: 0.5rem;
     border-radius: 0.375rem;
-    background-color: var(--cl-slate-200);
+    background-color: var(--cl-base-200);
     transition: background-color 0.2s;
 }
 
 .slide-controls__link:hover {
-    background-color: var(--cl-slate-300);
+    background-color: var(--cl-base-300);
 }
 
 .slide-controls__text {
     font-size: 0.875rem;
-    color: var(--cl-slate-700);
+    color: var(--cl-base-700);
 }
 
 .slide-controls__right {
@@ -61,7 +61,7 @@
     display: none;
     padding: 0.5rem 0;
     font-size: 0.875rem;
-    color: var(--cl-slate-500);
+    color: var(--cl-base-500);
     transition: color 0.2s;
 
     .sb-default-server &,
@@ -80,7 +80,7 @@
 }
 
 .slide-controls__host-link:hover {
-    color: var(--cl-slate-700);
+    color: var(--cl-base-700);
 }
 
 .slide-controls__sync {
@@ -92,19 +92,19 @@
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 0.375rem;
-    background-color: var(--cl-slate-200);
+    background-color: var(--cl-base-200);
     transition: background-color 0.2s;
 }
 
 .slide-controls__sync-button:hover {
-    background-color: var(--cl-slate-300);
+    background-color: var(--cl-base-300);
 }
 
 .slide-controls__sync:checked+.slide-controls__sync-button {
-    background-color: var(--cl-blue-500);
-    color: var(--cl-slate-50);
+    background-color: var(--cl-primary-500);
+    color: var(--cl-base-50);
 }
 
 .slide-controls__sync:checked+.slide-controls__sync-button:hover {
-    background-color: var(--cl-blue-600);
+    background-color: var(--cl-primary-600);
 }
