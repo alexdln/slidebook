@@ -12,6 +12,12 @@ export const initRestServer = (server) => {
 
         const url = new URL(req.url, "http://s");
 
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Methods", "*");
+        res.setHeader("Access-Control-Allow-Headers", "*");
+        if (req.method === "OPTIONS") {
+            return res.end();
+        }
         if (req.url === "/auth" && req.method === "POST") {
             return authRoute(req, res);
         }

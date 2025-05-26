@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/server",
-  "version": "0.1.38",
+  "version": "0.1.39",
   "private": true,
   "bin": {
     "slidebook-server": "./server.js"
