@@ -43,10 +43,7 @@ module.exports = {
             exclude: ["node_modules/"],
         }),
         copy({
-            targets: [
-                { src: "src/assets/themes/blue.css", dest: "lib/assets/themes" },
-                { src: "src/assets/themes/orange.css", dest: "lib/assets/themes" },
-            ],
+            targets: [{ src: "src/assets/themes/*", dest: "lib/assets/themes" }],
         }),
     ],
 };
