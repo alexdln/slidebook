@@ -10,6 +10,7 @@ import colors from "picocolors";
 import { formatFile, formatFiles, getDirs, cleanOutDir, eject } from "./lib/format-files.js";
 import { OUT_DIR, IMAGE_DIR, IS_EJECTED } from "./lib/constants.js";
 import { runServer } from "./lib/server.js";
+import { getConfig, mergeConfigs } from "./lib/config.js";
 
 const packageJson = JSON.parse(readFileSync("./package.json"));
 const { yellow, blue, cyan } = colors;
@@ -30,10 +31,12 @@ program
 
 program
     .command("dev")
-    .option("-p, --port", "Set the port number.")
+    .option("-p, --port <PORT>", "Set the port number.")
     .option("-a, --app", "Run application only.")
     .option("-s, --server", "Run server only.")
     .option("-t, --turbopack", "Enable Turbopack for development.")
+    .option("-w, --slide-width <WIDTH>", "Set the slide width.")
+    .option("-h, --slide-height <HEIGHT>", "Set the slide height.")
     .allowUnknownOption()
     .action(async function () {
         if (!IS_EJECTED) {
@@ -60,34 +63,42 @@ program
             });
         }
 
-        const { turbopack, app, server, port } = this.opts();
-        const PORT = port || process.env.PORT || 3000;
+        const config = await getConfig("shared");
+        const { turbopack, app, server, ...sharedOpts } = this.opts();
+        const sharedConfig = mergeConfigs(config, sharedOpts);
         return runServer({
             dev: true,
             turbo: turbopack,
             type: (app && "app") || (server && "server") || "all",
-            port: PORT,
+            sharedConfig,
         });
     });
 
 program
     .command("start")
-    .option("-p, --port", "Set the port number.")
+    .option("-p, --port <PORT>", "Set the port number.")
     .option("-a, --app", "Run application only.")
     .option("-s, --server", "Run server only.")
+    .option("-u, --server-url <URL>", "Set the server URL.")
+    .option("-w, --password <PASSWORD>", "Set the password.")
+    .option("-q, --qr-url <URL>", "Set the QR URL.")
     .allowUnknownOption()
-    .action(function () {
-        const { app, server, port } = this.opts();
-        const PORT = port || process.env.PORT || 3000;
+    .action(async function () {
+        const config = await getConfig("shared");
+        const { app, server, ...sharedOpts } = this.opts();
+        const sharedConfig = mergeConfigs(config, sharedOpts);
         return runServer({
             dev: false,
             type: (app && "app") || (server && "server") || "all",
-            port: PORT,
+            sharedConfig,
         });
     });
 
 program
     .command("build")
+    .option("-u, --server-url <URL>", "Set the server URL.")
+    .option("-w, --slide-width <WIDTH>", "Set the slide width.")
+    .option("-h, --slide-height <HEIGHT>", "Set the slide height.")
     .allowUnknownOption()
     .action(async function () {
         if (!IS_EJECTED) {
@@ -96,15 +107,18 @@ program
             await cp(IMAGE_DIR, OUT_DIR, { recursive: true });
             await formatFiles();
         }
+        const config = await getConfig("shared");
+        const sharedOpts = this.opts();
+        const sharedConfig = mergeConfigs(config, sharedOpts);
         return spawn("next", ["build", OUT_DIR], {
             shell: true,
             stdio: "inherit",
             cwd: process.cwd(),
             env: {
                 ...process.env,
-                NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
-                NEXT_PUBLIC_SLIDE_WIDTH: process.env.SLIDE_WIDTH,
-                NEXT_PUBLIC_SLIDE_HEIGHT: process.env.SLIDE_HEIGHT,
+                NEXT_PUBLIC_SERVER_URL: sharedConfig.serverUrl,
+                NEXT_PUBLIC_SLIDE_WIDTH: sharedConfig.slideWidth,
+                NEXT_PUBLIC_SLIDE_HEIGHT: sharedConfig.slideHeight,
             },
         });
     });

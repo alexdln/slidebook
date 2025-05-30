@@ -6,8 +6,9 @@ import { initServer } from "@slidebook/server/lib/init-server.js";
 
 import { OUT_DIR } from "./constants.js";
 
-export const runServer = async ({ dev, turbo, type, port }) => {
+export const runServer = async ({ dev, turbo, type, sharedConfig }) => {
     const { default: next } = await import("next");
+    const { port, serverUrl, slideWidth, slideHeight } = sharedConfig;
 
     if (type === "server") {
         const server = createServer();
@@ -17,9 +18,9 @@ export const runServer = async ({ dev, turbo, type, port }) => {
             console.log(`> Realtime Server listening on port ${port}`);
         });
     } else {
-        process.env.NEXT_PUBLIC_SERVER_URL = process.env.SERVER_URL;
-        process.env.NEXT_PUBLIC_SLIDE_WIDTH = process.env.SLIDE_WIDTH;
-        process.env.NEXT_PUBLIC_SLIDE_HEIGHT = process.env.SLIDE_HEIGHT;
+        process.env.NEXT_PUBLIC_SERVER_URL = serverUrl;
+        process.env.NEXT_PUBLIC_SLIDE_WIDTH = slideWidth;
+        process.env.NEXT_PUBLIC_SLIDE_HEIGHT = slideHeight;
         if (type !== "app") process.env.DEFAULT_SERVER = "true";
 
         const app = next({
