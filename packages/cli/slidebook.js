@@ -63,7 +63,7 @@ program
             });
         }
 
-        const config = await getConfig("shared");
+        const config = await getConfig();
         const { turbopack, app, server, ...sharedOpts } = this.opts();
         const sharedConfig = mergeConfigs(config, sharedOpts);
         return runServer({
@@ -84,7 +84,7 @@ program
     .option("-q, --qr-url <URL>", "Set the QR URL.")
     .allowUnknownOption()
     .action(async function () {
-        const config = await getConfig("shared");
+        const config = await getConfig();
         const { app, server, ...sharedOpts } = this.opts();
         const sharedConfig = mergeConfigs(config, sharedOpts);
         return runServer({
@@ -107,7 +107,7 @@ program
             await cp(IMAGE_DIR, OUT_DIR, { recursive: true });
             await formatFiles();
         }
-        const config = await getConfig("shared");
+        const config = await getConfig();
         const sharedOpts = this.opts();
         const sharedConfig = mergeConfigs(config, sharedOpts);
         return spawn("next", ["build", OUT_DIR], {

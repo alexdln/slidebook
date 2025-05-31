@@ -9,7 +9,7 @@
     "eject": "slidebook eject"
   },
   "dependencies": {
-    "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.26.tgz",
+    "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.27.tgz",
     "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.81.tgz",
     "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.121.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.39.tgz",
