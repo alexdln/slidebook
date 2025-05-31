@@ -1,3 +1,5 @@
+// @ts-check
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -6,11 +8,15 @@ import { initServer } from "@slidebook/server/lib/init-server.js";
 
 import { OUT_DIR } from "./constants.js";
 
+/**
+ * @param {{ dev?: boolean, turbo?: boolean, type: "server" | "app" | "all", sharedConfig: import("./config").FinalConfig }} opts
+ */
 export const runServer = async ({ dev, turbo, type, sharedConfig }) => {
     const { default: next } = await import("next");
-    const { port, serverUrl, slideWidth, slideHeight } = sharedConfig;
+    const { port, serverUrl, qrUrl, width, height } = sharedConfig;
 
     if (type === "server") {
+        if (qrUrl) process.env.QR_URL = qrUrl;
         const server = createServer();
         initServer(server);
 
@@ -18,9 +24,10 @@ export const runServer = async ({ dev, turbo, type, sharedConfig }) => {
             console.log(`> Realtime Server listening on port ${port}`);
         });
     } else {
-        process.env.NEXT_PUBLIC_SERVER_URL = serverUrl;
-        process.env.NEXT_PUBLIC_SLIDE_WIDTH = slideWidth;
-        process.env.NEXT_PUBLIC_SLIDE_HEIGHT = slideHeight;
+        if (serverUrl) process.env.NEXT_PUBLIC_SERVER_URL = serverUrl;
+        if (qrUrl) process.env.NEXT_PUBLIC_QR_URL = qrUrl;
+        if (width) process.env.NEXT_PUBLIC_SLIDE_WIDTH = String(width);
+        if (height) process.env.NEXT_PUBLIC_SLIDE_HEIGHT = String(height);
         if (type !== "app") process.env.DEFAULT_SERVER = "true";
 
         const app = next({

@@ -16,36 +16,54 @@ export const IMAGE_DIR = path.dirname(fileURLToPath(import.meta.resolve("@slideb
 export const CONFIG_MAP = [
     {
         env: "SERVER_URL",
-        fs: "server.url",
+        fs: "app.serverUrl",
         arg: "serverUrl",
+        key: "serverUrl",
     },
     {
         env: "QR_URL",
-        fs: "qr.url",
+        fs: "app.qrUrl",
         arg: "qrUrl",
-    },
-    {
-        env: "PASSWORD",
-        fs: "password",
-        arg: "password",
-        default: "qwerty",
+        key: "qrUrl",
     },
     {
         env: "PORT",
-        fs: "port",
+        fs: "app.port",
         arg: "port",
+        key: "port",
         default: 3000,
+    },
+    {
+        env: "PASSWORD",
+        fs: "auth.password",
+        arg: "password",
+        key: "password",
+        default: "qwerty",
+    },
+    {
+        env: null,
+        fs: "auth.authenticate",
+        arg: null,
+        key: "authenticate",
+    },
+    {
+        env: null,
+        fs: "auth.validate",
+        arg: null,
+        key: "validate",
     },
     {
         env: "SLIDE_WIDTH",
         fs: "slide.width",
         arg: "slideWidth",
+        key: "width",
         default: 1200,
     },
     {
         env: "SLIDE_HEIGHT",
         fs: "slide.height",
         arg: "slideHeight",
+        key: "height",
         default: 600,
     },
 ];
