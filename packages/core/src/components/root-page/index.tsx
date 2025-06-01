@@ -22,7 +22,7 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
                 ))}
             >
                 {slides.map(({ component: SlideItem }, index) => (
-                    <SlideProvider slideNumber={index + 1} key={index}>
+                    <SlideProvider slideNumber={index + 1} totalSlides={slides.length} key={index}>
                         <SlideContent>
                             <SlideItem slideNumber={index + 1} />
                         </SlideContent>
@@ -36,7 +36,7 @@ export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) =>
         return (
             <ListView>
                 {slides.map(({ component: SlideItem }, index) => (
-                    <SlideProvider slideNumber={index + 1} key={index}>
+                    <SlideProvider slideNumber={index + 1} totalSlides={slides.length} key={index}>
                         <SlideContent>
                             <SlideItem slideNumber={index + 1} />
                         </SlideContent>
