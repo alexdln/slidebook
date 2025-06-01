@@ -16,11 +16,12 @@ import "./slide-layer.scss";
 
 export type SlideLayerProps = {
     children: React.ReactNode;
+    totalSlides: number;
 };
 
-export const SlideLayer: React.FC<SlideLayerProps> = ({ children }) => (
+export const SlideLayer: React.FC<SlideLayerProps> = ({ children, totalSlides }) => (
     <SocketProvider>
-        <SliderProvider totalSlides={20}>
+        <SliderProvider totalSlides={totalSlides}>
             <AuthenticationProvider>
                 <FragmentsProvider>
                     <NavigationProvider>

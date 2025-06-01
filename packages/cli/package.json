@@ -20,8 +20,8 @@
     "start": "node lib/server.js --production"
   },
   "devDependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.81.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.121.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.82.tgz",
+    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.123.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.39.tgz"
   },
   "peerDependencies": {
