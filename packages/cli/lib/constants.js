@@ -66,4 +66,11 @@ export const CONFIG_MAP = [
         key: "height",
         default: 600,
     },
+    {
+        env: "COOKIES_FLAGS",
+        fs: "cookies.flags",
+        arg: "cookiesFlags",
+        key: "cookiesFlags",
+        default: "SameSite=Strict;",
+    },
 ];

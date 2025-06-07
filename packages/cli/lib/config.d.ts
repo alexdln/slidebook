@@ -8,6 +8,9 @@ export interface Config {
         serverUrl?: string;
         port?: number;
     };
+    cookies?: {
+        flags?: string;
+    };
     auth?: {
         password?: string;
         authenticate?: (secret: string) => boolean;
@@ -24,4 +27,5 @@ export interface FinalConfig {
     password?: string | null;
     authenticate?: ((secret: string) => boolean) | null;
     validate?: ((secret: string) => boolean) | null;
+    cookiesFlags?: string | null;
 }

@@ -6,6 +6,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useSocket } from "@/providers/socket/hooks";
 import { useSetSlider, useSlider } from "@/providers/slider/hooks";
 import { useFragments, useSetFragments } from "@/providers/fragments/hooks";
+import { COOKIES_FLAGS } from "@/lib/settings";
 
 import { SyncContext } from "./context";
 
@@ -112,7 +113,7 @@ export const useSync = () => {
 
             const newValue = value ?? !syncRef.current.checked;
             syncRef.current.checked = newValue;
-            document.cookie = `sb_sync=${newValue.toString()}; Path=/; SameSite=Strict`;
+            document.cookie = `sb_sync=${newValue.toString()};Path=/;${COOKIES_FLAGS}`;
         },
         register: (node: HTMLInputElement) => {
             if (!syncRef) return;

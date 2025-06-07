@@ -34,6 +34,7 @@ program
     .option("-p, --port <PORT>", "Set the port number.")
     .option("-a, --app", "Run application only.")
     .option("-s, --server", "Run server only.")
+    .option("-c, --cookies-flags <FLAGS>", "Set the cookies flags.")
     .option("-t, --turbopack", "Enable Turbopack for development.")
     .option("-w, --slide-width <WIDTH>", "Set the slide width.")
     .option("-h, --slide-height <HEIGHT>", "Set the slide height.")
@@ -80,6 +81,7 @@ program
     .option("-a, --app", "Run application only.")
     .option("-s, --server", "Run server only.")
     .option("-u, --server-url <URL>", "Set the server URL.")
+    .option("-c, --cookies-flags <FLAGS>", "Set the cookies flags.")
     .option("-w, --password <PASSWORD>", "Set the password.")
     .option("-q, --qr-url <URL>", "Set the QR URL.")
     .allowUnknownOption()
@@ -97,6 +99,7 @@ program
 program
     .command("build")
     .option("-u, --server-url <URL>", "Set the server URL.")
+    .option("-c, --cookies-flags <FLAGS>", "Set the cookies flags.")
     .option("-w, --slide-width <WIDTH>", "Set the slide width.")
     .option("-h, --slide-height <HEIGHT>", "Set the slide height.")
     .allowUnknownOption()
@@ -119,6 +122,7 @@ program
                 NEXT_PUBLIC_SERVER_URL: sharedConfig.serverUrl,
                 NEXT_PUBLIC_SLIDE_WIDTH: sharedConfig.slideWidth,
                 NEXT_PUBLIC_SLIDE_HEIGHT: sharedConfig.slideHeight,
+                NEXT_PUBLIC_COOKIES_FLAGS: sharedConfig.cookiesFlags,
             },
         });
     });
