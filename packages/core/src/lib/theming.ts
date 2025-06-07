@@ -4,7 +4,12 @@ export const getTheme = () => {
 };
 
 export const changeTheme = (theme: string) => {
-    document.cookie = `sb_theme=${theme}; Path=/; SameSite=Strict`;
+    const COOKIES_FLAGS =
+        typeof process.env.NEXT_PUBLIC_COOKIES_FLAGS === "string" &&
+        process.env.NEXT_PUBLIC_COOKIES_FLAGS !== "undefined"
+            ? process.env.NEXT_PUBLIC_COOKIES_FLAGS
+            : "SameSite=Strict;";
+    document.cookie = `sb_theme=${theme}; Path=/;${COOKIES_FLAGS}`;
     document.documentElement.classList.remove("theme-light", "theme-dark", "theme-system");
     if (theme === "system") {
         document.documentElement.classList.add(`theme-system`);

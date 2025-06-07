@@ -32,7 +32,11 @@ export const initRestServer = (server) => {
         }
 
         if (process.env.DEFAULT_SERVER) {
-            res.appendHeader("Set-Cookie", `sb_default_server=true; Path=/; SameSite=Strict`);
+            const COOKIES_FLAGS =
+                typeof process.env.COOKIES_FLAGS === "string" && process.env.COOKIES_FLAGS !== "undefined"
+                    ? process.env.COOKIES_FLAGS
+                    : "SameSite=Strict;";
+            res.appendHeader("Set-Cookie", `sb_default_server=true;Path=/;${COOKIES_FLAGS}`);
             const sync = req.headers.cookie?.match(/sb_sync=([^;]+)/)?.[1];
             const isRootPathname = ["/", ""].includes(url.pathname);
 
@@ -43,10 +47,10 @@ export const initRestServer = (server) => {
 
             if (!sync || sync === "true") {
                 if (configurationStore.t) {
-                    res.appendHeader("Set-Cookie", `sb_theme=${configurationStore.t}; Path=/; SameSite=Strict`);
+                    res.appendHeader("Set-Cookie", `sb_theme=${configurationStore.t};Path=/;${COOKIES_FLAGS}`);
                 }
                 if (configurationStore.qr) {
-                    res.appendHeader("Set-Cookie", `sb_qr_visible=${configurationStore.qr}; Path=/; SameSite=Strict`);
+                    res.appendHeader("Set-Cookie", `sb_qr_visible=${configurationStore.qr};Path=/;${COOKIES_FLAGS}`);
                 }
 
                 const match = url.pathname.match(/^\/(\d+)\/(\d+|f|l)(\/|$)/);

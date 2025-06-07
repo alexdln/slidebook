@@ -11,3 +11,8 @@ export const SLIDE_HEIGHT =
 export const CONFIGURED_SERVER =
     process.env.NEXT_PUBLIC_DEFAULT_SERVER ||
     (typeof process.env.NEXT_PUBLIC_SERVER_URL === "string" && process.env.NEXT_PUBLIC_SERVER_URL !== "undefined");
+
+export const COOKIES_FLAGS =
+    typeof process.env.NEXT_PUBLIC_COOKIES_FLAGS === "string" && process.env.NEXT_PUBLIC_COOKIES_FLAGS !== "undefined"
+        ? process.env.NEXT_PUBLIC_COOKIES_FLAGS
+        : "SameSite=Strict;";

@@ -13,7 +13,7 @@ import { OUT_DIR } from "./constants.js";
  */
 export const runServer = async ({ dev, turbo, type, sharedConfig }) => {
     const { default: next } = await import("next");
-    const { port, serverUrl, qrUrl, width, height } = sharedConfig;
+    const { port, serverUrl, qrUrl, width, height, cookiesFlags } = sharedConfig;
 
     if (type === "server") {
         if (qrUrl) process.env.QR_URL = qrUrl;
@@ -28,6 +28,10 @@ export const runServer = async ({ dev, turbo, type, sharedConfig }) => {
         if (qrUrl) process.env.NEXT_PUBLIC_QR_URL = qrUrl;
         if (width) process.env.NEXT_PUBLIC_SLIDE_WIDTH = String(width);
         if (height) process.env.NEXT_PUBLIC_SLIDE_HEIGHT = String(height);
+        if (cookiesFlags) {
+            process.env.NEXT_PUBLIC_COOKIES_FLAGS = cookiesFlags;
+            process.env.COOKIES_FLAGS = cookiesFlags;
+        }
         if (type !== "app") process.env.DEFAULT_SERVER = "true";
 
         const app = next({
