@@ -17,6 +17,7 @@ export const runServer = async ({ dev, turbo, type, sharedConfig }) => {
 
     if (type === "server") {
         if (qrUrl) process.env.QR_URL = qrUrl;
+        if (cookiesFlags) process.env.COOKIES_FLAGS = cookiesFlags;
         const server = createServer();
         initServer(server);
 
