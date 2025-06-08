@@ -4,11 +4,6 @@ import QRCode from "qrcode";
 import { configurationStore } from "./store.js";
 
 export const qrRoute = async (req, res) => {
-    if (!configurationStore.url) {
-        res.statusCode = 400;
-        return res.end("Bad Request");
-    }
-
     try {
         res.setHeader("content-type", "image/png");
         const qrStream = new PassThrough();

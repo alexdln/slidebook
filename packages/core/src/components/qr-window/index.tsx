@@ -1,8 +1,10 @@
+"use client";
+
 import { useCallback } from "react";
 import clsx from "clsx";
 
 import { useSocket } from "@/providers/socket/hooks";
-import { changeQrVisible, getQrVisible } from "@/lib/qr-code";
+import { changeQrVisible } from "@/lib/qr-code";
 import { CONFIGURED_SERVER } from "@/lib/settings";
 
 import "./qr-window.scss";
@@ -16,9 +18,8 @@ export const QrWindow: React.FC<QrWindowProps> = ({ className, buttonClassName }
     const socket = useSocket();
 
     const changeQrVisibleHandler = useCallback(() => {
-        const newQrVisible = getQrVisible() === "true" ? "false" : "true";
+        const newQrVisible = document.documentElement.classList.contains("sb-qr-visible") ? "false" : "true";
         changeQrVisible(newQrVisible);
-
         const secret = sessionStorage.getItem("secret");
         socket?.emit("changeQrVisible", { v: newQrVisible, url: `${window.location.origin}/1/f` }, secret, socket.id);
     }, [socket]);
