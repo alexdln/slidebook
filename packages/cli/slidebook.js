@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawn } from "child_process";
-import { watch, readFileSync } from "fs";
+import { watch, readFileSync, existsSync } from "fs";
 import { Command } from "commander";
 import { config } from "dotenv";
 import { cp } from "fs/promises";
@@ -46,15 +46,16 @@ program
             await cp(IMAGE_DIR, OUT_DIR, { recursive: true });
             await formatFiles();
 
-            const { sourceDir } = getDirs();
+            const dirs = getDirs();
+            const { sourceSlidesDir, sourceAssetsDir } = dirs;
             console.log(blue("Watching files..."));
 
-            watch(sourceDir, async (event, filename) => {
+            watch(sourceSlidesDir, async (event, filename) => {
                 if (!filename) return;
 
                 if (event === "change") {
                     console.log(`${blue("reloading file:")} "${yellow(filename)}"`);
-                    await formatFile(filename);
+                    await formatFile(filename, "slides", dirs);
                 } else if (event === "rename") {
                     console.log(blue("reloading files"));
                     await formatFiles();
@@ -62,6 +63,21 @@ program
                     console.log(`${blue("Unknown event:")} "${yellow(event)}"`);
                 }
             });
+            if (existsSync(sourceAssetsDir)) {
+                watch(sourceAssetsDir, async (event, filename) => {
+                    if (!filename) return;
+
+                    if (event === "change") {
+                        console.log(`${blue("reloading file:")} "${yellow(filename)}"`);
+                        await formatFile(filename, "asset", dirs);
+                    } else if (event === "rename") {
+                        console.log(blue("reloading files"));
+                        await formatFiles();
+                    } else {
+                        console.log(`${blue("Unknown event:")} "${yellow(event)}"`);
+                    }
+                });
+            }
         }
 
         const config = await getConfig();
