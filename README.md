@@ -132,10 +132,10 @@ When the host changes a slide, theme, or QR code:
 
 Shows:
 
-- Current slide
-- Next slide
-- Speaker notes
-- Navigation controls
+* Current slide
+* Next slide
+* Speaker notes
+* Navigation controls
 
 Requires host password to access. Set via config, CLI, or env ([read more](#configuration)).
 
@@ -293,7 +293,7 @@ slidebook start app
 
 Useful if you're deploying to environments like **Vercel**, which **do not support WebSocket or real-time infrastructure**.
 
-> [!Important]
+> [!IMPORTANT]
 > When running separately, pass the server URL to the app
 >
 > ```js
