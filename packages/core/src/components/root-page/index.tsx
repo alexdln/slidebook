@@ -11,7 +11,7 @@ export type RootPageProps = {
     slides: Slide[];
 };
 
-export const RootPage: React.FC<RootPageProps> = async ({ segments, slides }) => {
+export const RootPage: React.FC<RootPageProps> = ({ segments, slides }) => {
     const [nameOrSlide] = segments || ["1"];
 
     if (nameOrSlide === "host") {

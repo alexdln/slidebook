@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@slidebook/cli": "file:..\\..\\packages\\cli\\slidebook-cli-0.1.31.tgz",
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.86.tgz",
+    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.88.tgz",
     "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.124.tgz",
     "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.41.tgz",
     "class-variance-authority": "0.7.1",
