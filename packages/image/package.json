@@ -28,5 +28,15 @@
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0",
     "@slidebook/core": ">=0.1.20"
-  }
+  },
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/alexdln/slidebook.git"
+  },
+  "author": {
+      "name": "Alex Savelyev",
+      "email": "dev@alexdln.com",
+      "url": "https://github.com/alexdln/"
+  },
+  "license": "MIT"
 }
