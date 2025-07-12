@@ -30,6 +30,14 @@ jobs:
           cp ../../LICENSE .
         working-directory: ./packages/core
 
+      - name: Set package version from release tag
+        run: |
+          TAG=${GITHUB_REF##*/}
+          VERSION=${TAG#v}
+          echo "Using version: $VERSION"
+          npm version --no-git-tag-version "$VERSION"
+        working-directory: ./packages/core
+
       - name: Publish on main
         if: "!contains(github.ref_name, 'canary')"
         run: |
