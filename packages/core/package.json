@@ -1,7 +1,6 @@
 {
   "name": "@slidebook/core",
   "version": "0.1.88",
-  "private": true,
   "files": [
     "lib"
   ],
