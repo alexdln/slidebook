@@ -1,7 +1,6 @@
 {
   "name": "@slidebook/image",
   "version": "0.1.124",
-  "private": true,
   "files": [
     "src",
     "next-env.d.ts",
