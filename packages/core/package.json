@@ -32,5 +32,15 @@
     "ts-patch": "3.2.1",
     "typescript": "5.8.2",
     "typescript-transform-paths": "3.5.5"
-  }
+  },
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/alexdln/slidebook.git"
+  },
+  "author": {
+      "name": "Alex Savelyev",
+      "email": "dev@alexdln.com",
+      "url": "https://github.com/alexdln/"
+  },
+  "license": "MIT"
 }

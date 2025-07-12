@@ -98,7 +98,7 @@ export default {
     },
     app: {
         serverUrl: "http://localhost:3000",
-        qrUrl: "https://slidebook-slidebook.vercel.app",
+        qrUrl: "https://slidebook.dev",
         port: 3000,
     },
     auth: {
