@@ -494,6 +494,8 @@
   --cl-stone-800: oklch(0.923 0.003 48.717);
   --cl-stone-900: oklch(0.97 0.001 106.424);
   --cl-stone-950: oklch(0.985 0.001 106.423);
+  --cl-black: #fff;
+  --cl-white: #000;
 }
 
 @theme inline {
@@ -741,4 +743,6 @@
   --color-stone-800: var(--cl-stone-800);
   --color-stone-900: var(--cl-stone-900);
   --color-stone-950: var(--cl-stone-950);
+  --color-black: var(--cl-black);
+  --color-white: var(--cl-white);
 }
