@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/server",
-  "version": "0.1.41",
+  "version": "1.0.0",
   "bin": {
     "slidebook-server": "./server.js"
   },
@@ -14,13 +14,13 @@
     "socket.io": "4.8.1"
   },
   "repository": {
-      "type": "git",
-      "url": "git://github.com/alexdln/slidebook.git"
+    "type": "git",
+    "url": "git://github.com/alexdln/slidebook.git"
   },
   "author": {
-      "name": "Alex Savelyev",
-      "email": "dev@alexdln.com",
-      "url": "https://github.com/alexdln/"
+    "name": "Alex Savelyev",
+    "email": "dev@alexdln.com",
+    "url": "https://github.com/alexdln/"
   },
   "license": "MIT"
 }

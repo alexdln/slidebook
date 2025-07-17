@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/cli",
-  "version": "0.1.31",
+  "version": "1.0.0",
   "type": "module",
   "bin": {
     "slidebook": "./slidebook.js"
@@ -19,9 +19,9 @@
     "start": "node lib/server.js --production"
   },
   "devDependencies": {
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.88.tgz",
-    "@slidebook/image": "file:..\\..\\packages\\image\\slidebook-image-0.1.124.tgz",
-    "@slidebook/server": "file:..\\..\\packages\\server\\slidebook-server-0.1.41.tgz"
+    "@slidebook/core": "latest",
+    "@slidebook/image": "latest",
+    "@slidebook/server": "latest"
   },
   "peerDependencies": {
     "@slidebook/core": ">=0.1.34",
@@ -29,13 +29,13 @@
     "@slidebook/server": ">=0.1.14"
   },
   "repository": {
-      "type": "git",
-      "url": "git://github.com/alexdln/slidebook.git"
+    "type": "git",
+    "url": "git://github.com/alexdln/slidebook.git"
   },
   "author": {
-      "name": "Alex Savelyev",
-      "email": "dev@alexdln.com",
-      "url": "https://github.com/alexdln/"
+    "name": "Alex Savelyev",
+    "email": "dev@alexdln.com",
+    "url": "https://github.com/alexdln/"
   },
   "license": "MIT"
 }

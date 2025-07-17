@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/core",
-  "version": "0.1.88",
+  "version": "1.0.0",
   "files": [
     "lib"
   ],
@@ -33,13 +33,13 @@
     "typescript-transform-paths": "3.5.5"
   },
   "repository": {
-      "type": "git",
-      "url": "git://github.com/alexdln/slidebook.git"
+    "type": "git",
+    "url": "git://github.com/alexdln/slidebook.git"
   },
   "author": {
-      "name": "Alex Savelyev",
-      "email": "dev@alexdln.com",
-      "url": "https://github.com/alexdln/"
+    "name": "Alex Savelyev",
+    "email": "dev@alexdln.com",
+    "url": "https://github.com/alexdln/"
   },
   "license": "MIT"
 }

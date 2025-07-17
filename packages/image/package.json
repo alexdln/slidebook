@@ -1,6 +1,6 @@
 {
   "name": "@slidebook/image",
-  "version": "0.1.124",
+  "version": "1.0.0",
   "files": [
     "src",
     "next-env.d.ts",
@@ -16,7 +16,7 @@
     "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
-    "@slidebook/core": "file:..\\..\\packages\\core\\slidebook-core-0.1.88.tgz",
+    "@slidebook/core": "latest",
     "next": "15.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -29,13 +29,13 @@
     "@slidebook/core": ">=0.1.20"
   },
   "repository": {
-      "type": "git",
-      "url": "git://github.com/alexdln/slidebook.git"
+    "type": "git",
+    "url": "git://github.com/alexdln/slidebook.git"
   },
   "author": {
-      "name": "Alex Savelyev",
-      "email": "dev@alexdln.com",
-      "url": "https://github.com/alexdln/"
+    "name": "Alex Savelyev",
+    "email": "dev@alexdln.com",
+    "url": "https://github.com/alexdln/"
   },
   "license": "MIT"
 }
