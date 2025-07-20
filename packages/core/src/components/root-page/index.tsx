@@ -3,6 +3,7 @@ import { SlideProvider } from "@/providers/slide/provider";
 import { SlideContent } from "@/components/slide-content";
 import { HostPanel } from "@/components/host-panel";
 import { ListView } from "@/components/list-view";
+import { NotesPanel } from "@/components/notes-panel";
 
 import "./root-page.scss";
 
@@ -47,12 +48,13 @@ export const RootPage: React.FC<RootPageProps> = ({ segments, slides }) => {
     }
 
     const slideNumber = Number.parseInt(nameOrSlide as string) || 1;
-    const { component: Slide } = slides[slideNumber - 1];
+    const { component: Slide, notes: Notes } = slides[slideNumber - 1];
 
     return (
         <SlideProvider slideNumber={slideNumber} totalSlides={slides.length}>
             <SlideContent>
                 <Slide slideNumber={slideNumber} />
+                <NotesPanel notes={Notes ? <Notes slideNumber={slideNumber} /> : undefined} />
             </SlideContent>
         </SlideProvider>
     );

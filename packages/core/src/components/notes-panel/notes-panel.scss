@@ -1,0 +1,71 @@
+.notes-toggle-button {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--cl-base-50);
+    color: var(--cl-base-950);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--cl-primary-800);
+    }
+}
+
+.notes-toggle-button__text {
+    display: none;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    line-height: 1;
+
+    .notes-toggle-button:hover & {
+        display: block;
+    }
+}
+
+.notes-panel {
+    z-index: 1001;
+    background: var(--cl-base-50);
+    color: var(--cl-base-950);
+    font-size: 0.875rem;
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 20vh;
+    max-width: 100%;
+    overflow: auto;
+    border-top: 1px solid var(--cl-base-300);
+}
+
+.notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.notes-actions__button {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: var(--cl-base-50);
+    color: var(--cl-base-950);
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--cl-base-100);
+    }
+}
+
+.notes-content {
+    line-height: 1.5;
+}
