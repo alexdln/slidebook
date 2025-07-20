@@ -47,6 +47,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children, totalSlides })
                                     <SlideProgress />
                                     <SlideControls />
                                 </div>
+                                <div className="slide-layer__notes" />
                             </div>
                         </main>
                     </NavigationProvider>

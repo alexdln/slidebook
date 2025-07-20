@@ -22,6 +22,8 @@
   --cl-primary-800: var(--color-primary-800, oklch(0.424 0.199 265.638));
   --cl-primary-900: var(--color-primary-900, oklch(0.379 0.146 265.522));
   --cl-primary-950: var(--color-primary-950, oklch(0.282 0.091 267.935));
+
+  color-scheme: light;
 }
 
 [data-theme="dark"], .theme-dark {
@@ -48,6 +50,8 @@
   --cl-primary-800: var(--color-primary-800, oklch(0.882 0.059 254.128));
   --cl-primary-900: var(--color-primary-900, oklch(0.932 0.032 255.585));
   --cl-primary-950: var(--color-primary-950, oklch(0.97 0.014 254.604));
+
+  color-scheme: dark;
 }
 
 .theme-dark:not(.theme-system) .theme-switcher_dark,
