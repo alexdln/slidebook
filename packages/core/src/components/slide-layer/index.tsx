@@ -11,6 +11,7 @@ import { SlideProgress } from "../slide-progress";
 import { SlideControls } from "../slide-controls";
 import { ThemeDetector } from "../theme-detector";
 import { ConfigurationDetector } from "../configuration-detector";
+import { QrWindow } from "../qr-window";
 
 import "./slide-layer.scss";
 
@@ -48,6 +49,7 @@ export const SlideLayer: React.FC<SlideLayerProps> = ({ children, totalSlides })
                                     <SlideControls />
                                 </div>
                                 <div className="slide-layer__notes" />
+                                <QrWindow />
                             </div>
                         </main>
                     </NavigationProvider>
