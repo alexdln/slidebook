@@ -1,6 +1,6 @@
 import { type Slide } from "@/lib/types";
 import { SlideProvider } from "@/providers/slide/provider";
-import { SlideContent } from "@/components/slide-content";
+import { SlideContent, type SlideContentProps } from "@/components/slide-content";
 import { HostPanel } from "@/components/host-panel";
 import { ListView } from "@/components/list-view";
 import { NotesPanel } from "@/components/notes-panel";
@@ -10,9 +10,10 @@ import "./root-page.scss";
 export type RootPageProps = {
     segments: string[];
     slides: Slide[];
+    padding?: SlideContentProps["padding"];
 };
 
-export const RootPage: React.FC<RootPageProps> = ({ segments, slides }) => {
+export const RootPage: React.FC<RootPageProps> = ({ segments, slides, padding }) => {
     const [nameOrSlide] = segments || ["1"];
 
     if (nameOrSlide === "host") {
@@ -24,7 +25,7 @@ export const RootPage: React.FC<RootPageProps> = ({ segments, slides }) => {
             >
                 {slides.map(({ component: SlideItem }, index) => (
                     <SlideProvider slideNumber={index + 1} totalSlides={slides.length} key={index}>
-                        <SlideContent>
+                        <SlideContent padding={padding}>
                             <SlideItem slideNumber={index + 1} />
                         </SlideContent>
                     </SlideProvider>
@@ -35,10 +36,10 @@ export const RootPage: React.FC<RootPageProps> = ({ segments, slides }) => {
 
     if (nameOrSlide === "list") {
         return (
-            <ListView>
+            <ListView padding={padding}>
                 {slides.map(({ component: SlideItem }, index) => (
                     <SlideProvider slideNumber={index + 1} totalSlides={slides.length} key={index}>
-                        <SlideContent>
+                        <SlideContent padding={padding}>
                             <SlideItem slideNumber={index + 1} />
                         </SlideContent>
                     </SlideProvider>
@@ -52,7 +53,7 @@ export const RootPage: React.FC<RootPageProps> = ({ segments, slides }) => {
 
     return (
         <SlideProvider slideNumber={slideNumber} totalSlides={slides.length}>
-            <SlideContent>
+            <SlideContent padding={padding}>
                 <Slide slideNumber={slideNumber} />
                 <NotesPanel notes={Notes ? <Notes slideNumber={slideNumber} /> : undefined} />
             </SlideContent>
