@@ -12,6 +12,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
     height: 100%;
+}
+
+.slide-content__inner._padding-sm {
+    padding: 1rem;
+}
+
+.slide-content__inner._padding-md {
+    padding: 1.5rem;
+}
+
+.slide-content__inner._padding-lg {
+    padding: 2rem;
+}
+
+.slide-content__inner._padding-xl {
+    padding: 2.5rem;
+}
+
+.slide-content__inner._padding-2xl {
+    padding: 3rem;
 }
